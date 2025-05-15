@@ -8,4 +8,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="PhysicsEngineCore">
+      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0\PhysicsEngineCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
