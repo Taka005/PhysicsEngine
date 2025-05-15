@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using PhysicsEngineCore;
+using PhysicsEngineCore.Options;
 
 namespace PhysicsEngineGUI;
 
@@ -22,6 +23,16 @@ public partial class MainWindow : Window{
         this.engine = new Engine(null);
 
         engine.Start();
+
+        CircleOption circleOption = new CircleOption{
+            posX = 0,
+            posY = 0,
+            mass = 10,
+            radius = 10,
+            stiffness = 1
+        };
+
+        engine.SpawnObject(circleOption);
     }
     private void NewFile_Click(object sender, RoutedEventArgs e){
         MessageBox.Show("新規ファイルを作成します");
