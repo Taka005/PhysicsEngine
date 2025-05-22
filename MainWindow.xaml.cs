@@ -41,7 +41,7 @@ public partial class MainWindow : Window{
     private void SaveFile_Click(object sender, RoutedEventArgs e){
         SaveFileDialog saveFileDialog = new SaveFileDialog{
             FileName = "map.json",
-            InitialDirectory = @"C:\",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
             Filter = "JSONファイル(*.json)|*.json|すべてのファイル(*.*)|*.*",
             FilterIndex = 2,
             Title = "保存先のファイルを選択してください",
@@ -54,6 +54,14 @@ public partial class MainWindow : Window{
     }
 
     private void Exit_Click(object sender, RoutedEventArgs e){
-        Application.Current.Shutdown();
+        this.Close();
+    }
+
+    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+        MessageBoxResult result = MessageBox.Show("本当に終了しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+        if(result == MessageBoxResult.No){
+            e.Cancel = true;
+        }
     }
 }

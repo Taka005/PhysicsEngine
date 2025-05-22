@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhysicsEngineGUI"
         mc:Ignorable="d"
-        Title="PhysicsEngine" Height="800" Width="1000" ResizeMode="NoResize">
+        Title="PhysicsEngine" Height="800" Width="1000" ResizeMode="NoResize" Closing="Window_Closing">
     <DockPanel>
         <Menu x:Name="メニューバー" DockPanel.Dock="Top" Background="#FFF3F3F3" BorderThickness="0,0,0,1" BorderBrush="#FFE8E8E8">
             <MenuItem x:Name="ファイルメニュー" Header="ファイル">
