@@ -42,7 +42,7 @@ public partial class MainWindow : Window{
         SaveFileDialog saveFileDialog = new SaveFileDialog{
             FileName = "map.json",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
-            Filter = "JSONファイル(*.json)|*.json|すべてのファイル(*.*)|*.*",
+            Filter = "すべてのファイル(*.*)|*.*|JSONファイル(*.json)|*.json",
             FilterIndex = 2,
             Title = "保存先のファイルを選択してください",
             RestoreDirectory = true
