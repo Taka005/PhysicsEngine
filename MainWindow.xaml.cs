@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,21 +24,21 @@ public partial class MainWindow : Window{
         this.engine = new Engine(null);
 
         MyCanvas.Children.Add(this.engine.render);
-
         CompositionTarget.Rendering += this.engine.OnRendering;
 
         engine.Start();
 
         CircleOption circleOption = new CircleOption{
-            posX = 0,
-            posY = 0,
-            mass = 10,
+            posX = 100,
+            posY = 100,
+            mass = 0,
             diameter = 20,
             stiffness = 1
         };
 
         engine.SpawnObject(circleOption);
     }
+
     private void NewFile_Click(object sender, RoutedEventArgs e){
         MessageBox.Show("新規ファイルを作成します");
     }
