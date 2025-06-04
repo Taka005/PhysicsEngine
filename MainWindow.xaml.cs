@@ -22,13 +22,17 @@ public partial class MainWindow : Window{
 
         this.engine = new Engine(null);
 
+        MyCanvas.Children.Add(this.engine.render);
+
+        CompositionTarget.Rendering += this.engine.OnRendering;
+
         engine.Start();
 
         CircleOption circleOption = new CircleOption{
             posX = 0,
             posY = 0,
             mass = 10,
-            radius = 10,
+            diameter = 20,
             stiffness = 1
         };
 
@@ -40,7 +44,7 @@ public partial class MainWindow : Window{
 
     private void SaveFile_Click(object sender, RoutedEventArgs e){
         SaveFileDialog saveFileDialog = new SaveFileDialog{
-            FileName = "map.json",
+            FileName = $"SaveData_{DateTime.Now}.json",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
             Filter = "すべてのファイル(*.*)|*.*|JSONファイル(*.json)|*.json",
             FilterIndex = 2,

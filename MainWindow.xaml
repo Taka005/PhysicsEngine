@@ -16,7 +16,7 @@
             </MenuItem>
         </Menu>
         <Grid Background="White">
-            <Canvas Background="#FFF7F7F7" Margin="0,0,316,0"/>
+            <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0"/>
             <GroupBox Header="設定" Margin="689,10,20,574">
                 <Grid Height="142">
                     <StackPanel>

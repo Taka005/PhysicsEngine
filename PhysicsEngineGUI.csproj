@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <Reference Include="PhysicsEngineCore">
-      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0\PhysicsEngineCore.dll</HintPath>
+      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
+    </Reference>
+    <Reference Include="PhysicsEngineRender">
+      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineRender.dll</HintPath>
     </Reference>
   </ItemGroup>
 
