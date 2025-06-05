@@ -21,7 +21,16 @@ public partial class MainWindow : Window{
     public MainWindow(){
         InitializeComponent();
 
-        this.engine = new Engine(null);
+        EngineOption engineOption = new EngineOption {
+            gravity = 100
+        };
+
+        this.engine = new Engine(engineOption);
+
+        this.engine.render.isDebugMode = true;
+
+        this.engine.render.Width = MyCanvas.ActualWidth;
+        this.engine.render.Height = MyCanvas.ActualHeight;
 
         MyCanvas.Children.Add(this.engine.render);
 
@@ -30,23 +39,43 @@ public partial class MainWindow : Window{
         engine.Start();
 
         CircleOption circleOption1 = new CircleOption{
-            posX = 100,
+            posX = 150,
             posY = 100,
             mass = 1,
             diameter = 10,
-            stiffness = 1
+            stiffness = 0.8
+        };
+
+        SquareOption circleOption4 = new SquareOption {
+            posX = 200,
+            posY = 100,
+            mass = 1,
+            size = 10,
+            stiffness = 0.8
+        };
+
+        RopeOption circleOption3 = new RopeOption {
+            startX = 100,
+            startY = 150,
+            endX = 300,
+            endY = 150,
+            width = 10,
+            stiffness = 0.8,
+            mass = 10
         };
 
         LineOption circleOption2 = new LineOption {
             startX = 10,
-            startY = 245,
-            endX = 1000,
+            startY = 240,
+            endX = 500,
             endY = 250,
             width = 10
         };
 
         engine.SpawnObject(circleOption1);
+        engine.SpawnObject(circleOption4);
         engine.SpawnGround(circleOption2);
+        engine.SpawnObject(circleOption3);
     }
 
     private void NewFile_Click(object sender, RoutedEventArgs e){
