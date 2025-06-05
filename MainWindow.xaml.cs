@@ -24,19 +24,29 @@ public partial class MainWindow : Window{
         this.engine = new Engine(null);
 
         MyCanvas.Children.Add(this.engine.render);
+
         CompositionTarget.Rendering += this.engine.OnRendering;
 
         engine.Start();
 
-        CircleOption circleOption = new CircleOption{
+        CircleOption circleOption1 = new CircleOption{
             posX = 100,
             posY = 100,
-            mass = 0,
-            diameter = 20,
+            mass = 1,
+            diameter = 10,
             stiffness = 1
         };
 
-        engine.SpawnObject(circleOption);
+        LineOption circleOption2 = new LineOption {
+            startX = 10,
+            startY = 245,
+            endX = 1000,
+            endY = 250,
+            width = 10
+        };
+
+        engine.SpawnObject(circleOption1);
+        engine.SpawnGround(circleOption2);
     }
 
     private void NewFile_Click(object sender, RoutedEventArgs e){
