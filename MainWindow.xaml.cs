@@ -123,9 +123,9 @@ public partial class MainWindow : Window{
     private void NewFile_Click(object sender, RoutedEventArgs e){
         //MessageBox.Show("新規ファイルを作成します");
 
-        for(int i = 0;i < 50;i++) {
+        for(int i = 0;i < 45;i++) {
             CircleOption circleOption = new CircleOption {
-                posX = 90 + 10*i,
+                posX = 35 + 10*i,
                 posY = 50,
                 mass = 10,
                 diameter = 10,

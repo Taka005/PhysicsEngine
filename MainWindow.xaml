@@ -23,7 +23,7 @@
                         <StackPanel x:Name="重力設定" Orientation="Horizontal" Height="35" Width="274">
                             <Label Content="重力" Height="26" VerticalAlignment="Center" Width="34"/>
                             <TextBlock Text="{Binding Value, ElementName=重力, StringFormat=\{0:F0\}}" Width="30" Height="17"/>
-                            <Slider x:Name="重力" Width="200" Height="20" Minimum="0" Maximum="500" Value="100" ValueChanged="重力_ValueChanged"/>
+                            <Slider x:Name="重力" Width="200" Height="20" Minimum="0" Maximum="500" Value="100"/>
                         </StackPanel>
                         <StackPanel x:Name="摩擦設定" Orientation="Horizontal" Height="35" Width="274">
                             <Label Content="摩擦" Height="26" VerticalAlignment="Center"/>
@@ -44,7 +44,7 @@
                 </Grid>
             </GroupBox>
             <GroupBox Header="生成" Margin="689,201,20,355">
-                <Grid Height="142">
+                <Grid Height="147">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="41*"/>
                         <ColumnDefinition Width="238*"/>
@@ -52,7 +52,7 @@
                     <StackPanel Margin="0,-21,0,0" Grid.ColumnSpan="2">
 
                         <StackPanel x:Name="種類設定" Height="38">
-                            <ComboBox x:Name="種類" Width="120">
+                            <ComboBox x:Name="種類" Width="170" Height="30">
                                 <ComboBoxItem Content="円"/>
                             </ComboBox>
                         </StackPanel>
