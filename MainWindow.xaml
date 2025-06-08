@@ -41,8 +41,19 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="266">
-                <StackPanel Margin="0,0,-2,0">
+            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="246">
+                <StackPanel Margin="0,0,-2,0" Height="226">
+                    <StackPanel Height="42" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Label Content="種類" Height="27" Width="37"/>
+                        <ComboBox x:Name="種類" Width="170" Height="22" VerticalAlignment="Center" SelectedIndex="0">
+                            <ComboBoxItem Content="円"/>
+                            <ComboBoxItem Content="四角"/>
+                            <ComboBoxItem Content="三角"/>
+                            <ComboBoxItem Content="ロープ"/>
+                            <ComboBoxItem Content="直線"/>
+                            <ComboBoxItem Content="曲線"/>
+                        </ComboBox>
+                    </StackPanel>
                     <StackPanel Height="145" Orientation="Horizontal" Width="283">
                         <StackPanel Height="141" Width="55">
                             <Label Content="大きさ" Height="28" Width="55"/>
@@ -66,8 +77,9 @@
                             <Slider x:Name="初速度Y" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Height="100">
-                        <xctk:ColorPicker x:Name="myColorPicker" Width="156" Height="28" Margin="10"/>
+                    <StackPanel Height="37" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="物体の色" Height="28" Width="55"/>
+                        <xctk:ColorPicker x:Name="物体の色" Width="156" Height="28" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="True" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
