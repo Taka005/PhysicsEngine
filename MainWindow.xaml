@@ -65,8 +65,9 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="695,362,20,0" VerticalAlignment="Top">
-                <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56"/>
+            <StackPanel Margin="766,331,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
+                <Button x:Name="停止" Content="停止" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
             </StackPanel>
         </Grid>
     </DockPanel>
