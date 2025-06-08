@@ -18,66 +18,55 @@
         </Menu>
         <Grid Background="White">
             <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True"/>
-            <GroupBox Header="設定" Margin="689,10,20,0" VerticalAlignment="Top">
-                <StackPanel Height="140" Margin="2,0,-2,0" VerticalAlignment="Top">
-                    <StackPanel x:Name="重力設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="重力" Height="26" VerticalAlignment="Center" Width="34"/>
-                        <TextBlock Text="{Binding Value, ElementName=重力, StringFormat=\{0:F0\}}" Width="30" Height="17"/>
-                        <Slider x:Name="重力" Width="194" Height="20" Minimum="0" Maximum="500" Value="100"/>
+            <GroupBox Header="設定" Margin="689,10,20,0" VerticalAlignment="Top" Height="137">
+                <StackPanel Orientation="Horizontal" Height="120">
+                    <StackPanel Width="60">
+                        <Label Content="重力" Height="28" Width="60"/>
+                        <Label Content="摩擦" Height="28" Width="60"/>
+                        <Label Content="再生速度" Height="28" Width="60"/>
+                        <Label Content="拡大縮小" Height="28" Width="60"/>
                     </StackPanel>
-                    <StackPanel x:Name="摩擦設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="摩擦" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=摩擦, StringFormat=\{0:F2\}}" Width="30" Height="17" VerticalAlignment="Center"/>
-                        <Slider x:Name="摩擦" Width="196" Height="20" Minimum="-1" Maximum="1" Value="0.01"/>
+                    <StackPanel Width="35">
+                        <TextBlock Text="{Binding Value, ElementName=重力, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=摩擦, StringFormat=\{0:F2\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=再生速度, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=拡大縮小, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <StackPanel x:Name="再生速度設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="再生速度" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=再生速度, StringFormat=\{0:F1\}}" Width="30" Height="17" VerticalAlignment="Center"/>
-                        <Slider x:Name="再生速度" Width="173" Height="20" Minimum="0.1" Maximum="9.9" Value="1"/>
-                    </StackPanel>
-                    <StackPanel x:Name="拡大縮小設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="拡大縮小" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=拡大縮小, StringFormat=\{0:F1\}}" Width="30" Height="17" VerticalAlignment="Center"/>
-                        <Slider x:Name="拡大縮小" Width="173" Height="20" Minimum="0.1" Maximum="9.9" Value="1"/>
+                    <StackPanel Height="120" Width="181">
+                        <Slider x:Name="重力" Height="18" Width="150" Minimum="0" Maximum="500" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="摩擦" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0.01" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="再生速度" Height="18" Width="150" Minimum="0.1" Maximum="9.9" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="拡大縮小" Height="18" Width="150" Minimum="0.1" Maximum="9.9" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="生成" Margin="689,178,20,0" VerticalAlignment="Top" Height="167">
+            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="167">
                 <StackPanel Height="145" Margin="0,0,-4,0" Orientation="Horizontal">
-                    <StackPanel Height="141" Width="56">
+                    <StackPanel Height="141" Width="55">
                         <Label Content="大きさ" Height="28" Width="55"/>
                         <Label Content="質量" Height="28" Width="55"/>
                         <Label Content="剛性" Height="28" Width="55"/>
                         <Label Content="初速度X" Height="28" Width="55"/>
                         <Label Content="初速度Y" Height="28" Width="55"/>
                     </StackPanel>
-                    <StackPanel Width="42">
+                    <StackPanel Width="35">
                         <TextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <StackPanel Height="143" Width="173">
+                    <StackPanel Height="143" Width="190">
                         <Slider x:Name="大きさ" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
                         <Slider x:Name="質量" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
                         <Slider x:Name="剛性" Minimum="0.1" Maximum="1" Value="0.1" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="初速度X" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" HorizontalAlignment="Center" Margin="0,5,0,5" VerticalAlignment="Center"/>
+                        <Slider x:Name="初速度X" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
                         <Slider x:Name="初速度Y" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="695,616,20,0" VerticalAlignment="Top">
-                <Button x:Name="開始" Content="開始" RenderTransformOrigin="0.5,0.5" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56">
-                    <Button.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="0.794"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Button.RenderTransform>
-                </Button>
+            <StackPanel Margin="695,362,20,0" VerticalAlignment="Top">
+                <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56"/>
             </StackPanel>
         </Grid>
     </DockPanel>
