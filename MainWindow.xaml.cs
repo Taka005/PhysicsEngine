@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -166,7 +167,7 @@ public partial class MainWindow : Window{
 
     private void SaveFile_Click(object sender, RoutedEventArgs e){
         SaveFileDialog saveFileDialog = new SaveFileDialog{
-            FileName = $"SaveData_{DateTime.Now}.json",
+            FileName = "PE_SaveData.json",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
             Filter = "すべてのファイル(*.*)|*.*|JSONファイル(*.json)|*.json",
             FilterIndex = 2,
@@ -176,6 +177,18 @@ public partial class MainWindow : Window{
 
         if(saveFileDialog.ShowDialog() == true){
             System.IO.File.WriteAllText(saveFileDialog.FileName,this.engine.Export());
+        }
+    }
+
+    private void OpenFile_Click(object sender, RoutedEventArgs e) {
+        OpenFileDialog openFileDialog = new OpenFileDialog {
+             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
+             Title = "開くファイルを選択してください",
+             Filter = "JSONファイル(*.json)|*.json|すべてのファイル(*.*)|*.*",
+        };
+
+        if(openFileDialog.ShowDialog() == true) {
+            
         }
     }
 

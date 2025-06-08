@@ -11,6 +11,7 @@
             <MenuItem x:Name="ファイルメニュー" Header="ファイル">
                 <MenuItem x:Name="新規" Header="新規" Click="NewFile_Click"/>
                 <MenuItem x:Name="保存" Header="保存" Click="SaveFile_Click"/>
+                <MenuItem x:Name="開く" Header="開く" Click="OpenFile_Click"/>
                 <Separator/>
                 <MenuItem x:Name="終了" Header="終了" Click="Exit_Click"/>
             </MenuItem>
@@ -69,6 +70,16 @@
                     </StackPanel>
                 </Grid>
             </GroupBox>
+            <Button Content="開始" RenderTransformOrigin="0.5,0.5" Margin="699,416,245,317" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.794"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
 
         </Grid>
     </DockPanel>
