@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PhysicsEngineGUI"
         mc:Ignorable="d"
         Title="PhysicsEngine" Height="800" Width="1000" ResizeMode="NoResize" Closing="Window_Closing">
@@ -40,32 +41,37 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="167">
-                <StackPanel Height="145" Margin="0,0,-4,0" Orientation="Horizontal">
-                    <StackPanel Height="141" Width="55">
-                        <Label Content="大きさ" Height="28" Width="55"/>
-                        <Label Content="質量" Height="28" Width="55"/>
-                        <Label Content="剛性" Height="28" Width="55"/>
-                        <Label Content="初速度X" Height="28" Width="55"/>
-                        <Label Content="初速度Y" Height="28" Width="55"/>
+            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="266">
+                <StackPanel Margin="0,0,-2,0">
+                    <StackPanel Height="145" Orientation="Horizontal" Width="283">
+                        <StackPanel Height="141" Width="55">
+                            <Label Content="大きさ" Height="28" Width="55"/>
+                            <Label Content="質量" Height="28" Width="55"/>
+                            <Label Content="剛性" Height="28" Width="55"/>
+                            <Label Content="初速度X" Height="28" Width="55"/>
+                            <Label Content="初速度Y" Height="28" Width="55"/>
+                        </StackPanel>
+                        <StackPanel Width="35">
+                            <TextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Height="143" Width="190">
+                            <Slider x:Name="大きさ" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="質量" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="剛性" Minimum="0.1" Maximum="1" Value="0.1" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="初速度X" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
+                            <Slider x:Name="初速度Y" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Width="35">
-                        <TextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="143" Width="190">
-                        <Slider x:Name="大きさ" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="質量" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="剛性" Minimum="0.1" Maximum="1" Value="0.1" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="初速度X" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
-                        <Slider x:Name="初速度Y" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                    <StackPanel Height="100">
+                        <xctk:ColorPicker x:Name="myColorPicker" Width="156" Height="28" Margin="10"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="766,331,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel Margin="766,584,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
                 <Button x:Name="停止" Content="停止" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
             </StackPanel>

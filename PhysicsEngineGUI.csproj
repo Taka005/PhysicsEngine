@@ -9,11 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="PhysicsEngineCore">
-      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
-    </Reference>
-    <Reference Include="PhysicsEngineRender">
-      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineRender.dll</HintPath>
+      <HintPath>..\Taka005\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 
