@@ -76,7 +76,7 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="695,466,20,253">
+            <StackPanel Margin="695,416,20,303" VerticalAlignment="Center">
                 <Button x:Name="開始" Content="開始" RenderTransformOrigin="0.5,0.5" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56">
                     <Button.RenderTransform>
                         <TransformGroup>
