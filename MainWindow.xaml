@@ -42,41 +42,32 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="生成" Margin="689,178,20,0" VerticalAlignment="Top" Height="233">
-                <StackPanel Height="214">
-                    <StackPanel x:Name="種類設定" Height="38">
-                        <ComboBox x:Name="種類" Width="170" Height="22" Margin="0,8,0,0">
-                            <ComboBoxItem Content="円"/>
-                        </ComboBox>
+            <GroupBox Header="生成" Margin="689,178,20,0" VerticalAlignment="Top" Height="167">
+                <StackPanel Height="145" Margin="0,0,-4,0" Orientation="Horizontal">
+                    <StackPanel Height="141" Width="56">
+                        <Label Content="大きさ" Height="28" Width="55"/>
+                        <Label Content="質量" Height="28" Width="55"/>
+                        <Label Content="剛性" Height="28" Width="55"/>
+                        <Label Content="初速度X" Height="28" Width="55"/>
+                        <Label Content="初速度Y" Height="28" Width="55"/>
                     </StackPanel>
-                    <StackPanel x:Name="大きさ設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="大きさ" Height="26" VerticalAlignment="Center" Width="41"/>
-                        <TextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="24" Height="17"/>
-                        <Slider x:Name="大きさ" Width="192" Height="20" Minimum="0" Maximum="500" Value="10"/>
+                    <StackPanel Width="42">
+                        <TextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <StackPanel x:Name="質量設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="質量" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="24" Height="17" VerticalAlignment="Center"/>
-                        <Slider x:Name="質量" Width="200" Height="20" Minimum="0" Maximum="500" Value="10"/>
-                    </StackPanel>
-                    <StackPanel x:Name="剛性設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="剛性" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="22" Height="17" VerticalAlignment="Center"/>
-                        <Slider x:Name="剛性" Width="204" Height="20" Minimum="0.1" Maximum="1" Value="0.1"/>
-                    </StackPanel>
-                    <StackPanel x:Name="初速度X設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="初速度X" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="22" Height="17" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <Slider x:Name="初速度X" Width="177" Height="20" Minimum="-500" Maximum="500" Value="0"/>
-                    </StackPanel>
-                    <StackPanel x:Name="初速度Y設定" Orientation="Horizontal" Height="35" Width="274">
-                        <Label Content="初速度Y" Height="26" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="22" Height="17" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <Slider x:Name="初速度Y" Width="176" Height="20" Minimum="-500" Maximum="500" Value="0"/>
+                    <StackPanel Height="143" Width="173">
+                        <Slider x:Name="大きさ" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="質量" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="剛性" Minimum="0.1" Maximum="1" Value="0.1" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="初速度X" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" HorizontalAlignment="Center" Margin="0,5,0,5" VerticalAlignment="Center"/>
+                        <Slider x:Name="初速度Y" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="695,416,20,303" VerticalAlignment="Center">
+            <StackPanel Margin="695,616,20,0" VerticalAlignment="Top">
                 <Button x:Name="開始" Content="開始" RenderTransformOrigin="0.5,0.5" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56">
                     <Button.RenderTransform>
                         <TransformGroup>
@@ -88,7 +79,6 @@
                     </Button.RenderTransform>
                 </Button>
             </StackPanel>
-
         </Grid>
     </DockPanel>
 </Window>
