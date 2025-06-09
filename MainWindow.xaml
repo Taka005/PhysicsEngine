@@ -100,23 +100,27 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="766,484,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
-                <Button x:Name="停止" Content="停止" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
-            </StackPanel>
-            <StackPanel Margin="750,429,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <ComboBox x:Name="ツール" Width="170" Height="22" SelectedIndex="0">
-                    <ComboBoxItem Content="閲覧"/>
-                    <ComboBoxItem Content="生成"/>
-                    <ComboBoxItem Content="移動"/>
-                    <ComboBoxItem Content="削除"/>
-                    <ComboBoxItem Content="接続操作"/>
-                    <ComboBoxItem Content="画面移動"/>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Margin="766,649,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Button x:Name="元に戻す" Content="元に戻す" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
-                <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
+            <StackPanel Margin="753,413,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="161" Width="203">
+                <StackPanel Height="61" Orientation="Horizontal">
+                    <ComboBox x:Name="ツール" Width="170" Height="22" SelectedIndex="0" Padding="5,3,5,3" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                        <ComboBoxItem Content="閲覧"/>
+                        <ComboBoxItem Content="生成"/>
+                        <ComboBoxItem Content="移動"/>
+                        <ComboBoxItem Content="削除"/>
+                        <ComboBoxItem Content="接続操作"/>
+                        <ComboBoxItem Content="画面移動"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
+                        <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
+                        <Button x:Name="停止" Content="停止" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                        <Button x:Name="元に戻す" Content="元に戻す" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
+                        <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </DockPanel>
