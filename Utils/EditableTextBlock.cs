@@ -23,15 +23,15 @@ namespace PhysicsEngineGUI.Utils{
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text),typeof(string),typeof(EditableTextBlock),new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
             
         public EditableTextBlock(){
-            InitializeControl();
+            initializeControl();
 
-            this.MouseDoubleClick += EditableTextBlock_MouseDoubleClick;
-            this.textBox.KeyDown += TextBox_KeyDown;
-            this.textBox.LostFocus += TextBox_LostFocus;
+            this.MouseDown += editableTextBlock_MouseDown;
+            this.textBox.KeyDown += textBox_KeyDown;
+            this.textBox.LostFocus += textBox_LostFocus;
         }
 
     
-        private void InitializeControl(){
+        private void initializeControl(){
             this.textBox.Padding = new Thickness(1.0);
             this.textBox.Visibility = Visibility.Hidden;
             this.textBox.VerticalAlignment = VerticalAlignment.Center;
@@ -57,37 +57,37 @@ namespace PhysicsEngineGUI.Utils{
             this.textBlock.SetBinding(TextBlock.TextProperty, binding);
         }
 
-        private void EditableTextBlock_MouseDoubleClick(object sender, MouseEventArgs e){
+        private void editableTextBlock_MouseDown(object sender, MouseEventArgs e){
             if (!isEditMode){
                 this.previewText = textBlock.Text;
                 this.isEditMode = true;
-                this.OnIsEditModeChanged(isEditMode);
+                this.onIsEditModeChanged(isEditMode);
                 this.textBox.Focus();
                 this.textBox.SelectAll();
                 e.Handled = true;
             }
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e){
+        private void textBox_KeyDown(object sender, KeyEventArgs e){
             if (e.Key == Key.Enter){
                 this.isEditMode = false;
-                OnIsEditModeChanged(isEditMode);
+                onIsEditModeChanged(isEditMode);
                 e.Handled = true;
             }else if (e.Key == Key.Escape){
                 this.textBox.Text = previewText;
                 this.isEditMode = false;
-                this.OnIsEditModeChanged(isEditMode);
+                this.onIsEditModeChanged(isEditMode);
                 e.Handled = true;
             }
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e){
+        private void textBox_LostFocus(object sender, RoutedEventArgs e){
             this.isEditMode = false;
-            this.OnIsEditModeChanged(isEditMode);
+            this.onIsEditModeChanged(isEditMode);
             e.Handled = true;
         }
 
-        private void OnIsEditModeChanged(bool value){
+        private void onIsEditModeChanged(bool value){
             this.textBlock.Visibility = value ? Visibility.Hidden : Visibility.Visible;
             this.textBox.Visibility = value ? Visibility.Visible : Visibility.Hidden;
         }
