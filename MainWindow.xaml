@@ -100,9 +100,23 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="766,584,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel Margin="766,484,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
                 <Button x:Name="停止" Content="停止" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
+            </StackPanel>
+            <StackPanel Margin="750,429,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ComboBox x:Name="ツール" Width="170" Height="22" SelectedIndex="0">
+                    <ComboBoxItem Content="閲覧"/>
+                    <ComboBoxItem Content="生成"/>
+                    <ComboBoxItem Content="移動"/>
+                    <ComboBoxItem Content="削除"/>
+                    <ComboBoxItem Content="接続操作"/>
+                    <ComboBoxItem Content="画面移動"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="766,649,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button x:Name="元に戻す" Content="元に戻す" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
+                <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
             </StackPanel>
         </Grid>
     </DockPanel>
