@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:local="clr-namespace:PhysicsEngineGUI"
+        xmlns:local="clr-namespace:PhysicsEngineGUI.Utils"
         mc:Ignorable="d"
         Title="PhysicsEngine" Height="800" Width="1000" ResizeMode="NoResize" Closing="Window_Closing">
     <DockPanel>
@@ -36,16 +36,16 @@
                         <Label Content="拡大縮小" Height="28" Width="60"/>
                     </StackPanel>
                     <StackPanel Width="35">
-                        <TextBlock Text="{Binding Value, ElementName=重力, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=摩擦, StringFormat=\{0:F2\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=再生速度, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Value, ElementName=拡大縮小, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <local:EditableTextBlock Text="{Binding Value, ElementName=重力, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <local:EditableTextBlock Text="{Binding Value, ElementName=摩擦, StringFormat=\{0:F2\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <local:EditableTextBlock Text="{Binding Value, ElementName=再生速度, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <local:EditableTextBlock Text="{Binding Value, ElementName=拡大縮小, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Height="120" Width="181">
-                        <Slider x:Name="重力" Height="18" Width="150" Minimum="0" Maximum="500" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="重力" Height="18" Width="150" Minimum="0" Maximum="1000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
                         <Slider x:Name="摩擦" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0.01" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="再生速度" Height="18" Width="150" Minimum="0.1" Maximum="9.9" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="拡大縮小" Height="18" Width="150" Minimum="0.1" Maximum="9.9" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="再生速度" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="拡大縮小" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -71,18 +71,18 @@
                             <Label Content="初速度Y" Height="28" Width="55"/>
                         </StackPanel>
                         <StackPanel Width="35">
-                            <TextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock Text="{Binding Value, ElementName=初速度X, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock Text="{Binding Value, ElementName=初速度Y, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Height="143" Width="190">
-                            <Slider x:Name="大きさ" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
-                            <Slider x:Name="質量" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
-                            <Slider x:Name="剛性" Minimum="0.1" Maximum="1" Value="0.1" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
-                            <Slider x:Name="初速度X" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
-                            <Slider x:Name="初速度Y" Minimum="-500" Maximum="500" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="大きさ" Minimum="0" Maximum="1000" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="質量" Minimum="0" Maximum="1000" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="剛性" Minimum="0.1" Maximum="1" Value="0.8" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                            <Slider x:Name="初速度X" Minimum="-1000" Maximum="1000" Value="0" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
+                            <Slider x:Name="初速度Y" Minimum="-1000" Maximum="1000" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Height="37" Orientation="Horizontal" HorizontalAlignment="Center">
