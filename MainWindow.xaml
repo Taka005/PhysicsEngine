@@ -16,6 +16,14 @@
                 <Separator/>
                 <MenuItem x:Name="終了" Header="終了" Click="Exit_Click"/>
             </MenuItem>
+            <MenuItem x:Name="設定" Header="設定"/>
+            <MenuItem x:Name="ヘルプメニュー" Header="ヘルプ">
+                <MenuItem x:Name="更新プログラムを確認" Header="更新プログラムを確認"/>
+                <Separator/>
+                <MenuItem x:Name="ソースとバイナリ" Header="ソースとバイナリ"/>
+                <Separator/>
+                <MenuItem x:Name="ABOUT" Header="ABOUT"/>
+            </MenuItem>
         </Menu>
         <Grid Background="White">
             <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True"/>
