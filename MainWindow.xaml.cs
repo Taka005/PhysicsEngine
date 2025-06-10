@@ -167,7 +167,7 @@ public partial class MainWindow : Window{
 
     private void SaveFile_Click(object sender, RoutedEventArgs e){
         SaveFileDialog saveFileDialog = new SaveFileDialog{
-            FileName = "PE_SaveData.json",
+            FileName = "SaveData.json",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
             Filter = "すべてのファイル(*.*)|*.*|JSONファイル(*.json)|*.json",
             FilterIndex = 2,
