@@ -176,7 +176,15 @@ public partial class MainWindow : Window{
         };
 
         if(saveFileDialog.ShowDialog() == true){
-            System.IO.File.WriteAllText(saveFileDialog.FileName,this.engine.Export());
+            try {
+                System.IO.File.WriteAllText(saveFileDialog.FileName,this.engine.Export());
+            }catch(System.IO.IOException ex) {
+                MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);  
+            } catch (System.Security.SecurityException ex) {
+                MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            } catch (Exception ex) {
+                MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 
@@ -188,7 +196,19 @@ public partial class MainWindow : Window{
         };
 
         if(openFileDialog.ShowDialog() == true) {
-            
+            try {
+                string filePath = openFileDialog.FileName;
+
+                string fileContent = System.IO.File.ReadAllText(filePath);
+
+                this.engine.Import(fileContent);
+            } catch (System.IO.IOException ex) {
+                MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            } catch (System.Security.SecurityException ex) {
+                MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            } catch (Exception ex) {
+                MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 
@@ -215,5 +235,13 @@ public partial class MainWindow : Window{
         }catch{
             MessageBox.Show("開くことができませんでした");
         }
+    }
+
+    private void About_Click(object sender, RoutedEventArgs e){
+        AboutWindow aboutWindow = new AboutWindow{
+            Owner = this
+        };
+
+        aboutWindow.ShowDialog();
     }
 }

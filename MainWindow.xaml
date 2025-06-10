@@ -29,7 +29,7 @@
             <MenuItem x:Name="ヘルプメニュー" Header="ヘルプ(_H)">
                 <MenuItem x:Name="ソースとバイナリ" Header="ソースとバイナリ" Click="Source_Click"/>
                 <Separator/>
-                <MenuItem x:Name="ABOUT" Header="ABOUT"/>
+                <MenuItem x:Name="ABOUT" Header="ABOUT" Click="About_Click"/>
             </MenuItem>
         </Menu>
         <Grid Background="White">
