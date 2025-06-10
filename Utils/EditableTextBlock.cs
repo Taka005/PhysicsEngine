@@ -3,26 +3,26 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace PhysicsEngineGUI.Utils {
-    public class EditableTextBlock : ContentControl {
+namespace PhysicsEngineGUI.Utils{
+    public class EditableTextBlock : ContentControl{
         private readonly Grid grid = new Grid();
         private readonly TextBox textBox = new TextBox();
         private readonly TextBlock textBlock = new TextBlock();
         private string previewText = string.Empty;
         private bool isEditMode = false;
 
-        public string Text {
-            get {
+        public string Text{
+            get{
                 return (string)GetValue(TextProperty);
             }
-            set {
+            set{
                 SetValue(TextProperty, value);
             }
         }
 
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(EditableTextBlock), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
-        public EditableTextBlock() {
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text),typeof(string),typeof(EditableTextBlock),new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            
+        public EditableTextBlock(){
             initializeControl();
 
             this.MouseDown += editableTextBlock_MouseDown;
@@ -30,8 +30,8 @@ namespace PhysicsEngineGUI.Utils {
             this.textBox.LostFocus += textBox_LostFocus;
         }
 
-
-        private void initializeControl() {
+    
+        private void initializeControl(){
             this.textBox.Padding = new Thickness(1.0);
             this.textBox.Visibility = Visibility.Hidden;
             this.textBox.VerticalAlignment = VerticalAlignment.Center;
@@ -48,7 +48,7 @@ namespace PhysicsEngineGUI.Utils {
             this.textBlock.Focusable = false;
             this.MinWidth = 10;
 
-            Binding binding = new(nameof(Text)) {
+            Binding binding = new(nameof(Text)){
                 Source = this,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
             };
@@ -57,8 +57,8 @@ namespace PhysicsEngineGUI.Utils {
             this.textBlock.SetBinding(TextBlock.TextProperty, binding);
         }
 
-        private void editableTextBlock_MouseDown(object sender, MouseEventArgs e) {
-            if(!isEditMode) {
+        private void editableTextBlock_MouseDown(object sender, MouseEventArgs e){
+            if (!isEditMode){
                 this.previewText = textBlock.Text;
                 this.isEditMode = true;
                 this.onIsEditModeChanged(isEditMode);
@@ -68,12 +68,12 @@ namespace PhysicsEngineGUI.Utils {
             }
         }
 
-        private void textBox_KeyDown(object sender, KeyEventArgs e) {
-            if(e.Key == Key.Enter) {
+        private void textBox_KeyDown(object sender, KeyEventArgs e){
+            if (e.Key == Key.Enter){
                 this.isEditMode = false;
                 onIsEditModeChanged(isEditMode);
                 e.Handled = true;
-            } else if(e.Key == Key.Escape) {
+            }else if (e.Key == Key.Escape){
                 this.textBox.Text = previewText;
                 this.isEditMode = false;
                 this.onIsEditModeChanged(isEditMode);
@@ -81,13 +81,13 @@ namespace PhysicsEngineGUI.Utils {
             }
         }
 
-        private void textBox_LostFocus(object sender, RoutedEventArgs e) {
+        private void textBox_LostFocus(object sender, RoutedEventArgs e){
             this.isEditMode = false;
             this.onIsEditModeChanged(isEditMode);
             e.Handled = true;
         }
 
-        private void onIsEditModeChanged(bool value) {
+        private void onIsEditModeChanged(bool value){
             this.textBlock.Visibility = value ? Visibility.Hidden : Visibility.Visible;
             this.textBox.Visibility = value ? Visibility.Visible : Visibility.Hidden;
         }
