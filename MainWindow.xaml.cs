@@ -30,8 +30,6 @@ public partial class MainWindow : Window{
 
         this.engine = new Engine(engineOption);
 
-        //this.engine.render.isDebugMode = true;
-
         this.engine.render.Width = MyCanvas.ActualWidth;
         this.engine.render.Height = MyCanvas.ActualHeight;
 
@@ -122,46 +120,10 @@ public partial class MainWindow : Window{
     }
 
     private void NewFile_Click(object sender, RoutedEventArgs e){
-        //MessageBox.Show("新規ファイルを作成します");
+         MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-        for(int i = 0;i < 45;i++) {
-            CircleOption circleOption = new CircleOption {
-                posX = 35 + 10*i,
-                posY = 50,
-                mass = 10,
-                diameter = 10,
-                stiffness = 1
-            };
-
-            engine.SpawnObject(circleOption);
-
-            CircleOption circleOption2 = new CircleOption {
-                posX = 90 + 5 * i,
-                posY = 60,
-                mass = 10,
-                diameter = 5,
-                stiffness = 0.8
-            };
-
-            CircleOption circleOption3 = new CircleOption {
-                posX = 90 + 5 * i,
-                posY = 70,
-                mass = 1,
-                diameter = 5,
-                stiffness = 0.8
-            };
-
-            CircleOption circleOption4 = new CircleOption {
-                posX = 90 + 5 * i,
-                posY = 80,
-                mass = 1,
-                diameter = 5,
-                stiffness = 0.8
-            };
-
-            //engine.SpawnObject(circleOption2);
-            //engine.SpawnObject(circleOption3);
-            //engine.SpawnObject(circleOption4);
+        if(result == MessageBoxResult.Yes){
+            this.engine.Clear(force: true);
         }
     }
 
@@ -236,6 +198,17 @@ public partial class MainWindow : Window{
             MessageBox.Show("開くことができませんでした");
         }
     }
+
+    private void DebugMode_Click(object sender, RoutedEventArgs e){
+        if(sender is MenuItem debugMenuItem) {
+            if(debugMenuItem.IsChecked) {
+                this.engine.render.isDebugMode = true;
+            } else {
+                this.engine.render.isDebugMode = false;
+            }
+        }
+    }
+
 
     private void About_Click(object sender, RoutedEventArgs e){
         AboutWindow aboutWindow = new AboutWindow{
