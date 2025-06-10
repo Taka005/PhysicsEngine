@@ -17,12 +17,10 @@ using PhysicsEngineCore.Options;
 
 namespace PhysicsEngineGUI;
 
-public partial class MainWindow : Window{
+public partial class MainWindow : Window {
     public Engine engine { get; set; }
 
-    public MainWindow(){
-        InitializeComponent();
-
+    public MainWindow() {
         EngineOption engineOption = new EngineOption {
             gravity = 100,
             friction = 0.01,
@@ -30,6 +28,8 @@ public partial class MainWindow : Window{
         };
 
         this.engine = new Engine(engineOption);
+
+        InitializeComponent();
 
         this.engine.render.Width = MyCanvas.ActualWidth;
         this.engine.render.Height = MyCanvas.ActualHeight;
@@ -40,7 +40,7 @@ public partial class MainWindow : Window{
 
         engine.Start();
 
-        CircleOption circleOption1 = new CircleOption{
+        CircleOption circleOption1 = new CircleOption {
             posX = 150,
             posY = 100,
             mass = 1,
@@ -120,16 +120,16 @@ public partial class MainWindow : Window{
         //engine.SpawnObject(circleOption3);
     }
 
-    private void NewFile_Click(object sender, RoutedEventArgs e){
-         MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
+    private void NewFile_Click(object sender, RoutedEventArgs e) {
+        MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-        if(result == MessageBoxResult.Yes){
+        if(result == MessageBoxResult.Yes) {
             this.engine.Clear(force: true);
         }
     }
 
-    private void SaveFile_Click(object sender, RoutedEventArgs e){
-        SaveFileDialog saveFileDialog = new SaveFileDialog{
+    private void SaveFile_Click(object sender, RoutedEventArgs e) {
+        SaveFileDialog saveFileDialog = new SaveFileDialog {
             FileName = "PE_SaveData.json",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
             Filter = "すべてのファイル(*.*)|*.*|JSONファイル(*.json)|*.json",
@@ -138,14 +138,14 @@ public partial class MainWindow : Window{
             RestoreDirectory = true
         };
 
-        if(saveFileDialog.ShowDialog() == true){
+        if(saveFileDialog.ShowDialog() == true) {
             try {
-                System.IO.File.WriteAllText(saveFileDialog.FileName,this.engine.Export());
-            }catch(System.IO.IOException ex) {
-                MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);  
-            } catch (System.Security.SecurityException ex) {
+                System.IO.File.WriteAllText(saveFileDialog.FileName, this.engine.Export());
+            } catch(System.IO.IOException ex) {
+                MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            } catch(System.Security.SecurityException ex) {
                 MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
-            } catch (Exception ex) {
+            } catch(Exception ex) {
                 MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -153,9 +153,9 @@ public partial class MainWindow : Window{
 
     private void OpenFile_Click(object sender, RoutedEventArgs e) {
         OpenFileDialog openFileDialog = new OpenFileDialog {
-             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
-             Title = "開くファイルを選択してください",
-             Filter = "JSONファイル(*.json)|*.json|すべてのファイル(*.*)|*.*",
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
+            Title = "開くファイルを選択してください",
+            Filter = "JSONファイル(*.json)|*.json|すべてのファイル(*.*)|*.*",
         };
 
         if(openFileDialog.ShowDialog() == true) {
@@ -165,42 +165,42 @@ public partial class MainWindow : Window{
                 string fileContent = System.IO.File.ReadAllText(filePath);
 
                 this.engine.Import(fileContent);
-            } catch (System.IO.IOException ex) {
+            } catch(System.IO.IOException ex) {
                 MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
-            } catch (System.Security.SecurityException ex) {
+            } catch(System.Security.SecurityException ex) {
                 MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
-            } catch (Exception ex) {
+            } catch(Exception ex) {
                 MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
 
-    private void Exit_Click(object sender, RoutedEventArgs e){
+    private void Exit_Click(object sender, RoutedEventArgs e) {
         this.Close();
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
         MessageBoxResult result = MessageBox.Show("本当に終了しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-        if(result == MessageBoxResult.No){
+        if(result == MessageBoxResult.No) {
             e.Cancel = true;
         }
     }
 
-    private void Source_Click(object sender, RoutedEventArgs e){
-        try{
-            ProcessStartInfo psi = new ProcessStartInfo{
+    private void Source_Click(object sender, RoutedEventArgs e) {
+        try {
+            ProcessStartInfo psi = new ProcessStartInfo {
                 FileName = "https://github.com/Taka005/PhysicsEngineGUI/",
                 UseShellExecute = true
             };
 
             Process.Start(psi);
-        }catch{
-            MessageBox.Show("開くことができませんでした","エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+        } catch {
+            MessageBox.Show("開くことができませんでした", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
-    private void DebugMode_Click(object sender, RoutedEventArgs e){
+    private void DebugMode_Click(object sender, RoutedEventArgs e) {
         if(sender is MenuItem debugMenuItem) {
             if(debugMenuItem.IsChecked) {
                 this.engine.render.isDebugMode = true;
@@ -211,15 +211,15 @@ public partial class MainWindow : Window{
     }
 
 
-    private void About_Click(object sender, RoutedEventArgs e){
-        AboutWindow aboutWindow = new AboutWindow{
+    private void About_Click(object sender, RoutedEventArgs e) {
+        AboutWindow aboutWindow = new AboutWindow {
             Owner = this
         };
 
         aboutWindow.ShowDialog();
     }
 
-    private void StartAndStop_Click(object sender, RoutedEventArgs e){
+    private void StartAndStop_Click(object sender, RoutedEventArgs e) {
         if(sender is Button button) {
             if(this.engine.isStarted) {
                 button.Background = Utility.ParseColor("#FFFF0000");
@@ -235,8 +235,8 @@ public partial class MainWindow : Window{
         }
     }
 
-    private void Step_Click(object sender, RoutedEventArgs e){
-        if(this.engine.isStarted){
+    private void Step_Click(object sender, RoutedEventArgs e) {
+        if(this.engine.isStarted) {
             MessageBox.Show("システムが動いている間は操作できません", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
 
             return;
@@ -245,7 +245,25 @@ public partial class MainWindow : Window{
         this.engine.Step();
     }
 
-     private void Reset_Click(object sender, RoutedEventArgs e){
+    private void Reset_Click(object sender, RoutedEventArgs e) {
         this.engine.Clear();
+    }
+
+    private void Gravity_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.engine.gravity = slider.Value;
+        }
+    }
+
+    private void Friction_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.engine.friction = slider.Value;
+        }
+    }
+
+    private void PlayBackSpeed_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.engine.SetPlayBackSpeed((float)slider.Value);
+        }
     }
 }

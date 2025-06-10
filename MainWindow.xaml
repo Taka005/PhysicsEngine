@@ -48,9 +48,9 @@
                         <local:EditableTextBlock Text="{Binding Value, ElementName=拡大縮小, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Height="120" Width="181">
-                        <Slider x:Name="重力" Height="18" Width="150" Minimum="0" Maximum="1000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="摩擦" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0.01" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
-                        <Slider x:Name="再生速度" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                        <Slider x:Name="重力" Height="18" Width="150" Minimum="0" Maximum="1000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Gravity_Change"/>
+                        <Slider x:Name="摩擦" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0.01" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Friction_Change"/>
+                        <Slider x:Name="再生速度" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="PlayBackSpeed_Change"/>
                         <Slider x:Name="拡大縮小" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
                     </StackPanel>
                 </StackPanel>
@@ -110,12 +110,12 @@
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
-                        <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0" Click="StartAndStop_Click" />
+                        <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0" Click="StartAndStop_Click"/>
                         <Button x:Name="ステップ" Content="ステップ" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0" Click="Step_Click"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
                         <Button x:Name="元に戻す" Content="元に戻す" Background="#FF8C8C8C" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
-                        <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0" Click="Reset_Click" />
+                        <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0" Click="Reset_Click"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
