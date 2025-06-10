@@ -203,4 +203,17 @@ public partial class MainWindow : Window{
             e.Cancel = true;
         }
     }
+
+    private void Source_Click(object sender, RoutedEventArgs e){
+        try{
+            ProcessStartInfo psi = new ProcessStartInfo{
+                FileName = "https://github.com/Taka005/PhysicsEngineGUI/",
+                UseShellExecute = true
+            };
+
+            Process.Start(psi);
+        }catch{
+            MessageBox.Show("開くことができませんでした");
+        }
+    }
 }
