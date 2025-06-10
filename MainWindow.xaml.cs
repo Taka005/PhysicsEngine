@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -195,7 +196,7 @@ public partial class MainWindow : Window{
 
             Process.Start(psi);
         }catch{
-            MessageBox.Show("開くことができませんでした");
+            MessageBox.Show("開くことができませんでした","エラー", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -216,5 +217,35 @@ public partial class MainWindow : Window{
         };
 
         aboutWindow.ShowDialog();
+    }
+
+    private void StartAndStop_Click(object sender, RoutedEventArgs e){
+        if(sender is Button button) {
+            if(this.engine.isStarted) {
+                button.Background = Utility.ParseColor("#FFFF0000");
+                button.Content = "停止";
+
+                this.engine.Stop();
+            } else {
+                button.Background = Utility.ParseColor("#FF00AA00");
+                button.Content = "開始";
+
+                this.engine.Start();
+            }
+        }
+    }
+
+    private void Step_Click(object sender, RoutedEventArgs e){
+        if(this.engine.isStarted){
+            MessageBox.Show("システムが動いている間は操作できません", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            return;
+        }
+
+        this.engine.Step();
+    }
+
+     private void Reset_Click(object sender, RoutedEventArgs e){
+        this.engine.Clear();
     }
 }

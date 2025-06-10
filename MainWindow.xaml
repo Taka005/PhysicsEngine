@@ -110,12 +110,12 @@
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
-                        <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
-                        <Button x:Name="停止" Content="停止" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
+                        <Button x:Name="開始" Content="開始" Background="#FF00AA00" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0" Click="StartAndStop_Click" />
+                        <Button x:Name="ステップ" Content="ステップ" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0" Click="Step_Click"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                        <Button x:Name="元に戻す" Content="元に戻す" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
-                        <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0"/>
+                        <Button x:Name="元に戻す" Content="元に戻す" Background="#FF8C8C8C" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,3,0"/>
+                        <Button x:Name="リセット" Content="リセット" Background="Red" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="3,0,10,0" Click="Reset_Click" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
