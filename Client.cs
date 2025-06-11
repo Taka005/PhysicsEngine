@@ -22,7 +22,16 @@ namespace PhysicsEngineGUI {
             this.history.Add(this.engine.Export());
         }
 
+        public void RestoreHistory() {
+            if(this.history.Count > 0) {
+                this.engine.Import(this.history.Last());
+                this.history.RemoveAt(this.history.Count - 1);
+            }
+        }
+
         public void MouseLeftDown(Point point) {
+            this.AddHistory();
+
             if(this.toolType == ToolType.Spawn) {
                 if(this.spawnType == ObjectType.Circle) {
                     CircleOption circleOption = new CircleOption {
