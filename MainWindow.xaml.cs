@@ -14,11 +14,13 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
+using Xceed.Wpf.Toolkit.Primitives;
 
 namespace PhysicsEngineGUI;
 
 public partial class MainWindow : Window {
     public Engine engine { get; set; }
+    public Client client { get; set; }
 
     public MainWindow() {
         EngineOption engineOption = new EngineOption {
@@ -28,6 +30,7 @@ public partial class MainWindow : Window {
         };
 
         this.engine = new Engine(engineOption);
+        this.client = new Client(this.engine);
 
         InitializeComponent();
 
@@ -165,6 +168,10 @@ public partial class MainWindow : Window {
                 string fileContent = System.IO.File.ReadAllText(filePath);
 
                 this.engine.Import(fileContent);
+
+                gravitySlider.Value = this.engine.gravity;
+                frictionSlider.Value = this.engine.friction;
+                playBackSpeedSlider.Value = this.engine.playBackSpeed;
             } catch(System.IO.IOException ex) {
                 MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             } catch(System.Security.SecurityException ex) {
@@ -264,6 +271,43 @@ public partial class MainWindow : Window {
     private void PlayBackSpeed_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
         if(sender is Slider slider) {
             this.engine.SetPlayBackSpeed((float)slider.Value);
+        }
+    }
+
+    private void Tool_Change(object sender, SelectionChangedEventArgs e) {
+        if(sender is ComboBox combobox) {
+            ComboBoxItem selectedContent = (ComboBoxItem)combobox.SelectedItem;
+
+            this.client.setTool(selectedContent.Content.ToString() ?? "閲覧");
+        }
+    }
+    private void Size_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.client.size = slider.Value;
+        }
+    }
+
+    private void Mass_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.client.mass = slider.Value;
+        }
+    }
+
+    private void Stiffness_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.client.stiffness = slider.Value;
+        }
+    }
+
+    private void VecX_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.client.vecX = slider.Value;
+        }
+    }
+
+    private void VecY_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.client.vecY = slider.Value;
         }
     }
 }
