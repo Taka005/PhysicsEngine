@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Media;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
@@ -30,9 +31,9 @@ namespace PhysicsEngineGUI {
         }
 
         public void MouseLeftDown(Point point) {
-            this.AddHistory();
-
             if(this.toolType == ToolType.Spawn) {
+                 this.AddHistory();
+
                 if(this.spawnType == ObjectType.Circle) {
                     CircleOption circleOption = new CircleOption {
                         posX = point.X,
