@@ -123,6 +123,14 @@ public partial class MainWindow : Window {
         //engine.SpawnObject(circleOption3);
     }
 
+    private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+        if(sender is Canvas canvas) {
+            Point clickPosition = e.GetPosition(canvas);
+
+            this.client.MouseLeftDown(clickPosition);
+        }
+    }
+    
     private void NewFile_Click(object sender, RoutedEventArgs e) {
         MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -281,6 +289,15 @@ public partial class MainWindow : Window {
             this.client.setTool(selectedContent.Content.ToString() ?? "閲覧");
         }
     }
+
+    private void ObjectType_Change(object sender, SelectionChangedEventArgs e) {
+        if(sender is ComboBox combobox) {
+            ComboBoxItem selectedContent = (ComboBoxItem)combobox.SelectedItem;
+
+            this.client.setSpawnType(selectedContent.Content.ToString() ?? "円");
+        }
+    }
+
     private void Size_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
         if(sender is Slider slider) {
             this.client.size = slider.Value;

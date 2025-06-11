@@ -33,7 +33,7 @@
             </MenuItem>
         </Menu>
         <Grid Background="White">
-            <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True"/>
+            <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True" MouseLeftButtonDown="Canvas_MouseLeftButtonDown"/>
             <GroupBox Header="設定" Margin="689,10,20,0" VerticalAlignment="Top" Height="137">
                 <StackPanel Orientation="Horizontal" Height="120">
                     <StackPanel Width="60">
@@ -60,7 +60,7 @@
                 <StackPanel Margin="0,0,-2,0" Height="226">
                     <StackPanel Height="42" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Label Content="種類" Height="27" Width="37"/>
-                        <ComboBox x:Name="種類" Width="170" Height="22" VerticalAlignment="Center" SelectedIndex="0">
+                        <ComboBox x:Name="種類" Width="170" Height="22" VerticalAlignment="Center" SelectedIndex="0" SelectionChanged="ObjectType_Change">
                             <ComboBoxItem Content="円"/>
                             <ComboBoxItem Content="四角"/>
                             <ComboBoxItem Content="三角"/>
