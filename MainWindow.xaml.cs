@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
-using Xceed.Wpf.Toolkit.Primitives;
 
 namespace PhysicsEngineGUI;
 
@@ -67,17 +66,6 @@ public partial class MainWindow : Window {
             stiffness = 0.8
         };
 
-
-        RopeOption circleOption3 = new RopeOption {
-            startX = 100,
-            startY = 150,
-            endX = 300,
-            endY = 150,
-            width = 10,
-            stiffness = 0.8,
-            mass = 10
-        };
-
         LineOption circleOption2 = new LineOption {
             startX = 10,
             startY = 240,
@@ -120,7 +108,6 @@ public partial class MainWindow : Window {
         engine.SpawnGround(circleOption6);
         engine.SpawnGround(circleOption7);
         engine.SpawnGround(circleOption5);
-        //engine.SpawnObject(circleOption3);
     }
 
     private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
@@ -325,6 +312,12 @@ public partial class MainWindow : Window {
     private void VecY_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
         if(sender is Slider slider) {
             this.client.vecY = slider.Value;
+        }
+    }
+
+    private void Color_Change(object sender, RoutedPropertyChangedEventArgs<Color?> e) {
+         if(sender is Xceed.Wpf.Toolkit.ColorPicker picker) {
+            this.client.color = picker.SelectedColor;
         }
     }
 }

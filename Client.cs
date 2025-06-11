@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
 
@@ -13,6 +14,7 @@ namespace PhysicsEngineGUI {
         public double stiffness = 0.8;
         public double vecX = 0;
         public double vecY = 0;
+        public Color? color;
 
         private List<string> history = [];
 
@@ -30,7 +32,8 @@ namespace PhysicsEngineGUI {
                         diameter = this.size,
                         stiffness = this.stiffness,
                         velocityX = this.vecX,
-                        velocityY = this.vecY
+                        velocityY = this.vecY,
+                        color = this.color.ToString() ?? "#F00000"
                     };
 
                     this.engine.SpawnObject(circleOption);
@@ -42,7 +45,8 @@ namespace PhysicsEngineGUI {
                         size = this.size,
                         stiffness = this.stiffness,
                         velocityX = this.vecX,
-                        velocityY = this.vecY
+                        velocityY = this.vecY,
+                        color = this.color.ToString() ?? "#F00000"
                     };
 
                     this.engine.SpawnObject(squareOption);
@@ -54,7 +58,8 @@ namespace PhysicsEngineGUI {
                         size = this.size,
                         stiffness = this.stiffness,
                         velocityX = this.vecX,
-                        velocityY = this.vecY
+                        velocityY = this.vecY,
+                        color = this.color.ToString() ?? "#F00000"
                     };
 
                     this.engine.SpawnObject(triangleOption);
@@ -72,7 +77,8 @@ namespace PhysicsEngineGUI {
                                 mass = this.mass,
                                 stiffness = this.stiffness,
                                 velocityX = this.vecX,
-                                velocityY = this.vecY
+                                velocityY = this.vecY,
+                                color = this.color.ToString() ?? "#F00000"
                             };
 
                             this.engine.SpawnObject(ropeOption);
@@ -82,7 +88,8 @@ namespace PhysicsEngineGUI {
                                 startY = this.prePoint.Value.Y,
                                 endX = point.X,
                                 endY = point.Y,
-                                width = this.size
+                                width = this.size,
+                                color = this.color.ToString() ?? "#F00000"
                             };
 
                             this.engine.SpawnGround(lineOption);

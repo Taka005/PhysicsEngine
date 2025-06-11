@@ -94,7 +94,7 @@
                     </StackPanel>
                     <StackPanel Height="37" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="物体の色" Height="28" Width="55"/>
-                        <xctk:ColorPicker x:Name="物体の色" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色"/>
+                        <xctk:ColorPicker x:Name="物体の色" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色" SelectedColorChanged="Color_Change"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
