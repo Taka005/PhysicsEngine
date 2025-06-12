@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using PhysicsEngineCore;
+using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Options;
 
 namespace PhysicsEngineGUI {
@@ -32,7 +33,7 @@ namespace PhysicsEngineGUI {
 
         public void MouseLeftDown(Point point) {
             if(this.toolType == ToolType.Spawn) {
-                 this.AddHistory();
+                this.AddHistory();
 
                 if(this.spawnType == ObjectType.Circle) {
                     CircleOption circleOption = new CircleOption {
@@ -107,6 +108,18 @@ namespace PhysicsEngineGUI {
 
                         this.prePoint = null;
                     }
+                }
+            } else if(this.toolType == ToolType.Delete) {
+                List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
+                List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
+
+                foreach(IObject obj in objects) {
+                    this.engine.DeSpawnObject(obj.id);
+                }
+
+
+                foreach(IGround ground in grounds) {
+                    this.engine.DeSpawnGround(ground.id);
                 }
             }
         }
