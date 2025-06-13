@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using PhysicsEngineCore;
@@ -37,7 +36,7 @@ namespace PhysicsEngineGUI {
 
         public void MouseMove(MouseEventArgs e, Point point) {
             if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
-                Debug.WriteLine($"MouseMove: {point.X}, {point.Y}");
+
                 this.selectedEntity.velocity = Vector2.Zero;
 
                 this.selectedEntity.position.X = point.X;
