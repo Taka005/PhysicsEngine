@@ -117,6 +117,14 @@ public partial class MainWindow : Window {
             this.client.MouseLeftDown(clickPosition);
         }
     }
+
+    private void Canvas_MouseMove(object sender, MouseEventArgs e){
+        this.client.MouseMove(e, e.GetPosition(MyCanvas));
+    }
+
+    private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e){
+       this.client.MouseLeftButtonUp();
+    }
     
     private void NewFile_Click(object sender, RoutedEventArgs e) {
         MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);

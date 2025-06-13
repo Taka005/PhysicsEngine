@@ -1,15 +1,18 @@
 ﻿using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Options;
+using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngineGUI {
     public class Client(Engine engine){
         private readonly Engine engine = engine;
         private Point? prePoint = null;
         private Point? prePrePoint = null;
+        private Entity? selectedEntity = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
         public double size = 10;
@@ -29,6 +32,22 @@ namespace PhysicsEngineGUI {
             if(this.history.Count > 0) {
                 this.engine.Import(this.history.Last());
                 this.history.RemoveAt(this.history.Count - 1);
+            }
+        }
+
+        public void MouseMove(MouseEventArgs e, Point point) {
+            if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
+                Debug.WriteLine($"MouseMove: {point.X}, {point.Y}");
+                this.selectedEntity.velocity = Vector2.Zero;
+
+                this.selectedEntity.position.X = point.X;
+                this.selectedEntity.position.Y = point.Y;
+            }
+        }
+
+        public void MouseLeftButtonUp() {
+            if(this.selectedEntity != null) {
+                this.selectedEntity = null;
             }
         }
 
@@ -143,6 +162,15 @@ namespace PhysicsEngineGUI {
 
                 foreach(IGround ground in grounds) {
                     this.engine.DeSpawnGround(ground.id);
+                }
+            } else if(this.toolType == ToolType.Move) {
+                List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
+                if(entities.Count > 0) {
+                    Entity entity = entities[0];
+
+                    entity.velocity = Vector2.Zero;
+
+                    this.selectedEntity = entity;
                 }
             }
         }

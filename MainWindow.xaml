@@ -33,7 +33,7 @@
             </MenuItem>
         </Menu>
         <Grid Background="White">
-            <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True" MouseLeftButtonDown="Canvas_MouseLeftButtonDown"/>
+            <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" MouseMove="Canvas_MouseMove"/>
             <GroupBox Header="設定" Margin="689,10,20,0" VerticalAlignment="Top" Height="137">
                 <StackPanel Orientation="Horizontal" Height="120">
                     <StackPanel Width="60">
