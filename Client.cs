@@ -9,6 +9,7 @@ namespace PhysicsEngineGUI {
     public class Client(Engine engine){
         private readonly Engine engine = engine;
         private Point? prePoint = null;
+        private Point? prePrePoint = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
         public double size = 10;
@@ -93,6 +94,8 @@ namespace PhysicsEngineGUI {
                             };
 
                             this.engine.SpawnObject(ropeOption);
+
+                            this.prePoint = null;
                         } else if(this.spawnType == ObjectType.Line) {
                             LineOption lineOption = new LineOption {
                                 startX = this.prePoint.Value.X,
@@ -104,9 +107,29 @@ namespace PhysicsEngineGUI {
                             };
 
                             this.engine.SpawnGround(lineOption);
-                        }
 
-                        this.prePoint = null;
+                            this.prePoint = null;
+                        } else if(this.spawnType == ObjectType.Curve) {
+                            if(this.prePrePoint == null) {
+                                this.prePrePoint = point;
+                            } else {
+                                CurveOption curveOption = new CurveOption {
+                                    startX = this.prePoint.Value.X,
+                                    startY = this.prePoint.Value.Y,
+                                    middleX = this.prePrePoint.Value.X,
+                                    middleY = this.prePrePoint.Value.Y,
+                                    endX = point.X,
+                                    endY = point.Y,
+                                    width = this.size,
+                                    color = this.color.ToString() ?? "#F00000"
+                                };
+
+                                this.engine.SpawnGround(curveOption);
+
+                                this.prePoint = null;
+                                this.prePrePoint = null;
+                            }
+                        }
                     }
                 }
             } else if(this.toolType == ToolType.Delete) {
