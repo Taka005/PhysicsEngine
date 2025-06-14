@@ -35,18 +35,22 @@ namespace PhysicsEngineGUI {
         }
 
         public void MouseMove(MouseEventArgs e, Point point) {
-            if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
+            if(this.toolType == ToolType.Move) {
+                if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
 
-                this.selectedEntity.velocity = Vector2.Zero;
+                    this.selectedEntity.velocity = Vector2.Zero;
 
-                this.selectedEntity.position.X = point.X;
-                this.selectedEntity.position.Y = point.Y;
+                    this.selectedEntity.position.X = point.X;
+                    this.selectedEntity.position.Y = point.Y;
+                }
             }
         }
 
         public void MouseLeftButtonUp() {
-            if(this.selectedEntity != null) {
-                this.selectedEntity = null;
+            if(this.toolType == ToolType.Move) {
+                if(this.selectedEntity != null) {
+                    this.selectedEntity = null;
+                }
             }
         }
 
@@ -171,10 +175,42 @@ namespace PhysicsEngineGUI {
 
                     this.selectedEntity = entity;
                 }
+            }else if(this.toolType == ToolType.Connection) {
+                List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
+
+                if(entities.Count > 0) {
+                    Entity entity = entities[0];
+
+                    if(this.selectedEntity == null) {
+                        this.selectedEntity = entity;
+                    } else {
+                        this.selectedEntity.connection.Add(entity, entity.radius + this.selectedEntity.radius, this.selectedEntity.stiffness);
+                        this.selectedEntity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
+
+                        this.selectedEntity = null;
+                    }
+                }
+            } else if(this.toolType == ToolType.DisConnection) {
+                List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
+                if(entities.Count > 0) {
+                    Entity entity = entities[0];
+
+                    if(this.selectedEntity == null) {
+                        this.selectedEntity = entity;
+                    } else {
+                        this.selectedEntity.connection.Remove(entity.id);
+                        entity.connection.Remove(this.selectedEntity.id);
+                        this.selectedEntity = null;
+                    }
+                }
             }
         }
 
         public void setTool(string toolType) {
+            this.prePoint = null;
+            this.prePrePoint = null;
+            this.selectedEntity = null;
+
             if(toolType == "閲覧") {
                 this.toolType = ToolType.View;
             } else if(toolType == "生成") {
@@ -187,6 +223,8 @@ namespace PhysicsEngineGUI {
                 this.toolType = ToolType.ScreenMove;
             } else if(toolType == "接続") {
                 this.toolType = ToolType.Connection;
+            }else if(toolType == "接続解除") {
+                this.toolType = ToolType.DisConnection;
             }
         }
 
@@ -213,7 +251,8 @@ namespace PhysicsEngineGUI {
         Delete,
         Move,
         ScreenMove,
-        Connection
+        Connection,
+        DisConnection
     };
 
     public enum ObjectType {

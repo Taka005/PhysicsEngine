@@ -256,7 +256,11 @@ public partial class MainWindow : Window {
     }
 
     private void Reset_Click(object sender, RoutedEventArgs e) {
-        this.engine.Clear();
+        MessageBoxResult result = MessageBox.Show("リセットしますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+        if(result == MessageBoxResult.Yes) {
+            this.engine.Clear();
+        }
     }
 
     private void Restore_Click(object sender, RoutedEventArgs e) {
