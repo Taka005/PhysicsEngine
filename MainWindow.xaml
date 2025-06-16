@@ -104,6 +104,7 @@
                         <ComboBoxItem Content="閲覧"/>
                         <ComboBoxItem Content="生成"/>
                         <ComboBoxItem Content="移動"/>
+                        <ComboBoxItem Content="編集"/>
                         <ComboBoxItem Content="削除"/>
                         <ComboBoxItem Content="接続"/>
                         <ComboBoxItem Content="接続解除"/>

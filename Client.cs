@@ -7,7 +7,8 @@ using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngineGUI {
-    public class Client(Engine engine){
+    public class Client(Window window, Engine engine){
+        private readonly Window window = window;
         private readonly Engine engine = engine;
         private Point? prePoint = null;
         private Point? prePrePoint = null;
@@ -175,6 +176,16 @@ namespace PhysicsEngineGUI {
 
                     this.selectedEntity = entity;
                 }
+            }else if(this.toolType == ToolType.Edit) {
+                List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
+                if(objects.Count > 0) {
+                    EditWindow editWindow = new EditWindow(objects[0]){
+                        Owner = this.window,
+                        
+                    };
+
+                    editWindow.ShowDialog();
+                }
             }else if(this.toolType == ToolType.Connection) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
 
@@ -217,6 +228,8 @@ namespace PhysicsEngineGUI {
                 this.toolType = ToolType.Spawn;
             } else if(toolType == "削除") {
                 this.toolType = ToolType.Delete;
+            }else if(toolType == "編集") { 
+                this.toolType = ToolType.Edit;
             } else if(toolType == "移動") {
                 this.toolType = ToolType.Move;
             } else if(toolType == "画面移動") {
@@ -250,6 +263,7 @@ namespace PhysicsEngineGUI {
         Spawn,
         Delete,
         Move,
+        Edit,
         ScreenMove,
         Connection,
         DisConnection

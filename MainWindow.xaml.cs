@@ -29,7 +29,7 @@ public partial class MainWindow : Window {
         };
 
         this.engine = new Engine(engineOption);
-        this.client = new Client(this.engine);
+        this.client = new Client(this,this.engine);
 
         InitializeComponent();
 
