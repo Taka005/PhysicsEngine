@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PhysicsEngineCore;
 using PhysicsEngineCore.Objects;
 
 namespace PhysicsEngineGUI {
@@ -24,6 +25,14 @@ namespace PhysicsEngineGUI {
             InitializeComponent();
 
             this.obj = obj;
+
+            this.ObjectId.Text = obj.id;
+            this.PosXSlider.Value = obj.position.X;
+            this.PosYSlider.Value = obj.position.Y;
+            this.VelXSlider.Value = obj.velocity.X;
+            this.VelYSlider.Value = obj.velocity.Y;
+            this.MassSlider.Value = obj.mass;
+            this.StiffnessSlider.Value = obj.stiffness;
         }
     }
 }
