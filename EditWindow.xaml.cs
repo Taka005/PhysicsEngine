@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Objects;
+using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngineGUI {
     /// <summary>
@@ -33,6 +34,49 @@ namespace PhysicsEngineGUI {
             this.VelYSlider.Value = obj.velocity.Y;
             this.MassSlider.Value = obj.mass;
             this.StiffnessSlider.Value = obj.stiffness;
+        }
+
+        private void PosXSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.obj.position = new Vector2(slider.Value,this.obj.position.Y);
+            }
+        }
+
+        private void PosYSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.obj.position = new Vector2(this.obj.position.X, slider.Value);
+            }
+        }
+
+        private void VolXSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.obj.velocity = new Vector2(slider.Value, this.obj.velocity.Y);
+            }
+        }
+
+        private void VolYSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.obj.velocity = new Vector2(this.obj.velocity.Y, slider.Value);
+            }
+        }
+
+        private void SizeSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                
+            }
+        }
+
+        private void MassSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.obj.mass = slider.Value;
+            }
+        }
+
+
+        private void StiffnessSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.obj.stiffness = slider.Value;
+            }
         }
     }
 }
