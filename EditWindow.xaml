@@ -3,10 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PhysicsEngineGUI"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:PhysicsEngineGUI.Utils"
         mc:Ignorable="d"
-        Title="EditWindow" Height="421" Width="402" ResizeMode="NoResize">
+        Title="オブジェクトの編集" Height="320" Width="300" ResizeMode="NoResize">
     <Grid>
-
+        <StackPanel>
+            <StackPanel Height="36" Width="120" Orientation="Horizontal">
+                <Label Content="物体ID" HorizontalAlignment="Center" Height="25"/>
+                <local:EditableTextBlock Text="1234567890" Width="72" Height="17"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="200" Width="264">
+                <StackPanel Height="200" Width="60">
+                    <Label Content="X位置" Height="28" Width="60"/>
+                    <Label Content="Y位置" Height="28" Width="60"/>
+                    <Label Content="X速度" Height="28" Width="60"/>
+                    <Label Content="Y速度" Height="28" Width="60"/>
+                    <Label Content="大きさ" Height="28" Width="60"/>
+                    <Label Content="質量" Height="28" Width="60"/>
+                    <Label Content="剛性" Height="28" Width="60"/>
+                </StackPanel>
+                <StackPanel Height="200" Width="35">
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=PosXSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=PosYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=VecXSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=VecYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=SizeSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=MassSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=StiffnessSlider, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Height="200" Width="170">
+                    <Slider x:Name="PosXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
+                    <Slider x:Name="PosYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="VecXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
+                    <Slider x:Name="VecYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="SizeSlider" Height="18" Width="150" Minimum="1" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
+                    <Slider x:Name="MassSlider" Height="18" Width="150" Minimum="0" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="StiffnessSlider" Height="18" Width="150" Minimum="0" Maximum="1" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="46" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="物体の色" Height="28" Width="55"/>
+                <xctk:ColorPicker x:Name="物体の色" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

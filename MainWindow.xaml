@@ -36,13 +36,13 @@
             <Canvas x:Name="MyCanvas" Background="#FFF7F7F7" Margin="0,0,316,0" ClipToBounds="True" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" MouseMove="Canvas_MouseMove"/>
             <GroupBox Header="設定" Margin="689,10,20,0" VerticalAlignment="Top" Height="137">
                 <StackPanel Orientation="Horizontal" Height="120">
-                    <StackPanel Width="60">
+                    <StackPanel Height="120" Width="60">
                         <Label Content="重力" Height="28" Width="60"/>
                         <Label Content="摩擦" Height="28" Width="60"/>
                         <Label Content="再生速度" Height="28" Width="60"/>
                         <Label Content="拡大縮小" Height="28" Width="60"/>
                     </StackPanel>
-                    <StackPanel Width="35">
+                    <StackPanel Height="120" Width="35">
                         <local:EditableTextBlock Text="{Binding Value, ElementName=gravitySlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <local:EditableTextBlock Text="{Binding Value, ElementName=frictionSlider, StringFormat=\{0:F2\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <local:EditableTextBlock Text="{Binding Value, ElementName=playBackSpeedSlider, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -77,7 +77,7 @@
                             <Label Content="初速度X" Height="28" Width="55"/>
                             <Label Content="初速度Y" Height="28" Width="55"/>
                         </StackPanel>
-                        <StackPanel Width="35">
+                        <StackPanel Height="145" Width="35">
                             <local:EditableTextBlock Text="{Binding Value, ElementName=大きさ, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <local:EditableTextBlock Text="{Binding Value, ElementName=質量, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <local:EditableTextBlock Text="{Binding Value, ElementName=剛性, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>

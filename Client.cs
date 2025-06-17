@@ -180,11 +180,10 @@ namespace PhysicsEngineGUI {
                 List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
                 if(objects.Count > 0) {
                     EditWindow editWindow = new EditWindow(objects[0]){
-                        Owner = this.window,
-                        
+                        Owner = this.window                    
                     };
 
-                    editWindow.ShowDialog();
+                    editWindow.Show();
                 }
             }else if(this.toolType == ToolType.Connection) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
