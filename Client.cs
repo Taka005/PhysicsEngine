@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using PhysicsEngineCore;
@@ -31,6 +32,7 @@ namespace PhysicsEngineGUI {
         public void RestoreHistory() {
             if(this.history.Count > 0) {
                 this.engine.Import(this.history.Last());
+                Debug.WriteLine(this.history.Count);
                 this.history.RemoveAt(this.history.Count - 1);
             }
         }
@@ -57,9 +59,9 @@ namespace PhysicsEngineGUI {
 
         public void MouseLeftDown(Point point) {
             if(this.toolType == ToolType.Spawn) {
-                this.AddHistory();
-
                 if(this.spawnType == ObjectType.Circle) {
+                    this.AddHistory();
+
                     CircleOption circleOption = new CircleOption {
                         posX = point.X,
                         posY = point.Y,
@@ -73,6 +75,8 @@ namespace PhysicsEngineGUI {
 
                     this.engine.SpawnObject(circleOption);
                 } else if(this.spawnType == ObjectType.Square) {
+                    this.AddHistory();
+
                     SquareOption squareOption = new SquareOption {
                         posX = point.X,
                         posY = point.Y,
@@ -86,6 +90,8 @@ namespace PhysicsEngineGUI {
 
                     this.engine.SpawnObject(squareOption);
                 } else if(this.spawnType == ObjectType.Triangle) {
+                    this.AddHistory();
+
                     TriangleOption triangleOption = new TriangleOption {
                         posX = point.X,
                         posY = point.Y,
@@ -103,6 +109,8 @@ namespace PhysicsEngineGUI {
                         this.prePoint = point;
                     } else {
                         if(this.spawnType == ObjectType.Rope) {
+                            this.AddHistory();
+
                             RopeOption ropeOption = new RopeOption {
                                 startX = this.prePoint.Value.X,
                                 startY = this.prePoint.Value.Y,
@@ -120,6 +128,8 @@ namespace PhysicsEngineGUI {
 
                             this.prePoint = null;
                         } else if(this.spawnType == ObjectType.Line) {
+                            this.AddHistory();
+
                             LineOption lineOption = new LineOption {
                                 startX = this.prePoint.Value.X,
                                 startY = this.prePoint.Value.Y,
@@ -136,6 +146,8 @@ namespace PhysicsEngineGUI {
                             if(this.prePrePoint == null) {
                                 this.prePrePoint = point;
                             } else {
+                                this.AddHistory();
+
                                 CurveOption curveOption = new CurveOption {
                                     startX = this.prePoint.Value.X,
                                     startY = this.prePoint.Value.Y,
