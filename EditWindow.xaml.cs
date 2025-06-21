@@ -56,7 +56,7 @@ namespace PhysicsEngineGUI {
 
         private void VolYSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
-                this.obj.velocity = new Vector2(this.obj.velocity.Y, slider.Value);
+                this.obj.velocity = new Vector2(this.obj.velocity.X, slider.Value);
             }
         }
 
