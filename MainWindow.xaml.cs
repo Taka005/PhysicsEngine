@@ -175,6 +175,9 @@ public partial class MainWindow : Window {
                 gravitySlider.Value = this.engine.gravity;
                 frictionSlider.Value = this.engine.friction;
                 playBackSpeedSlider.Value = this.engine.playBackSpeed;
+
+                ChangeButton.Background = Utility.ParseColor("#FF00AA00");
+                ChangeButton.Content = "開始";
             } catch(System.IO.IOException ex) {
                 MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             } catch(System.Security.SecurityException ex) {
@@ -232,13 +235,15 @@ public partial class MainWindow : Window {
     private void StartAndStop_Click(object sender, RoutedEventArgs e) {
         if(sender is Button button) {
             if(this.engine.isStarted) {
-                button.Background = Utility.ParseColor("#FFFF0000");
-                button.Content = "停止";
+
+                button.Background = Utility.ParseColor("#FF00AA00");
+                button.Content = "開始";
+
 
                 this.engine.Stop();
             } else {
-                button.Background = Utility.ParseColor("#FF00AA00");
-                button.Content = "開始";
+                button.Background = Utility.ParseColor("#FFFF0000");
+                button.Content = "停止";
 
                 this.engine.Start();
             }
