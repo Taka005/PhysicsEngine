@@ -1,19 +1,12 @@
 ﻿using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
+using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngineGUI;
 
@@ -176,7 +169,7 @@ public partial class MainWindow : Window {
                 frictionSlider.Value = this.engine.friction;
                 playBackSpeedSlider.Value = this.engine.playBackSpeed;
 
-                ChangeButton.Background = Utility.ParseColor("#FF00AA00");
+                ChangeButton.Background = ParseColor.StringToBrush("#FF00AA00");
                 ChangeButton.Content = "開始";
             } catch(System.IO.IOException ex) {
                 MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -236,13 +229,13 @@ public partial class MainWindow : Window {
         if(sender is Button button) {
             if(this.engine.isStarted) {
 
-                button.Background = Utility.ParseColor("#FF00AA00");
+                button.Background = ParseColor.StringToBrush("#FF00AA00");
                 button.Content = "開始";
 
 
                 this.engine.Stop();
             } else {
-                button.Background = Utility.ParseColor("#FFFF0000");
+                button.Background = ParseColor.StringToBrush("#FFFF0000");
                 button.Content = "停止";
 
                 this.engine.Start();

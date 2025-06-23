@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using PhysicsEngineCore;
 using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Utils;
+using Xceed.Wpf.Toolkit;
 
 namespace PhysicsEngineGUI {
     /// <summary>
@@ -76,6 +66,12 @@ namespace PhysicsEngineGUI {
         private void StiffnessSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.obj.stiffness = slider.Value;
+            }
+        }
+
+        private void ColorPicker_Change(object sender, RoutedPropertyChangedEventArgs<Color?> e) {
+            if(sender is ColorPicker picker) {
+                //this.obj.color = ParseColor.ColorToString(picker.SelectedColor);
             }
         }
     }
