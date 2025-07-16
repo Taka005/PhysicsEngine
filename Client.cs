@@ -211,10 +211,10 @@ namespace PhysicsEngineGUI {
                             double distance = Vector2.Distance(this.selectedEntity.position, entity.position);
 
                             this.selectedEntity.connection.Add(entity, distance, this.selectedEntity.stiffness);
-                            this.selectedEntity.connection.Add(this.selectedEntity, distance, entity.stiffness);
+                            entity.connection.Add(this.selectedEntity, distance, entity.stiffness);
                         } else if(this.connectionType == connectionType.Minimum) {
                             this.selectedEntity.connection.Add(entity, entity.radius + this.selectedEntity.radius, this.selectedEntity.stiffness);
-                            this.selectedEntity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
+                            entity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
                         }
 
                         this.selectedEntity = null;
