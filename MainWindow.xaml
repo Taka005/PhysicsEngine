@@ -21,6 +21,7 @@
                 <MenuItem x:Name="デバッグモード" Header="デバッグモード" IsCheckable="True" IsChecked="False" Click="DebugMode_Click"/>
                 <MenuItem x:Name="開発者モード" Header="開発者モード" IsCheckable="True" IsChecked="False"/>
                 <MenuItem x:Name="カスタムスクリプトの実行" Header="カスタムスクリプトの実行" IsCheckable="True" IsChecked="False"/>
+                <MenuItem x:Name="動的接続モード" Header="動的接続モード" IsCheckable="True" IsChecked="False" Click="ConnectionMode_Click"/>
                 <Separator/>
                 <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除"/>
                 <Separator/>

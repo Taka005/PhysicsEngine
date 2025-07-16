@@ -28,7 +28,7 @@ public partial class MainWindow : Window {
 
         this.engine.render.Width = MyCanvas.ActualWidth;
         this.engine.render.Height = MyCanvas.ActualHeight;
-
+        //this.engine.isTrackingMode = true;
         MyCanvas.Children.Add(this.engine.render);
 
         CompositionTarget.Rendering += this.engine.OnRendering;
@@ -332,6 +332,16 @@ public partial class MainWindow : Window {
     private void Color_Change(object sender, RoutedPropertyChangedEventArgs<Color?> e) {
          if(sender is Xceed.Wpf.Toolkit.ColorPicker picker) {
             this.client.color = picker.SelectedColor;
+        }
+    }
+
+    private void ConnectionMode_Click(Object sender, RoutedEventArgs e) {
+        if(sender is MenuItem connectionModeMenuItem) {
+            if(connectionModeMenuItem.IsChecked) {
+                this.client.connectionType = connectionType.Dynamic;
+            } else {
+                this.client.connectionType = connectionType.Minimum;
+            }
         }
     }
 }

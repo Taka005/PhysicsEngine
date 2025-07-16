@@ -8,7 +8,7 @@ using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngineGUI {
-    public class Client(Window window, Engine engine){
+    public class Client(Window window, Engine engine) {
         private readonly Window window = window;
         private readonly Engine engine = engine;
         private Point? prePoint = null;
@@ -16,6 +16,7 @@ namespace PhysicsEngineGUI {
         private Entity? selectedEntity = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
+        public connectionType connectionType = connectionType.Minimum;
         public double size = 10;
         public double mass = 1;
         public double stiffness = 0.8;
@@ -188,16 +189,16 @@ namespace PhysicsEngineGUI {
 
                     this.selectedEntity = entity;
                 }
-            }else if(this.toolType == ToolType.Edit) {
+            } else if(this.toolType == ToolType.Edit) {
                 List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
                 if(objects.Count > 0) {
-                    EditWindow editWindow = new EditWindow(objects[0]){
-                        Owner = this.window                    
+                    EditWindow editWindow = new EditWindow(objects[0]) {
+                        Owner = this.window
                     };
 
                     editWindow.Show();
                 }
-            }else if(this.toolType == ToolType.Connection) {
+            } else if(this.toolType == ToolType.Connection) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
 
                 if(entities.Count > 0) {
@@ -206,8 +207,15 @@ namespace PhysicsEngineGUI {
                     if(this.selectedEntity == null) {
                         this.selectedEntity = entity;
                     } else {
-                        this.selectedEntity.connection.Add(entity, entity.radius + this.selectedEntity.radius, this.selectedEntity.stiffness);
-                        this.selectedEntity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
+                        if(this.connectionType == connectionType.Dynamic) {
+                            double distance = Vector2.Distance(this.selectedEntity.position, entity.position);
+
+                            this.selectedEntity.connection.Add(entity, distance, this.selectedEntity.stiffness);
+                            this.selectedEntity.connection.Add(this.selectedEntity, distance, entity.stiffness);
+                        } else if(this.connectionType == connectionType.Minimum) {
+                            this.selectedEntity.connection.Add(entity, entity.radius + this.selectedEntity.radius, this.selectedEntity.stiffness);
+                            this.selectedEntity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
+                        }
 
                         this.selectedEntity = null;
                     }
@@ -239,7 +247,7 @@ namespace PhysicsEngineGUI {
                 this.toolType = ToolType.Spawn;
             } else if(toolType == "削除") {
                 this.toolType = ToolType.Delete;
-            }else if(toolType == "編集") { 
+            } else if(toolType == "編集") {
                 this.toolType = ToolType.Edit;
             } else if(toolType == "移動") {
                 this.toolType = ToolType.Move;
@@ -247,23 +255,23 @@ namespace PhysicsEngineGUI {
                 this.toolType = ToolType.ScreenMove;
             } else if(toolType == "接続") {
                 this.toolType = ToolType.Connection;
-            }else if(toolType == "接続解除") {
+            } else if(toolType == "接続解除") {
                 this.toolType = ToolType.DisConnection;
             }
         }
 
-        public void setSpawnType(string objectType){
+        public void setSpawnType(string objectType) {
             if(objectType == "円") {
                 this.spawnType = ObjectType.Circle;
-            }else if(objectType == "四角") {
+            } else if(objectType == "四角") {
                 this.spawnType = ObjectType.Square;
-            }else if(objectType == "三角") {
+            } else if(objectType == "三角") {
                 this.spawnType = ObjectType.Triangle;
-            }else if(objectType == "ロープ") {
+            } else if(objectType == "ロープ") {
                 this.spawnType = ObjectType.Rope;
-            }else if(objectType == "直線") {
+            } else if(objectType == "直線") {
                 this.spawnType = ObjectType.Line;
-            }else if(objectType == "曲線") {
+            } else if(objectType == "曲線") {
                 this.spawnType = ObjectType.Curve;
             }
         }
@@ -287,5 +295,10 @@ namespace PhysicsEngineGUI {
         Rope,
         Line,
         Curve
+    }
+
+    public enum connectionType {
+        Dynamic,
+        Minimum
     }
 }
