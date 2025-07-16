@@ -28,7 +28,7 @@ public partial class MainWindow : Window {
 
         this.engine.render.Width = MyCanvas.ActualWidth;
         this.engine.render.Height = MyCanvas.ActualHeight;
-        //this.engine.isTrackingMode = true;
+
         MyCanvas.Children.Add(this.engine.render);
 
         CompositionTarget.Rendering += this.engine.OnRendering;
@@ -341,6 +341,16 @@ public partial class MainWindow : Window {
                 this.client.connectionType = connectionType.Dynamic;
             } else {
                 this.client.connectionType = connectionType.Minimum;
+            }
+        }
+    }
+
+    private void TrackingMode_Click(Object sender, RoutedEventArgs e) {
+        if(sender is MenuItem trackingModeMenuItem) {
+            if(trackingModeMenuItem.IsChecked) {
+                this.engine.isTrackingMode = true;
+            } else {
+                this.engine.isTrackingMode = false;
             }
         }
     }
