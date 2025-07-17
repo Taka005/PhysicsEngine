@@ -354,4 +354,8 @@ public partial class MainWindow : Window {
             }
         }
     }
+
+    private void TrackingDelete_Click(Object sender, RoutedEventArgs e) {
+        this.engine.ClearTrack();
+    }
 }

@@ -23,7 +23,7 @@
                 <MenuItem x:Name="カスタムスクリプトの実行" Header="カスタムスクリプトの実行" IsCheckable="True" IsChecked="False"/>
                 <MenuItem x:Name="動的接続モード" Header="動的接続モード" IsCheckable="True" IsChecked="False" Click="ConnectionMode_Click"/>
                 <Separator/>
-                <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除"/>
+                <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除" Click="TrackingDelete_Click"/>
                 <Separator/>
                 <MenuItem x:Name="詳細設定" Header="詳細設定"/>
             </MenuItem>
