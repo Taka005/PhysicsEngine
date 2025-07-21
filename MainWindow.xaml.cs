@@ -219,6 +219,19 @@ public partial class MainWindow : Window {
         }
     }
 
+    private void Site_Click(object sender, RoutedEventArgs e) {
+        try {
+            ProcessStartInfo psi = new ProcessStartInfo {
+                FileName = "https://engine.takadev.jp",
+                UseShellExecute = true
+            };
+
+            Process.Start(psi);
+        } catch {
+            MessageBox.Show("開くことができませんでした", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
     private void DebugMode_Click(object sender, RoutedEventArgs e) {
         if(sender is MenuItem debugMenuItem) {
             if(debugMenuItem.IsChecked) {
