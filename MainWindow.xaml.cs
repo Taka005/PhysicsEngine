@@ -360,7 +360,7 @@ public partial class MainWindow : Window {
     }
 
     private void Setting_Click(object sender, RoutedEventArgs e) {
-        SettingWindow settingWindow = new SettingWindow{
+        SettingWindow settingWindow = new SettingWindow(this.engine){
             Owner = this
          };
 

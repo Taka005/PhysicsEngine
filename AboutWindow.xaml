@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhysicsEngineGUI"
         mc:Ignorable="d"
-        Title="このアプリについて" Height="180" Width="240" ResizeMode="NoResize">
+        Title="このアプリについて" Height="200" Width="240" ResizeMode="NoResize">
     <Grid Margin="10">
         <StackPanel>
             <StackPanel Height="100" HorizontalAlignment="Center">
