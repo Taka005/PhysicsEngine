@@ -29,7 +29,10 @@
                 <MenuItem x:Name="詳細設定" Header="詳細設定" Click="Setting_Click"/>
             </MenuItem>
             <MenuItem x:Name="ヘルプメニュー" Header="ヘルプ(_H)">
-                <MenuItem x:Name="ソースとバイナリ" Header="ソースとバイナリ" Click="Source_Click"/>
+                <MenuItem x:Name="ソースとバイナリ" Header="ソースとバイナリ">
+                    <MenuItem x:Name="GUIモジュール" Header="GUIモジュール" Click="GUISource_Click"/>
+                    <MenuItem x:Name="コアモジュール" Header="コアモジュール" Click="CoreSource_Click"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem x:Name="ABOUT" Header="ABOUT" Click="About_Click"/>
             </MenuItem>

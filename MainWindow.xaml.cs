@@ -193,10 +193,23 @@ public partial class MainWindow : Window {
         }
     }
 
-    private void Source_Click(object sender, RoutedEventArgs e) {
+    private void GUISource_Click(object sender, RoutedEventArgs e) {
         try {
             ProcessStartInfo psi = new ProcessStartInfo {
                 FileName = "https://github.com/Taka005/PhysicsEngineGUI/",
+                UseShellExecute = true
+            };
+
+            Process.Start(psi);
+        } catch {
+            MessageBox.Show("開くことができませんでした", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    private void CoreSource_Click(object sender, RoutedEventArgs e) {
+        try {
+            ProcessStartInfo psi = new ProcessStartInfo {
+                FileName = "https://github.com/Taka005/PhysicsEngineCore/",
                 UseShellExecute = true
             };
 
