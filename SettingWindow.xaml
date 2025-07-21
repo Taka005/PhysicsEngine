@@ -3,10 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PhysicsEngineGUI"
+        xmlns:local="clr-namespace:PhysicsEngineGUI.Utils"
         mc:Ignorable="d"
-        Title="設定" Height="400" Width="300" ResizeMode="NoResize">
+        Title="設定" Height="300" Width="330" ResizeMode="NoResize">
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="200" Width="310">
+                <StackPanel Height="200" Width="110">
+                    <Label Content="最大トラッキング数" Height="28" Width="110"/>
+                    <Label Content="トラッキング間隔(ms)" Height="28" Width="110"/>
+                    <Label Content="移動範囲(px)" Height="28" Width="110"/>
+                </StackPanel>
+                <StackPanel Height="200" Width="35">
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=TrackingLimitSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=TrackingIntervalSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=MovementLimitSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Height="200" Width="170">
+                    <Slider x:Name="TrackingLimitSlider" Height="18" Width="150" Minimum="1" Maximum="3000" Value="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="TrackingIntervalSlider" Height="18" Width="150" Minimum="10" Maximum="5000" Value="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="MovementLimitSlider" Height="18" Width="150" Minimum="1" Maximum="10000" Value="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

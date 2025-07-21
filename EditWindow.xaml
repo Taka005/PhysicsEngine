@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PhysicsEngineGUI.Utils"
         mc:Ignorable="d"
-        Title="オブジェクトの編集" Height="320" Width="300" ResizeMode="NoResize">
+        Title="オブジェクトの編集" Height="360" Width="300" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <StackPanel Height="36" Width="120" Orientation="Horizontal">
@@ -45,6 +45,9 @@
             <StackPanel Height="46" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="物体の色" Height="28" Width="55"/>
                 <xctk:ColorPicker x:Name="ObjectColor" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色" SelectedColorChanged="ColorPicker_Change"/>
+            </StackPanel>
+            <StackPanel Height="60" Width="215" HorizontalAlignment="Center">
+                <Button Content="更新" Click="UpdateButton_Click" Height="32" Width="56" Background="#FF027AFF" Foreground="White"/>
             </StackPanel>
         </StackPanel>
     </Grid>

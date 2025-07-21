@@ -12,11 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PhysicsEngineGUI
-{
-    /// <summary>
-    /// Setting.xaml の相互作用ロジック
-    /// </summary>
+namespace PhysicsEngineGUI{
     public partial class SettingWindow : Window
     {
         public SettingWindow()

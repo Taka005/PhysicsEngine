@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhysicsEngineGUI"
         mc:Ignorable="d"
-        Title="このアプリについて" Height="200" Width="240" ResizeMode="NoResize">
+        Title="このアプリについて" Height="180" Width="240" ResizeMode="NoResize">
     <Grid Margin="10">
         <StackPanel>
             <StackPanel Height="100" HorizontalAlignment="Center">
@@ -15,7 +15,7 @@
                 <TextBlock Text="お問い合わせ: contact@takadev.jp" />
             </StackPanel>
             <StackPanel Height="60" Width="215" HorizontalAlignment="Center">
-                <Button Content="閉じる" Width="80" Click="CloseButton_Click"/>
+                <Button Content="閉じる" Height="32" Width="56" Click="CloseButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

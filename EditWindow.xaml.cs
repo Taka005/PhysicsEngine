@@ -6,9 +6,6 @@ using PhysicsEngineCore.Utils;
 using Xceed.Wpf.Toolkit;
 
 namespace PhysicsEngineGUI {
-    /// <summary>
-    /// EditWindow.xaml の相互作用ロジック
-    /// </summary>
     public partial class EditWindow : Window {
         private readonly IObject obj;
 
@@ -17,13 +14,23 @@ namespace PhysicsEngineGUI {
 
             this.obj = obj;
 
-            this.ObjectId.Text = obj.id;
-            this.PosXSlider.Value = obj.position.X;
-            this.PosYSlider.Value = obj.position.Y;
-            this.VelXSlider.Value = obj.velocity.X;
-            this.VelYSlider.Value = obj.velocity.Y;
-            this.MassSlider.Value = obj.mass;
-            this.StiffnessSlider.Value = obj.stiffness;
+            this.ObjectId.Text = this.obj.id;
+            this.PosXSlider.Value = this.obj.position.X;
+            this.PosYSlider.Value = this.obj.position.Y;
+            this.VelXSlider.Value = this.obj.velocity.X;
+            this.VelYSlider.Value = this.obj.velocity.Y;
+            this.MassSlider.Value = this.obj.mass;
+            this.StiffnessSlider.Value = this.obj.stiffness;
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e) {
+            this.ObjectId.Text = this.obj.id;
+            this.PosXSlider.Value = this.obj.position.X;
+            this.PosYSlider.Value = this.obj.position.Y;
+            this.VelXSlider.Value = this.obj.velocity.X;
+            this.VelYSlider.Value = this.obj.velocity.Y;
+            this.MassSlider.Value = this.obj.mass;
+            this.StiffnessSlider.Value = this.obj.stiffness;
         }
 
         private void PosXSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
