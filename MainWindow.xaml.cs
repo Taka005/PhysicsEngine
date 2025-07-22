@@ -293,7 +293,7 @@ public partial class MainWindow : Window {
 
     private void Gravity_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
         if(sender is Slider slider) {
-            this.engine.gravity = slider.Value;
+            this.engine.SetGravity(slider.Value);
         }
     }
 

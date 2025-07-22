@@ -8,25 +8,28 @@
         Title="設定" Height="300" Width="330" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal" Height="85" Width="310">
-                <StackPanel Height="85" Width="110">
+            <StackPanel Orientation="Horizontal" Height="112" Width="310">
+                <StackPanel Height="112" Width="110">
                     <Label Content="最大トラッキング数" Height="28" Width="110"/>
                     <Label Content="トラッキング間隔(ms)" Height="28" Width="110"/>
                     <Label Content="移動範囲(px)" Height="28" Width="110"/>
+                    <Label Content="PPS" Height="28" Width="110"/>
                 </StackPanel>
-                <StackPanel Height="85" Width="35">
+                <StackPanel Height="112" Width="35">
                     <local:EditableTextBlock Text="{Binding Value, ElementName=TrackingLimitSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <local:EditableTextBlock Text="{Binding Value, ElementName=TrackingIntervalSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <local:EditableTextBlock Text="{Binding Value, ElementName=MovementLimitSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=PpsSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Height="85" Width="170">
-                    <Slider x:Name="TrackingLimitSlider" Height="18" Width="150" Minimum="1" Maximum="3000" Value="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="TrackingLimit_Change"/>
-                    <Slider x:Name="TrackingIntervalSlider" Height="18" Width="150" Minimum="10" Maximum="5000" Value="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="TrackingInterval_Change"/>
+                <StackPanel Height="112" Width="170">
+                    <Slider x:Name="TrackingLimitSlider" Height="18" Width="150" Minimum="1" Maximum="3000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="TrackingLimit_Change"/>
+                    <Slider x:Name="TrackingIntervalSlider" Height="18" Width="150" Minimum="10" Maximum="5000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="TrackingInterval_Change"/>
                     <Slider x:Name="MovementLimitSlider" Height="18" Width="150" Minimum="1" Maximum="10000" Value="10000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="MovementLimit_Change"/>
+                    <Slider x:Name="PpsSlider" Height="18" Width="150" Minimum="10" Maximum="500" Value="180" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Pps_Change"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Width="310" Height="100">
-                <RadioButton Content="動的最大トラッキング数"/>
+                <ToggleButton Content="動的最大トラッキング数"/>
             </StackPanel>
         </StackPanel>
     </Grid>

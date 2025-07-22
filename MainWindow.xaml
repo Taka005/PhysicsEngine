@@ -91,8 +91,8 @@
                             <local:EditableTextBlock Text="{Binding Value, ElementName=VelYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Height="143" Width="190">
-                            <Slider x:Name="SizeSlider" Minimum="0" Maximum="1000" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Size_Change"/>
-                            <Slider x:Name="MassSlider" Minimum="0" Maximum="1000" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5" ValueChanged="Mass_Change"/>
+                            <Slider x:Name="SizeSlider" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Size_Change"/>
+                            <Slider x:Name="MassSlider" Minimum="0" Maximum="500" Value="10" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5" ValueChanged="Mass_Change"/>
                             <Slider x:Name="StiffnessSlider" Minimum="0.1" Maximum="1" Value="0.8" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5" ValueChanged="Stiffness_Change"/>
                             <Slider x:Name="VelXSlider" Minimum="-1000" Maximum="1000" Value="0" Height="18" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="VecX_Change"/>
                             <Slider x:Name="VelYSlider" Minimum="-1000" Maximum="1000" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5" ValueChanged="VecY_Change"/>
