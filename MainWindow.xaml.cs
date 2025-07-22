@@ -7,12 +7,15 @@ using Microsoft.Win32;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
+using PhysicsEngineGUI.Utils;
 
 namespace PhysicsEngineGUI;
 
 public partial class MainWindow : Window {
     public Engine engine { get; set; }
     public Client client { get; set; }
+
+    public KeyInput keyInput { get; set; }
 
     public MainWindow() {
         EngineOption engineOption = new EngineOption {
@@ -23,6 +26,7 @@ public partial class MainWindow : Window {
 
         this.engine = new Engine(engineOption);
         this.client = new Client(this,this.engine);
+        this.keyInput = new KeyInput(this);
 
         InitializeComponent();
 
@@ -32,6 +36,7 @@ public partial class MainWindow : Window {
         MyCanvas.Children.Add(this.engine.render);
 
         CompositionTarget.Rendering += this.engine.OnRendering;
+        CompositionTarget.Rendering += this.Update;
 
         engine.Start();
 
@@ -101,6 +106,24 @@ public partial class MainWindow : Window {
         engine.SpawnGround(circleOption6);
         engine.SpawnGround(circleOption7);
         engine.SpawnGround(circleOption5);
+    }
+
+    private void Update(object? sender, EventArgs e) {
+        if (this.keyInput.IsKeyDown(Key.W)){
+            this.engine.render.offsetY -= 3;
+        }
+        
+        if(this.keyInput.IsKeyDown(Key.S)) {
+            this.engine.render.offsetY += 3;
+        }
+
+        if(this.keyInput.IsKeyDown(Key.A)) {
+            this.engine.render.offsetX -= 3;
+        }
+        
+        if(this.keyInput.IsKeyDown(Key.D)) {
+            this.engine.render.offsetX += 3;
+        }
     }
 
     private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
@@ -190,6 +213,8 @@ public partial class MainWindow : Window {
 
         if(result == MessageBoxResult.No) {
             e.Cancel = true;
+        } else {
+            this.keyInput.Dispose();
         }
     }
 
