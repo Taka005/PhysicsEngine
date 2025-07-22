@@ -109,19 +109,19 @@ public partial class MainWindow : Window {
 
     private void Update(object? sender, EventArgs e) {
         if (this.keyInput.IsKeyDown(Key.W)){
-            this.engine.render.offsetY -= this.client.moveSpeed;
+            this.engine.render.offsetY += this.client.moveSpeed;
         }
         
         if(this.keyInput.IsKeyDown(Key.S)) {
-            this.engine.render.offsetY += this.client.moveSpeed;
+            this.engine.render.offsetY -= this.client.moveSpeed;
         }
 
         if(this.keyInput.IsKeyDown(Key.A)) {
-            this.engine.render.offsetX -= this.client.moveSpeed;
+            this.engine.render.offsetX += this.client.moveSpeed;
         }
         
         if(this.keyInput.IsKeyDown(Key.D)) {
-            this.engine.render.offsetX += this.client.moveSpeed;
+            this.engine.render.offsetX -= this.client.moveSpeed;
         }
     }
 
@@ -330,6 +330,12 @@ public partial class MainWindow : Window {
     private void PlayBackSpeed_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
         if(sender is Slider slider) {
             this.engine.SetPlayBackSpeed((float)slider.Value);
+        }
+    }
+
+    private void Scale_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        if(sender is Slider slider) {
+            this.engine.render.scale = slider.Value;
         }
     }
 
