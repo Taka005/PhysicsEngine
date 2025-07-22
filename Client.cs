@@ -23,6 +23,7 @@ namespace PhysicsEngineGUI {
         public double vecX = 0;
         public double vecY = 0;
         public Color? color;
+        public double moveSpeed = 3;
 
         private List<string> history = [];
 

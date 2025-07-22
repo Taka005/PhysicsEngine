@@ -110,19 +110,19 @@ public partial class MainWindow : Window {
 
     private void Update(object? sender, EventArgs e) {
         if (this.keyInput.IsKeyDown(Key.W)){
-            this.engine.render.offsetY -= 3;
+            this.engine.render.offsetY -= this.client.moveSpeed;
         }
         
         if(this.keyInput.IsKeyDown(Key.S)) {
-            this.engine.render.offsetY += 3;
+            this.engine.render.offsetY += this.client.moveSpeed;
         }
 
         if(this.keyInput.IsKeyDown(Key.A)) {
-            this.engine.render.offsetX -= 3;
+            this.engine.render.offsetX -= this.client.moveSpeed;
         }
         
         if(this.keyInput.IsKeyDown(Key.D)) {
-            this.engine.render.offsetX += 3;
+            this.engine.render.offsetX += this.client.moveSpeed;
         }
     }
 
@@ -411,7 +411,7 @@ public partial class MainWindow : Window {
     }
 
     private void Setting_Click(object sender, RoutedEventArgs e) {
-        SettingWindow settingWindow = new SettingWindow(this.engine){
+        SettingWindow settingWindow = new SettingWindow(this.engine,this.client){
             Owner = this
          };
 

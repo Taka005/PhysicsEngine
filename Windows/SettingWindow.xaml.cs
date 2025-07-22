@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using PhysicsEngineCore;
 
 namespace PhysicsEngineGUI{
     public partial class SettingWindow : Window{
         private readonly Engine engine;
+        private readonly Client client;
 
-        public SettingWindow(Engine engine){
+        public SettingWindow(Engine engine,Client client){
             this.engine = engine;
+            this.client = client;
 
             InitializeComponent();
+
+            this.TrackingLimitSlider.Value = this.engine.trackingLimit;
+            this.TrackingIntervalSlider.Value = this.engine.trackingInterval;
+            this.MovementLimitSlider.Value = this.engine.movementLimit;
+            this.PpsSlider.Value = this.engine.pps;
+            this.MoveSpeedSlider.Value = this.client.moveSpeed;
         }
 
         private void TrackingLimit_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -44,6 +41,12 @@ namespace PhysicsEngineGUI{
         private void Pps_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.engine.SetPps((int)slider.Value);
+            }
+        }
+
+        private void MoveSpeed_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.client.moveSpeed = slider.Value;
             }
         }
     }
