@@ -31,12 +31,12 @@
                     <local:EditableTextBlock Text="{Binding Value, ElementName=StiffnessSlider, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Height="168" Width="170">
-                    <Slider x:Name="PosXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="PosXSlider_Change"/>
-                    <Slider x:Name="PosYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="PosYSlider_Change"/>
-                    <Slider x:Name="VelXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="VolXSlider_Change"/>
-                    <Slider x:Name="VelYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="VolYSlider_Change"/>
-                    <Slider x:Name="MassSlider" Height="18" Width="150" Minimum="0" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="MassSlider_Change"/>
-                    <Slider x:Name="StiffnessSlider" Height="18" Width="150" Minimum="0" Maximum="1" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="StiffnessSlider_Change"/>
+                    <Slider x:Name="PosXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="PosYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="VelXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="VelYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="MassSlider" Height="18" Width="150" Minimum="0" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="StiffnessSlider" Height="18" Width="150" Minimum="0" Maximum="1" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Height="46" Orientation="Horizontal" HorizontalAlignment="Center">

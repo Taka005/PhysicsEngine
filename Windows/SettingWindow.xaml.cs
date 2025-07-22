@@ -18,6 +18,12 @@ namespace PhysicsEngineGUI{
             this.MovementLimitSlider.Value = this.engine.movementLimit;
             this.PpsSlider.Value = this.engine.pps;
             this.MoveSpeedSlider.Value = this.client.moveSpeed;
+
+            this.TrackingLimitSlider.ValueChanged += TrackingLimit_Change;
+            this.TrackingIntervalSlider.ValueChanged += TrackingInterval_Change;
+            this.MovementLimitSlider.ValueChanged += MovementLimit_Change;
+            this.PpsSlider.ValueChanged += Pps_Change;
+            this.MoveSpeedSlider.ValueChanged += MoveSpeed_Change;
         }
 
         private void TrackingLimit_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {

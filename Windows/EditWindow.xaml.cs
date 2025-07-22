@@ -22,6 +22,14 @@ namespace PhysicsEngineGUI {
             this.MassSlider.Value = this.obj.mass;
             this.StiffnessSlider.Value = this.obj.stiffness;
             this.ObjectColor.SelectedColor = ParseColor.StringToColor(this.obj.color);
+
+            this.PosXSlider.ValueChanged += PosXSlider_Change;
+            this.PosYSlider.ValueChanged += PosYSlider_Change;
+            this.VelXSlider.ValueChanged += VelXSlider_Change;
+            this.VelYSlider.ValueChanged += VelYSlider_Change;
+            this.MassSlider.ValueChanged += MassSlider_Change;
+            this.StiffnessSlider.ValueChanged += StiffnessSlider_Change;
+            this.ObjectColor.SelectedColorChanged += ColorPicker_Change;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
@@ -47,13 +55,13 @@ namespace PhysicsEngineGUI {
             }
         }
 
-        private void VolXSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        private void VelXSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.obj.velocity = new Vector2(slider.Value, this.obj.velocity.Y);
             }
         }
 
-        private void VolYSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+        private void VelYSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.obj.velocity = new Vector2(this.obj.velocity.X, slider.Value);
             }

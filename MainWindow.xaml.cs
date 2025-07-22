@@ -14,7 +14,6 @@ namespace PhysicsEngineGUI;
 public partial class MainWindow : Window {
     public Engine engine { get; set; }
     public Client client { get; set; }
-
     public KeyInput keyInput { get; set; }
 
     public MainWindow() {
@@ -413,8 +412,8 @@ public partial class MainWindow : Window {
     private void Setting_Click(object sender, RoutedEventArgs e) {
         SettingWindow settingWindow = new SettingWindow(this.engine,this.client){
             Owner = this
-         };
+        };
 
-         settingWindow.Show();
+        settingWindow.Show();
     }
 }
