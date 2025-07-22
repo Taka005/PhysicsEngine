@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using PhysicsEngineCore.Objects;
@@ -10,9 +11,9 @@ namespace PhysicsEngineGUI {
         private readonly IObject obj;
 
         public EditWindow(IObject obj) {
-            InitializeComponent();
-
             this.obj = obj;
+
+            InitializeComponent();
 
             this.ObjectId.Text = this.obj.id;
             this.PosXSlider.Value = this.obj.position.X;
@@ -74,7 +75,7 @@ namespace PhysicsEngineGUI {
 
         private void ColorPicker_Change(object sender, RoutedPropertyChangedEventArgs<Color?> e) {
             if(sender is ColorPicker picker) {
-                picker.SelectedColor.ToString();
+                this.obj.color = picker.SelectedColor.ToString() ?? "#F00000";
             }
         }
     }
