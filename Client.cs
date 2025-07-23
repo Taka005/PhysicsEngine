@@ -276,6 +276,20 @@ namespace PhysicsEngineGUI {
                 this.spawnType = ObjectType.Curve;
             }
         }
+
+        public double calcPosX(double value) {
+            value -= this.engine.render.offsetX;
+            value /= this.engine.render.scale;
+
+            return value;
+        }
+
+        public double calcPosY(double value) {
+            value -= this.engine.render.offsetY;
+            value /= this.engine.render.scale;
+
+            return value;
+        }
     }
 
     public enum ToolType {
