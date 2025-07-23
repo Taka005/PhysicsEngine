@@ -19,7 +19,7 @@ public partial class MainWindow : Window {
     public MainWindow() {
         EngineOption engineOption = new EngineOption {
             gravity = 100,
-            friction = 0.01,
+            friction = 0,
             pps = 180,
         };
 

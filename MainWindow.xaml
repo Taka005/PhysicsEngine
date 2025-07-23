@@ -58,7 +58,7 @@
                     </StackPanel>
                     <StackPanel Height="120" Width="181">
                         <Slider x:Name="gravitySlider" Height="18" Width="150" Minimum="0" Maximum="1000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Gravity_Change"/>
-                        <Slider x:Name="frictionSlider" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0.01" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Friction_Change"/>
+                        <Slider x:Name="frictionSlider" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Friction_Change"/>
                         <Slider x:Name="playBackSpeedSlider" Height="18" Width="150" Minimum="0.1" Maximum="3" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="PlayBackSpeed_Change"/>
                         <Slider x:Name="scaleSlider" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Scale_Change"/>
                     </StackPanel>
