@@ -40,6 +40,9 @@ namespace PhysicsEngineGUI {
         }
 
         public void MouseMove(MouseEventArgs e, Point point) {
+            point.X = this.calcPosX(point.X);
+            point.Y = this.calcPosY(point.Y);
+
             if(this.toolType == ToolType.Move) {
                 if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
 
@@ -60,6 +63,9 @@ namespace PhysicsEngineGUI {
         }
 
         public void MouseLeftDown(Point point) {
+            point.X = this.calcPosX(point.X);
+            point.Y = this.calcPosY(point.Y);
+
             if(this.toolType == ToolType.Spawn) {
                 if(this.spawnType == ObjectType.Circle) {
                     this.AddHistory();
