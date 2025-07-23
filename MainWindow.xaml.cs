@@ -401,6 +401,16 @@ public partial class MainWindow : Window {
         }
     }
 
+    private void DynamicTrackingMode_Click(Object sender, RoutedEventArgs e) {
+        if(sender is MenuItem dynamicTrackingMenuItem) {
+            if(dynamicTrackingMenuItem.IsChecked) {
+                this.engine.isDynamicTrackingMode = true;
+            } else {
+                this.engine.isDynamicTrackingMode = false;
+            }
+        }
+    }
+
     private void TrackingMode_Click(Object sender, RoutedEventArgs e) {
         if(sender is MenuItem trackingModeMenuItem) {
             if(trackingModeMenuItem.IsChecked) {
