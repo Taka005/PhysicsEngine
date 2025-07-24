@@ -19,7 +19,7 @@ public partial class MainWindow : Window {
     public MainWindow() {
         EngineOption engineOption = new EngineOption {
             gravity = 100,
-            friction = 0.01,
+            friction = 0,
             pps = 180,
         };
 
@@ -393,6 +393,16 @@ public partial class MainWindow : Window {
                 this.client.connectionType = connectionType.Dynamic;
             } else {
                 this.client.connectionType = connectionType.Minimum;
+            }
+        }
+    }
+
+    private void DynamicTrackingMode_Click(Object sender, RoutedEventArgs e) {
+        if(sender is MenuItem dynamicTrackingMenuItem) {
+            if(dynamicTrackingMenuItem.IsChecked) {
+                this.engine.isDynamicTrackingMode = true;
+            } else {
+                this.engine.isDynamicTrackingMode = false;
             }
         }
     }

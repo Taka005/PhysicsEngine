@@ -21,7 +21,9 @@
                 <MenuItem x:Name="デバッグモード" Header="デバッグモード" IsCheckable="True" IsChecked="False" Click="DebugMode_Click"/>
                 <MenuItem x:Name="開発者モード" Header="開発者モード" IsCheckable="True" IsChecked="False"/>
                 <MenuItem x:Name="カスタムスクリプトの実行" Header="カスタムスクリプトの実行" IsCheckable="True" IsChecked="False"/>
+                <Separator/>
                 <MenuItem x:Name="動的接続モード" Header="動的接続モード" IsCheckable="True" IsChecked="False" Click="ConnectionMode_Click"/>
+                <MenuItem x:Name="動的トラッキングモード" Header="動的トラッキングモード" IsCheckable="True" IsChecked="False" Click="DynamicTrackingMode_Click"/>
                 <Separator/>
                 <MenuItem x:Name="物体を削除" Header="物体を削除" Click="Reset_Click"/>
                 <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除" Click="TrackingDelete_Click"/>
@@ -56,7 +58,7 @@
                     </StackPanel>
                     <StackPanel Height="120" Width="181">
                         <Slider x:Name="gravitySlider" Height="18" Width="150" Minimum="0" Maximum="1000" Value="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Gravity_Change"/>
-                        <Slider x:Name="frictionSlider" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0.01" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Friction_Change"/>
+                        <Slider x:Name="frictionSlider" Height="18" Width="150" Minimum="-1" Maximum="1" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Friction_Change"/>
                         <Slider x:Name="playBackSpeedSlider" Height="18" Width="150" Minimum="0.1" Maximum="3" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="PlayBackSpeed_Change"/>
                         <Slider x:Name="scaleSlider" Height="18" Width="150" Minimum="0.1" Maximum="10" Value="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" ValueChanged="Scale_Change"/>
                     </StackPanel>
