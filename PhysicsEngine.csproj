@@ -7,20 +7,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <Authors>Taka</Authors>
-    <Description>物理エンジンのUI</Description>
+    <Description>物理エンジン</Description>
     <Copyright>Copyright © 2025 Taka</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/Taka005/PhysicsEngineGUI/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Taka005/PhysicsEngine/</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="PhysicsEngineCore">
-      <HintPath>..\Taka005\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
+      <HintPath>..\..\..\..\source\repos\Taka005\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 
