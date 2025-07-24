@@ -19,7 +19,7 @@
             <MenuItem x:Name="設定" Header="設定(_S)">
                 <MenuItem x:Name="トラッキングモード" Header="トラッキングモード" IsCheckable="True" IsChecked="False" Click="TrackingMode_Click"/>
                 <MenuItem x:Name="デバッグモード" Header="デバッグモード" IsCheckable="True" IsChecked="False" Click="DebugMode_Click"/>
-                <MenuItem x:Name="開発者モード" Header="開発者モード" IsCheckable="True" IsChecked="False"/>
+                <MenuItem x:Name="開発者モード" Header="開発者モード" IsCheckable="True" IsChecked="False" Click="DevMode_Click"/>
                 <MenuItem x:Name="カスタムスクリプトの実行" Header="カスタムスクリプトの実行" IsCheckable="True" IsChecked="False"/>
                 <Separator/>
                 <MenuItem x:Name="動的接続モード" Header="動的接続モード" IsCheckable="True" IsChecked="False" Click="ConnectionMode_Click"/>
