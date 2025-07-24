@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using PhysicsEngineCore;
@@ -34,7 +33,6 @@ namespace PhysicsEngineGUI {
         public void RestoreHistory() {
             if(this.history.Count > 0) {
                 this.engine.Import(this.history.Last());
-                Debug.WriteLine(this.history.Count);
                 this.history.RemoveAt(this.history.Count - 1);
             }
         }
