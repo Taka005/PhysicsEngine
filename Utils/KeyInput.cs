@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using System.Windows;
 
-namespace PhysicsEngineGUI.Utils{
+namespace PhysicsEngine.Utils{
      public class KeyInput : IDisposable{
         private readonly UIElement targetElement;
 

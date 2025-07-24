@@ -1,10 +1,10 @@
-﻿<Window x:Class="PhysicsEngineGUI.MainWindow"
+﻿<Window x:Class="PhysicsEngine.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:local="clr-namespace:PhysicsEngineGUI.Utils"
+        xmlns:local="clr-namespace:PhysicsEngine.Utils"
         mc:Ignorable="d"
         Title="PhysicsEngine" Height="800" Width="1000" ResizeMode="NoResize" Closing="Window_Closing">
     <DockPanel>
@@ -34,7 +34,7 @@
                 <MenuItem x:Name="ABOUT" Header="ABOUT" Click="About_Click"/>
                 <MenuItem x:Name="公式サイト" Header="公式サイト" Click="Site_Click"/>
                 <MenuItem x:Name="ソースとバイナリ" Header="ソースとバイナリ">
-                    <MenuItem x:Name="GUIモジュール" Header="GUIモジュール" Click="GUISource_Click"/>
+                    <MenuItem x:Name="アプリ" Header="アプリ" Click="AppSource_Click"/>
                     <MenuItem x:Name="コアモジュール" Header="コアモジュール" Click="CoreSource_Click"/>
                 </MenuItem>
                 <Separator/>

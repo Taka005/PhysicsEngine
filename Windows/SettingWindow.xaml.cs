@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using PhysicsEngineCore;
 
-namespace PhysicsEngineGUI{
+namespace PhysicsEngine{
     public partial class SettingWindow : Window{
         private readonly Engine engine;
         private readonly Client client;

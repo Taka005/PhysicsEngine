@@ -6,7 +6,7 @@ using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
 
-namespace PhysicsEngineGUI {
+namespace PhysicsEngine {
     public class Client(Window window, Engine engine) {
         private readonly Window window = window;
         private readonly Engine engine = engine;

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Windows;
 
-namespace PhysicsEngineGUI {
+namespace PhysicsEngine{
     public partial class AboutWindow : Window {
         public AboutWindow() {
             InitializeComponent();

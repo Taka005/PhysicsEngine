@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PhysicsEngineGUI.Utils {
+namespace PhysicsEngine.Utils {
     public class ClickPoint {
         private readonly List<Point> points = [];
 

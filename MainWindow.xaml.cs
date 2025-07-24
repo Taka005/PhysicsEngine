@@ -7,9 +7,9 @@ using Microsoft.Win32;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
-using PhysicsEngineGUI.Utils;
+using PhysicsEngine.Utils;
 
-namespace PhysicsEngineGUI {
+namespace PhysicsEngine {
     public partial class MainWindow : Window {
         public Engine engine { get; set; }
         public Client client { get; set; }
@@ -213,10 +213,10 @@ namespace PhysicsEngineGUI {
             }
         }
 
-        private void GUISource_Click(object sender, RoutedEventArgs e) {
+        private void AppSource_Click(object sender, RoutedEventArgs e) {
             try {
                 ProcessStartInfo psi = new ProcessStartInfo {
-                    FileName = "https://github.com/Taka005/PhysicsEngineGUI/",
+                    FileName = "https://github.com/Taka005/PhysicsEngine/",
                     UseShellExecute = true
                 };
 

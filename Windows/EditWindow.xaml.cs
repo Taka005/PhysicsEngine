@@ -5,7 +5,7 @@ using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Utils;
 using Xceed.Wpf.Toolkit;
 
-namespace PhysicsEngineGUI {
+namespace PhysicsEngine {
     public partial class EditWindow : Window {
         private readonly IObject obj;
 

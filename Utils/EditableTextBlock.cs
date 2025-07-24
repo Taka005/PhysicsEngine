@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace PhysicsEngineGUI.Utils {
+namespace PhysicsEngine.Utils {
     public class EditableTextBlock : ContentControl {
         private readonly Grid grid = new Grid();
         private readonly TextBox textBox = new TextBox();
