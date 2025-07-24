@@ -170,20 +170,40 @@ namespace PhysicsEngine {
                                 this.prePoint = null;
                                 this.prePrePoint = null;
                             }
+                        }else if(this.spawnType == ObjectType.Booster) {
+                            this.AddHistory();
+
+                            BoosterOption boosterOption = new BoosterOption {
+                                startX = this.prePoint.Value.X,
+                                startY = this.prePoint.Value.Y,
+                                endX = point.X,
+                                endY = point.Y,
+                                velocityX = this.vecX,
+                                velocityY = this.vecY,
+                                color = this.color.ToString() ?? "#F00000"
+                            };
+
+                            this.engine.SpawnEffect(boosterOption);
+
+                            this.prePoint = null;
                         }
                     }
                 }
             } else if(this.toolType == ToolType.Delete) {
                 List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
                 List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
+                List<IEffect> effects = this.engine.GetEffectsAt(point.X, point.Y);
 
                 foreach(IObject obj in objects) {
                     this.engine.DeSpawnObject(obj.id);
                 }
 
-
                 foreach(IGround ground in grounds) {
                     this.engine.DeSpawnGround(ground.id);
+                }
+
+                foreach(IEffect effect in effects) {
+                    this.engine.DeSpawnEffect(effect.id);
                 }
             } else if(this.toolType == ToolType.Move) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
@@ -278,6 +298,8 @@ namespace PhysicsEngine {
                 this.spawnType = ObjectType.Line;
             } else if(objectType == "曲線") {
                 this.spawnType = ObjectType.Curve;
+            }else if(objectType == "ブースター") {
+                this.spawnType = ObjectType.Booster;
             }
         }
 
@@ -313,7 +335,8 @@ namespace PhysicsEngine {
         Triangle,
         Rope,
         Line,
-        Curve
+        Curve,
+        Booster
     }
 
     public enum connectionType {

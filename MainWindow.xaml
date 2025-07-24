@@ -75,6 +75,7 @@
                             <ComboBoxItem Content="ロープ"/>
                             <ComboBoxItem Content="直線"/>
                             <ComboBoxItem Content="曲線"/>
+                            <ComboBoxItem Content="ブースター"/>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Height="145" Orientation="Horizontal" Width="283">
