@@ -141,6 +141,21 @@ namespace PhysicsEngine {
             this.client.MouseLeftButtonUp();
         }
 
+        private void Canvas_MouseScroll(object sender, MouseWheelEventArgs e) {
+            if((this.engine.render.scale <= 0.1&&e.Delta < 0) || (this.engine.render.scale >= 10&&e.Delta > 0)) return;
+
+            if(sender is Canvas canvas) {
+                //Point scrollPosition = e.GetPosition(canvas);
+
+                //this.engine.render.scaleOriginX = scrollPosition.X;
+                //this.engine.render.scaleOriginY = scrollPosition.Y;
+
+                this.engine.render.scale += Math.Sign(e.Delta)*0.1;
+
+                scaleSlider.Value = this.engine.render.scale;
+            }
+        }
+
         private void NewFile_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
