@@ -11,6 +11,14 @@ namespace PhysicsEngine.Utils {
         private string previewText = string.Empty;
         private bool isEditMode = false;
 
+        public EditableTextBlock() {
+            initializeControl();
+
+            this.MouseDown += EditableTextBlock_MouseDown;
+            this.textBox.KeyDown += TextBox_KeyDown;
+            this.textBox.LostFocus += TextBox_LostFocus;
+        }
+
         public string Text {
             get {
                 return (string)GetValue(TextProperty);
@@ -22,12 +30,11 @@ namespace PhysicsEngine.Utils {
 
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(EditableTextBlock), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public EditableTextBlock() {
-            initializeControl();
+        public static readonly RoutedEvent TextChangedEvent = EventManager.RegisterRoutedEvent(nameof(TextChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EditableTextBlock));
 
-            this.MouseDown += EditableTextBlock_MouseDown;
-            this.textBox.KeyDown += TextBox_KeyDown;
-            this.textBox.LostFocus += TextBox_LostFocus;
+        public event RoutedEventHandler TextChanged {
+            add { AddHandler(TextChangedEvent, value); }
+            remove { RemoveHandler(TextChangedEvent, value); }
         }
 
         private void initializeControl() {
@@ -71,6 +78,11 @@ namespace PhysicsEngine.Utils {
             if(e.Key == Key.Enter) {
                 this.isEditMode = false;
                 OnIsEditModeChanged(isEditMode);
+
+                if (this.previewText != this.Text) {
+                    OnTextChanged();
+                }
+
                 e.Handled = true;
             } else if(e.Key == Key.Escape) {
                 this.textBox.Text = previewText;
@@ -83,12 +95,22 @@ namespace PhysicsEngine.Utils {
         private void TextBox_LostFocus(object sender, RoutedEventArgs e) {
             this.isEditMode = false;
             this.OnIsEditModeChanged(isEditMode);
+
+            if (this.previewText != this.Text) {
+                OnTextChanged();
+            }
+
             e.Handled = true;
         }
 
         private void OnIsEditModeChanged(bool value) {
             this.textBlock.Visibility = value ? Visibility.Hidden : Visibility.Visible;
             this.textBox.Visibility = value ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        protected virtual void OnTextChanged() {
+            RoutedEventArgs args = new RoutedEventArgs(TextChangedEvent, this);
+            RaiseEvent(args);
         }
     }
 }

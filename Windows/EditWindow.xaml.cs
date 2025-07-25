@@ -23,7 +23,6 @@ namespace PhysicsEngine {
             this.StiffnessSlider.Value = this.obj.stiffness;
             this.ObjectColor.SelectedColor = ParseColor.StringToColor(this.obj.color);
 
-            this.ObjectId.SizeChanged += ObjectId_Change;
             this.PosXSlider.ValueChanged += PosXSlider_Change;
             this.PosYSlider.ValueChanged += PosYSlider_Change;
             this.VelXSlider.ValueChanged += VelXSlider_Change;
@@ -34,7 +33,6 @@ namespace PhysicsEngine {
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
-            this.ObjectId.Text = this.obj.id;
             this.PosXSlider.Value = this.obj.position.X;
             this.PosYSlider.Value = this.obj.position.Y;
             this.VelXSlider.Value = this.obj.velocity.X;
@@ -42,12 +40,6 @@ namespace PhysicsEngine {
             this.MassSlider.Value = this.obj.mass;
             this.StiffnessSlider.Value = this.obj.stiffness;
             this.ObjectColor.SelectedColor = ParseColor.StringToColor(this.obj.color);
-        }
-
-        private void ObjectId_Change(object sender, RoutedEventArgs  e) {
-            if(sender is TextBox textBox) {
-                this.obj.id = textBox.Text;
-            }
         }
 
         private void PosXSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
