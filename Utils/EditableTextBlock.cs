@@ -28,13 +28,28 @@ namespace PhysicsEngine.Utils {
             }
         }
 
+        public bool IsReadOnly {
+            get { 
+                return (bool)GetValue(IsReadOnlyProperty);
+            }
+            set {
+                SetValue(IsReadOnlyProperty, value);
+            }
+        }
+
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(EditableTextBlock), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public static readonly RoutedEvent TextChangedEvent = EventManager.RegisterRoutedEvent(nameof(TextChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EditableTextBlock));
 
+        public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.Register(nameof(IsReadOnly), typeof(bool), typeof(EditableTextBlock), new PropertyMetadata(false));
+
         public event RoutedEventHandler TextChanged {
-            add { AddHandler(TextChangedEvent, value); }
-            remove { RemoveHandler(TextChangedEvent, value); }
+            add {
+                AddHandler(TextChangedEvent, value);
+            }
+            remove {
+                RemoveHandler(TextChangedEvent, value);
+            }
         }
 
         private void initializeControl() {
@@ -42,6 +57,13 @@ namespace PhysicsEngine.Utils {
             this.textBox.Visibility = Visibility.Hidden;
             this.textBox.VerticalAlignment = VerticalAlignment.Center;
             this.textBox.VerticalContentAlignment = VerticalAlignment.Center;
+
+            Binding isReadOnlyBinding = new Binding(nameof(IsReadOnly)){
+                Source = this,
+                Mode = BindingMode.OneWay
+            };
+
+            this.textBox.SetBinding(TextBox.IsReadOnlyProperty, isReadOnlyBinding);
 
             this.textBlock.Visibility = Visibility.Visible;
             this.textBlock.VerticalAlignment = VerticalAlignment.Center;

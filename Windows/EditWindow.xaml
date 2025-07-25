@@ -11,7 +11,7 @@
         <StackPanel>
             <StackPanel Height="36" Width="150" Orientation="Horizontal">
                 <Label Content="物体ID" HorizontalAlignment="Center" Height="25"/>
-                <TextBox x:Name="ObjectId" Width="94" Height="16" IsReadOnly="True"/>
+                <local:EditableTextBlock x:Name="ObjectId" Width="96" Height="20" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="168" Width="264">
                 <StackPanel Height="168" Width="60">
