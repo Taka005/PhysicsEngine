@@ -25,11 +25,10 @@ namespace PhysicsEngine.Utils {
         public EditableTextBlock() {
             initializeControl();
 
-            this.MouseDown += editableTextBlock_MouseDown;
-            this.textBox.KeyDown += textBox_KeyDown;
-            this.textBox.LostFocus += textBox_LostFocus;
+            this.MouseDown += EditableTextBlock_MouseDown;
+            this.textBox.KeyDown += TextBox_KeyDown;
+            this.textBox.LostFocus += TextBox_LostFocus;
         }
-
 
         private void initializeControl() {
             this.textBox.Padding = new Thickness(1.0);
@@ -57,37 +56,37 @@ namespace PhysicsEngine.Utils {
             this.textBlock.SetBinding(TextBlock.TextProperty, binding);
         }
 
-        private void editableTextBlock_MouseDown(object sender, MouseEventArgs e) {
+        private void EditableTextBlock_MouseDown(object sender, MouseEventArgs e) {
             if(!isEditMode) {
                 this.previewText = textBlock.Text;
                 this.isEditMode = true;
-                this.onIsEditModeChanged(isEditMode);
+                this.OnIsEditModeChanged(isEditMode);
                 this.textBox.Focus();
                 this.textBox.SelectAll();
                 e.Handled = true;
             }
         }
 
-        private void textBox_KeyDown(object sender, KeyEventArgs e) {
+        private void TextBox_KeyDown(object sender, KeyEventArgs e) {
             if(e.Key == Key.Enter) {
                 this.isEditMode = false;
-                onIsEditModeChanged(isEditMode);
+                OnIsEditModeChanged(isEditMode);
                 e.Handled = true;
             } else if(e.Key == Key.Escape) {
                 this.textBox.Text = previewText;
                 this.isEditMode = false;
-                this.onIsEditModeChanged(isEditMode);
+                this.OnIsEditModeChanged(isEditMode);
                 e.Handled = true;
             }
         }
 
-        private void textBox_LostFocus(object sender, RoutedEventArgs e) {
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e) {
             this.isEditMode = false;
-            this.onIsEditModeChanged(isEditMode);
+            this.OnIsEditModeChanged(isEditMode);
             e.Handled = true;
         }
 
-        private void onIsEditModeChanged(bool value) {
+        private void OnIsEditModeChanged(bool value) {
             this.textBlock.Visibility = value ? Visibility.Hidden : Visibility.Visible;
             this.textBox.Visibility = value ? Visibility.Visible : Visibility.Hidden;
         }
