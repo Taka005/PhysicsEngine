@@ -448,5 +448,11 @@ namespace PhysicsEngine {
                 }
             }
         }
+
+        private void ResetScaleOffset_Click(Object sender, RoutedEventArgs e) {
+            this.engine.render.ResetTransform();
+
+            scaleSlider.Value = 1;
+        }
     }
 }
