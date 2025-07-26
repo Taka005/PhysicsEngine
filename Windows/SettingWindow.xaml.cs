@@ -18,12 +18,14 @@ namespace PhysicsEngine{
             this.MovementLimitSlider.Value = this.engine.movementLimit;
             this.PpsSlider.Value = this.engine.pps;
             this.MoveSpeedSlider.Value = this.client.moveSpeed;
+            this.GridSlider.Value = this.engine.render.gridInterval;
 
             this.TrackingLimitSlider.ValueChanged += TrackingLimit_Change;
             this.TrackingIntervalSlider.ValueChanged += TrackingInterval_Change;
             this.MovementLimitSlider.ValueChanged += MovementLimit_Change;
             this.PpsSlider.ValueChanged += Pps_Change;
             this.MoveSpeedSlider.ValueChanged += MoveSpeed_Change;
+            this.GridSlider.ValueChanged += Grid_Change;
         }
 
         private void TrackingLimit_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -53,6 +55,12 @@ namespace PhysicsEngine{
         private void MoveSpeed_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.client.moveSpeed = slider.Value;
+            }
+        }
+
+        private void Grid_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.engine.render.gridInterval = this.GridSlider.Value;
             }
         }
     }
