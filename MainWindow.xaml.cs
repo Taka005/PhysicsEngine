@@ -263,12 +263,22 @@ namespace PhysicsEngine {
             }
         }
 
-        private void DebugMode_Click(object sender, RoutedEventArgs e) {
+        private void DisplayVector_Click(object sender, RoutedEventArgs e) {
             if(sender is MenuItem debugMenuItem) {
                 if(debugMenuItem.IsChecked) {
-                    this.engine.render.isDebugMode = true;
+                    this.engine.render.isDisplayVector = true;
                 } else {
-                    this.engine.render.isDebugMode = false;
+                    this.engine.render.isDisplayVector = false;
+                }
+            }
+        }
+
+        private void DisplayGrid_Click(object sender, RoutedEventArgs e) {
+            if(sender is MenuItem debugMenuItem) {
+                if(debugMenuItem.IsChecked) {
+                    this.engine.render.isDisplayGrid = true;
+                } else {
+                    this.engine.render.isDisplayGrid = false;
                 }
             }
         }

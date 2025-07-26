@@ -17,12 +17,13 @@
                 <MenuItem x:Name="終了" Header="終了" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem x:Name="設定" Header="設定(_S)">
-                <MenuItem x:Name="トラッキングモード" Header="トラッキングモード" IsCheckable="True" IsChecked="False" Click="TrackingMode_Click"/>
-                <MenuItem x:Name="デバッグモード" Header="デバッグモード" IsCheckable="True" IsChecked="False" Click="DebugMode_Click"/>
-                <MenuItem x:Name="開発者モード" Header="開発者モード" IsCheckable="True" IsChecked="False" Click="DevMode_Click"/>
+                <MenuItem x:Name="ベクトルの表示" Header="ベクトルの表示" IsCheckable="True" IsChecked="False" Click="DisplayVector_Click"/>
+                <MenuItem x:Name="グリッドの表示" Header="グリッドの表示" IsCheckable="True" IsChecked="False" Click="DisplayGrid_Click"/>
                 <Separator/>
+                <MenuItem x:Name="トラッキングモード" Header="トラッキングモード" IsCheckable="True" IsChecked="False" Click="TrackingMode_Click"/>
                 <MenuItem x:Name="動的接続モード" Header="動的接続モード" IsCheckable="True" IsChecked="False" Click="ConnectionMode_Click"/>
                 <MenuItem x:Name="動的トラッキングモード" Header="動的トラッキングモード" IsCheckable="True" IsChecked="False" Click="DynamicTrackingMode_Click"/>
+                <MenuItem x:Name="開発者モード" Header="開発者モード" IsCheckable="True" IsChecked="False" Click="DevMode_Click"/>
                 <Separator/>
                 <MenuItem x:Name="物体を削除" Header="物体を削除" Click="Reset_Click"/>
                 <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除" Click="TrackingDelete_Click"/>
