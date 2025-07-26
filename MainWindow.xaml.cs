@@ -449,12 +449,12 @@ namespace PhysicsEngine {
             settingWindow.Show();
         }
 
-        private void DevMode_Click(object sender, RoutedEventArgs e) {
+        private void DebugMode_Click(object sender, RoutedEventArgs e) {
             if(sender is MenuItem devModeMenuItem) {
                 if(devModeMenuItem.IsChecked) {
-                    this.engine.render.isDevMode = true;
+                    this.engine.render.isDebugMode = true;
                 } else {
-                    this.engine.render.isDevMode = false;
+                    this.engine.render.isDebugMode = false;
                 }
             }
         }
