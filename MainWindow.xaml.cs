@@ -155,7 +155,7 @@ namespace PhysicsEngine {
             MessageBoxResult result = MessageBox.Show("新規作成しますか？", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if(result == MessageBoxResult.Yes) {
-                this.engine.Clear(force: true);
+                this.engine.Clear(true);
             }
         }
 
