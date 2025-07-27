@@ -4,6 +4,7 @@ using System.Windows.Media;
 using PhysicsEngineCore;
 using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Options;
+using PhysicsEngineCore.Objects.Interfaces;
 using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngine {
