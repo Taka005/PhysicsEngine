@@ -6,10 +6,10 @@ using PhysicsEngineCore.Utils;
 using Xceed.Wpf.Toolkit;
 
 namespace PhysicsEngine {
-    public partial class EditWindow : Window {
+    public partial class ObjectEditWindow : Window {
         private readonly IObject obj;
 
-        public EditWindow(IObject obj) {
+        public ObjectEditWindow(IObject obj) {
             this.obj = obj;
 
             InitializeComponent();
