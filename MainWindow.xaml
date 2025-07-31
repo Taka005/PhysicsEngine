@@ -118,7 +118,6 @@
                         <ComboBoxItem Content="削除"/>
                         <ComboBoxItem Content="接続"/>
                         <ComboBoxItem Content="接続解除"/>
-                        <ComboBoxItem Content="画面移動"/>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
