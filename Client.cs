@@ -285,8 +285,6 @@ namespace PhysicsEngine {
                 this.toolType = ToolType.Edit;
             } else if(toolType == "移動") {
                 this.toolType = ToolType.Move;
-            } else if(toolType == "画面移動") {
-                this.toolType = ToolType.ScreenMove;
             } else if(toolType == "接続") {
                 this.toolType = ToolType.Connection;
             } else if(toolType == "接続解除") {
@@ -333,7 +331,6 @@ namespace PhysicsEngine {
         Delete,
         Move,
         Edit,
-        ScreenMove,
         Connection,
         DisConnection
     };
