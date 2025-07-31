@@ -1,0 +1,54 @@
+﻿<Window x:Class="PhysicsEngine.GroundEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:PhysicsEngine.Utils"
+        mc:Ignorable="d"
+        Title="地面の編集" Height="370" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <StackPanel Height="36" Width="150" Orientation="Horizontal">
+                <Label Content="地面ID" HorizontalAlignment="Center" Height="25"/>
+                <local:EditableTextBlock x:Name="GroundId" Width="96" Height="20" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="196" Width="264">
+                <StackPanel Height="196" Width="60">
+                    <Label Content="始点X" Height="28" Width="60"/>
+                    <Label Content="始点Y" Height="28" Width="60"/>
+                    <Label Content="中点X" Height="28" Width="60"/>
+                    <Label Content="中点Y" Height="28" Width="60"/>
+                    <Label Content="終点X" Height="28" Width="60"/>
+                    <Label Content="終点Y" Height="28" Width="60"/>
+                    <Label Content="厚さ" Height="28" Width="60"/>
+                </StackPanel>
+                <StackPanel Height="196" Width="35">
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=StartXSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=StartYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock x:Name="MiddleXText" Text="{Binding Value, ElementName=MiddleXSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock x:Name="MiddleYText" Text="{Binding Value, ElementName=MiddleYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=EndXSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=EndYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <local:EditableTextBlock Text="{Binding Value, ElementName=WidthSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Height="196" Width="170">
+                    <Slider x:Name="StartXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="StartYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="MiddleXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="MiddleYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="EndXSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="EndYSlider" Height="18" Width="150" Minimum="-1000" Maximum="1000" Value="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                    <Slider x:Name="WidthSlider" Height="18" Width="150" Minimum="1" Maximum="100" Value="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="46" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="地面の色" Height="28" Width="55"/>
+                <xctk:ColorPicker x:Name="ObjectColor" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色" SelectedColorChanged="ColorPicker_Change"/>
+            </StackPanel>
+            <StackPanel Height="60" Width="215" HorizontalAlignment="Center">
+                <Button Content="更新" Click="UpdateButton_Click" Height="32" Width="56" Background="#FF027AFF" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -217,12 +217,20 @@ namespace PhysicsEngine {
                 }
             } else if(this.toolType == ToolType.Edit) {
                 List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
+                List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
+
                 if(objects.Count > 0) {
                     ObjectEditWindow eobjectEditWindow = new ObjectEditWindow(objects[0]) {
                         Owner = this.window
                     };
 
                     eobjectEditWindow.Show();
+                }else if(grounds.Count > 0) {
+                    GroundEditWindow groundEditWindow = new GroundEditWindow(grounds[0]) {
+                        Owner = this.window
+                    };
+
+                    groundEditWindow.Show();
                 }
             } else if(this.toolType == ToolType.Connection) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);

@@ -105,6 +105,8 @@ namespace PhysicsEngine {
             engine.SpawnGround(circleOption6);
             engine.SpawnGround(circleOption7);
             engine.SpawnGround(circleOption5);
+
+            ObjectTypeSelect.SelectionChanged += ObjectType_Change;
         }
 
         private void Update(object? sender, EventArgs e) {
@@ -368,6 +370,22 @@ namespace PhysicsEngine {
                 ComboBoxItem selectedContent = (ComboBoxItem)combobox.SelectedItem;
 
                 this.client.setSpawnType(selectedContent.Content.ToString() ?? "円");
+
+                if(this.client.spawnType == ObjectType.Booster) {
+                    SizeSlider.IsEnabled = false;
+                    MassSlider.IsEnabled = false;
+                    StiffnessSlider.IsEnabled = false;
+                    SizeText.IsEnabled = false;
+                    MassText.IsEnabled = false;
+                    StiffnessText.IsEnabled = false;
+                } else {
+                    SizeSlider.IsEnabled = true;
+                    MassSlider.IsEnabled = true;
+                    StiffnessSlider.IsEnabled = true;
+                    SizeText.IsEnabled = true;
+                    MassText.IsEnabled = true;
+                    StiffnessText.IsEnabled = true;
+                }
             }
         }
 

@@ -69,7 +69,7 @@
                 <StackPanel Margin="0,0,-2,0" Height="226">
                     <StackPanel Height="42" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Label Content="種類" Height="27" Width="37"/>
-                        <ComboBox x:Name="種類" Width="170" Height="22" VerticalAlignment="Center" SelectedIndex="0" SelectionChanged="ObjectType_Change">
+                        <ComboBox x:Name="ObjectTypeSelect" Width="170" Height="22" VerticalAlignment="Center" SelectedIndex="0">
                             <ComboBoxItem Content="円"/>
                             <ComboBoxItem Content="四角"/>
                             <ComboBoxItem Content="三角"/>
@@ -88,9 +88,9 @@
                             <Label Content="初速度Y" Height="28" Width="55"/>
                         </StackPanel>
                         <StackPanel Height="145" Width="35">
-                            <local:EditableTextBlock Text="{Binding Value, ElementName=SizeSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <local:EditableTextBlock Text="{Binding Value, ElementName=MassSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <local:EditableTextBlock Text="{Binding Value, ElementName=StiffnessSlider, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock x:Name="SizeText" Text="{Binding Value, ElementName=SizeSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock x:Name="MassText" Text="{Binding Value, ElementName=MassSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <local:EditableTextBlock x:Name="StiffnessText" Text="{Binding Value, ElementName=StiffnessSlider, StringFormat=\{0:F1\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <local:EditableTextBlock Text="{Binding Value, ElementName=VelXSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <local:EditableTextBlock Text="{Binding Value, ElementName=VelYSlider, StringFormat=\{0:F0\}}" Width="35" Height="17" Margin="0,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>

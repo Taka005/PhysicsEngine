@@ -72,7 +72,6 @@ namespace PhysicsEngine {
             }
         }
 
-
         private void StiffnessSlider_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.obj.stiffness = slider.Value;
