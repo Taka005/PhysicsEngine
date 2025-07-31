@@ -42,6 +42,8 @@ namespace PhysicsEngine {
             point.X = this.calcPosX(point.X);
             point.Y = this.calcPosY(point.Y);
 
+            this.engine.render.mousePosition = new Vector2(point.X,point.Y);
+
             if(this.toolType == ToolType.Move) {
                 if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
 
