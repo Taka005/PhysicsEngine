@@ -37,6 +37,8 @@ namespace PhysicsEngine {
             CompositionTarget.Rendering += this.engine.OnRendering;
             CompositionTarget.Rendering += this.Update;
 
+            this.KeyDown += this.Window_KeyDown;
+
             engine.Start();
 
             CircleOption circleOption1 = new CircleOption {
@@ -124,6 +126,71 @@ namespace PhysicsEngine {
 
             if(this.keyInput.IsKeyDown(Key.D)) {
                 this.engine.render.offsetX -= this.client.moveSpeed;
+            }
+        }
+        
+        private void Window_KeyDown(object sender, KeyEventArgs e) {
+            if(e.Key == Key.Space) {
+                if(this.engine.isStarted) {
+                    ChangeButton.Background = ParseColor.StringToBrush("#FF00AA00");
+                    ChangeButton.Content = "開始";
+
+
+                    this.engine.Stop();
+                } else {
+                    ChangeButton.Background = ParseColor.StringToBrush("#FFFF0000");
+                    ChangeButton.Content = "停止";
+
+                    this.engine.Start();
+                }
+            }else if(e.Key == Key.F) {
+                if(this.engine.render.isDisplayVector) {
+                    DisplayVector.IsChecked = false;
+
+                    this.engine.render.isDisplayVector = false;
+                } else {
+                    DisplayVector.IsChecked = true;
+
+                    this.engine.render.isDisplayVector = true;
+                }
+            }else if(e.Key == Key.G) {
+                if(this.engine.render.isDisplayGrid) {
+                    DisplayGrid.IsChecked = false;
+
+                    this.engine.render.isDisplayGrid = false;
+                } else {
+                    DisplayGrid.IsChecked = true;
+
+                    this.engine.render.isDisplayGrid = true;
+                }
+            }else if(e.Key == Key.D1) {
+                this.client.setTool("閲覧");
+
+                toolComboBox.SelectedIndex = 0;
+            } else if(e.Key == Key.D2) {
+                this.client.setTool("円");
+
+                toolComboBox.SelectedIndex = 1;
+            } else if(e.Key == Key.D3) {
+                this.client.setTool("四角");
+
+                toolComboBox.SelectedIndex = 2;
+            } else if(e.Key == Key.D4) {
+                this.client.setTool("三角");
+
+                toolComboBox.SelectedIndex = 3;
+            } else if(e.Key == Key.D5) {
+                this.client.setTool("線分");
+
+                toolComboBox.SelectedIndex = 4;
+            } else if(e.Key == Key.D6) {
+                this.client.setTool("曲線");
+
+                toolComboBox.SelectedIndex = 5;
+            } else if(e.Key == Key.D7) {
+                this.client.setTool("ブースター");
+
+                toolComboBox.SelectedIndex = 6;
             }
         }
 
