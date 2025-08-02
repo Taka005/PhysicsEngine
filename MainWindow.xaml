@@ -21,6 +21,7 @@
                 <MenuItem x:Name="DisplayGrid" Header="グリッドの表示" IsCheckable="True" IsChecked="False" Click="DisplayGrid_Click"/>
                 <Separator/>
                 <MenuItem x:Name="トラッキングモード" Header="トラッキングモード" IsCheckable="True" IsChecked="False" Click="TrackingMode_Click"/>
+                <MenuItem x:Name="グリッド交点設置モード" Header="グリッド交点設置モード" IsCheckable="True" IsChecked="False" Click="GridCrossMode_Click"/>
                 <MenuItem x:Name="動的接続モード" Header="動的接続モード" IsCheckable="True" IsChecked="False" Click="ConnectionMode_Click"/>
                 <MenuItem x:Name="動的トラッキングモード" Header="動的トラッキングモード" IsCheckable="True" IsChecked="False" Click="DynamicTrackingMode_Click"/>
                 <MenuItem x:Name="デバッグモード" Header="デバッグモード" IsCheckable="True" IsChecked="False" Click="DebugMode_Click"/>

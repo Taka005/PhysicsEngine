@@ -24,6 +24,7 @@ namespace PhysicsEngine {
         public double vecY = 0;
         public Color? color;
         public double moveSpeed = 3;
+        public bool isGridCrossMode = false;
 
         private List<string> history = [];
 
@@ -313,13 +314,21 @@ namespace PhysicsEngine {
         }
 
         public double calcPosX(double value) {
+            if(this.isGridCrossMode) {
+                value = this.engine.GetNearGridCrossPositionX(value);
+            }
+
             value -= this.engine.render.offsetX;
             value /= this.engine.render.scale;
-
+            
             return value;
         }
 
         public double calcPosY(double value) {
+            if(this.isGridCrossMode) {
+                value = this.engine.GetNearGridCrossPositionY(value);
+            }
+
             value -= this.engine.render.offsetY;
             value /= this.engine.render.scale;
 

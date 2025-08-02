@@ -549,5 +549,15 @@ namespace PhysicsEngine {
 
             scaleSlider.Value = 1;
         }
+
+        private void GridCrossMode_Click(object sender, RoutedEventArgs e) {
+            if(sender is MenuItem gridCrossModeMenuItem) {
+                if(gridCrossModeMenuItem.IsChecked) {
+                    this.client.isGridCrossMode = true;
+                } else {
+                    this.client.isGridCrossMode = false;
+                }
+            }
+        }
     }
 }
