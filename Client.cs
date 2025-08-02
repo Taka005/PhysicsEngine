@@ -40,10 +40,15 @@ namespace PhysicsEngine {
         }
 
         public void MouseMove(MouseEventArgs e, Point point) {
+            if(this.isGridCrossMode&&this.toolType == ToolType.Move) {
+                point.X = this.engine.GetNearGridCrossPositionX(point.X);
+                point.Y = this.engine.GetNearGridCrossPositionY(point.Y);
+            }
+
             point.X = this.calcPosX(point.X);
             point.Y = this.calcPosY(point.Y);
 
-            this.engine.render.mousePosition = new Vector2(point.X,point.Y);
+            this.engine.render.currentPosition = new Vector2(point.X,point.Y);
 
             if(this.toolType == ToolType.Move) {
                 if(e.LeftButton == MouseButtonState.Pressed && this.selectedEntity != null) {
@@ -314,7 +319,12 @@ namespace PhysicsEngine {
         }
 
         public double calcPosX(double value) {
-            if(this.isGridCrossMode) {
+            if(
+                this.isGridCrossMode&&
+                (
+                    this.toolType == ToolType.Spawn
+                )
+            ) {
                 value = this.engine.GetNearGridCrossPositionX(value);
             }
 
@@ -325,8 +335,13 @@ namespace PhysicsEngine {
         }
 
         public double calcPosY(double value) {
-            if(this.isGridCrossMode) {
-                value = this.engine.GetNearGridCrossPositionY(value);
+            if(
+                this.isGridCrossMode&&
+                (
+                    this.toolType == ToolType.Spawn
+                )
+            ) {
+                value = this.engine.GetNearGridCrossPositionX(value);
             }
 
             value -= this.engine.render.offsetY;
