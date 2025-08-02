@@ -23,7 +23,13 @@ namespace PhysicsEngine {
                 pps = 180,
             };
 
-            this.engine = new Engine(engineOption);
+            RenderOption renderOption = new RenderOption {
+                offsetX = 0,
+                offsetY = 0,
+                scale = 1
+            };
+
+            this.engine = new Engine(engineOption,renderOption);
             this.client = new Client(this, this.engine);
             this.keyInput = new KeyInput(this);
 
@@ -269,6 +275,8 @@ namespace PhysicsEngine {
                     gravitySlider.Value = this.engine.gravity;
                     frictionSlider.Value = this.engine.friction;
                     playBackSpeedSlider.Value = this.engine.playBackSpeed;
+
+                    scaleSlider.Value = this.engine.render.scale;
                 } catch(System.IO.IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
