@@ -6,6 +6,7 @@ using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Objects.Interfaces;
 using PhysicsEngineCore.Utils;
+using System.Diagnostics;
 
 namespace PhysicsEngine {
     public class Client(Window window, Engine engine) {
@@ -25,8 +26,9 @@ namespace PhysicsEngine {
         public Color? color;
         public double moveSpeed = 3;
         public bool isGridCrossMode = false;
+        public string? imageName = null;
 
-        private List<string> history = [];
+        private readonly List<string> history = [];
 
         public void AddHistory() {
             this.history.Add(this.engine.Export());
@@ -37,6 +39,16 @@ namespace PhysicsEngine {
                 this.engine.Import(this.history.Last());
                 this.history.RemoveAt(this.history.Count - 1);
             }
+        }
+
+        public void SetImageName(string imageName) {
+            if(imageName == "なし"){
+                this.imageName = null;
+
+                return;
+            }
+
+            this.imageName = imageName;
         }
 
         public void MouseMove(MouseEventArgs e, Point point) {
@@ -85,7 +97,8 @@ namespace PhysicsEngine {
                         stiffness = this.stiffness,
                         velocityX = this.vecX,
                         velocityY = this.vecY,
-                        color = this.color.ToString() ?? "#FFFF0000"
+                        color = this.color.ToString() ?? "#FFFF0000",
+                        imageName = this.imageName
                     };
 
                     this.engine.SpawnObject(circleOption);
@@ -100,7 +113,8 @@ namespace PhysicsEngine {
                         stiffness = this.stiffness,
                         velocityX = this.vecX,
                         velocityY = this.vecY,
-                        color = this.color.ToString() ?? "#FFFF0000"
+                        color = this.color.ToString() ?? "#FFFF0000",
+                        imageName = this.imageName
                     };
 
                     this.engine.SpawnObject(squareOption);
@@ -115,7 +129,8 @@ namespace PhysicsEngine {
                         stiffness = this.stiffness,
                         velocityX = this.vecX,
                         velocityY = this.vecY,
-                        color = this.color.ToString() ?? "#FFFF0000"
+                        color = this.color.ToString() ?? "#FFFF0000",
+                        imageName = this.imageName
                     };
 
                     this.engine.SpawnObject(triangleOption);
@@ -136,7 +151,8 @@ namespace PhysicsEngine {
                                 stiffness = this.stiffness,
                                 velocityX = this.vecX,
                                 velocityY = this.vecY,
-                                color = this.color.ToString() ?? "#FFFF0000"
+                                color = this.color.ToString() ?? "#FFFF0000",
+                                imageName = this.imageName
                             };
 
                             this.engine.SpawnObject(ropeOption);
@@ -151,7 +167,8 @@ namespace PhysicsEngine {
                                 endX = point.X,
                                 endY = point.Y,
                                 width = this.size,
-                                color = this.color.ToString() ?? "#FFFF0000"
+                                color = this.color.ToString() ?? "#FFFF0000",
+                                imageName = this.imageName
                             };
 
                             this.engine.SpawnGround(lineOption);
@@ -171,7 +188,8 @@ namespace PhysicsEngine {
                                     endX = point.X,
                                     endY = point.Y,
                                     width = this.size,
-                                    color = this.color.ToString() ?? "#FFFF0000"
+                                    color = this.color.ToString() ?? "#FFFF0000",
+                                    imageName = this.imageName
                                 };
 
                                 this.engine.SpawnGround(curveOption);
@@ -189,7 +207,8 @@ namespace PhysicsEngine {
                                 endY = point.Y,
                                 velocityX = this.vecX,
                                 velocityY = this.vecY,
-                                color = this.color.ToString() ?? "#FFFF0000"
+                                color = this.color.ToString() ?? "#FFFF0000",
+                                imageName = this.imageName
                             };
 
                             this.engine.SpawnEffect(boosterOption);

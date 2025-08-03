@@ -8,7 +8,6 @@ using PhysicsEngineCore;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
 using PhysicsEngine.Utils;
-using System.Reflection;
 using PhysicsEngine.Windows;
 
 namespace PhysicsEngine {
@@ -441,6 +440,14 @@ namespace PhysicsEngine {
             }
         }
 
+        private void Image_Change(object sender, SelectionChangedEventArgs e) {
+            if(sender is ComboBox combobox) {
+                string? selectedContent = combobox.SelectedItem as string;
+
+                this.client.SetImageName(selectedContent ?? "なし");
+            }
+        }
+
         private void ObjectType_Change(object sender, SelectionChangedEventArgs e) {
             if(sender is ComboBox combobox) {
                 ComboBoxItem selectedContent = (ComboBoxItem)combobox.SelectedItem;
@@ -544,7 +551,7 @@ namespace PhysicsEngine {
         }
 
         private void AssetsManage_Click(object sender, RoutedEventArgs e) {
-            AssetsManageWindow assetsManagerWindow = new AssetsManageWindow(this.engine) {
+            AssetsManageWindow assetsManagerWindow = new AssetsManageWindow(this.engine,ImageSelect) {
                 Owner = this
             };
 
