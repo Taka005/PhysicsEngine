@@ -9,6 +9,7 @@ using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
 using PhysicsEngine.Utils;
 using PhysicsEngine.Windows;
+using System.IO;
 
 namespace PhysicsEngine {
     public partial class MainWindow : Window {
@@ -257,6 +258,33 @@ namespace PhysicsEngine {
             }
         }
 
+         private void ZipSaveFile_Click(object sender, RoutedEventArgs e) {
+            SaveFileDialog saveFileDialog = new SaveFileDialog {
+                FileName = "PE_SaveData.zip",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
+                Filter = "すべてのファイル(*.*)|*.*|ZIPファイル(*.zip)|*.zip",
+                FilterIndex = 2,
+                Title = "保存先のファイルを選択してください",
+                RestoreDirectory = true
+            };
+
+            if(saveFileDialog.ShowDialog() == true) {
+                try {
+                    Stream zipStream = this.engine.ExportMap();
+                    FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write);
+                    zipStream.CopyTo(fileStream);
+                    fileStream.Dispose();
+                    zipStream.Dispose();
+                } catch(System.IO.IOException ex) {
+                    MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                } catch(System.Security.SecurityException ex) {
+                    MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                } catch(Exception ex) {
+                    MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
         private void OpenFile_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
@@ -277,6 +305,37 @@ namespace PhysicsEngine {
                     playBackSpeedSlider.Value = this.engine.playBackSpeed;
 
                     scaleSlider.Value = this.engine.render.scale;
+                } catch(System.IO.IOException ex) {
+                    MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                } catch(System.Security.SecurityException ex) {
+                    MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                } catch(Exception ex) {
+                    MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void ZipOpenFile_Click(object sender, RoutedEventArgs e) {
+            OpenFileDialog openFileDialog = new OpenFileDialog {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
+                Title = "開くファイルを選択してください",
+                Filter = "ZIPファイル(*.zip)|*.zip|すべてのファイル(*.*)|*.*",
+            };
+
+            if(openFileDialog.ShowDialog() == true) {
+                try {
+                    string filePath = openFileDialog.FileName;
+                    FileStream zipFs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+                    this.engine.ImportMap(zipFs);
+
+                    gravitySlider.Value = this.engine.gravity;
+                    frictionSlider.Value = this.engine.friction;
+                    playBackSpeedSlider.Value = this.engine.playBackSpeed;
+
+                    scaleSlider.Value = this.engine.render.scale;
+
+                    zipFs.Dispose();
                 } catch(System.IO.IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {

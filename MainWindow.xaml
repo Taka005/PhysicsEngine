@@ -14,6 +14,9 @@
                 <MenuItem x:Name="保存" Header="保存" Click="SaveFile_Click"/>
                 <MenuItem x:Name="開く" Header="開く" Click="OpenFile_Click"/>
                 <Separator/>
+                <MenuItem x:Name="マップを保存" Header="マップを保存" Click="ZipSaveFile_Click"/>
+                <MenuItem x:Name="マップを開く" Header="マップを開く" Click="ZipOpenFile_Click"/>
+                <Separator/>
                 <MenuItem x:Name="終了" Header="終了" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem x:Name="設定" Header="設定(_S)">
