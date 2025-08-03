@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="PhysicsEngine.Utils.ImageAssetBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Margin="5" BorderBrush="Gray" BorderThickness="1" Padding="10">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Source="{Binding ImageSource}" Width="100" Height="100" Margin="0,0,10,0" Stretch="Uniform"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="{Binding FileName}" FontWeight="Bold" FontSize="14"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding ImageWidth}"/>
+                <TextBlock Text=" x "/>
+                <TextBlock Text="{Binding ImageHeight}"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Column="2" Height="32" Width="56" Background="Red" Foreground="White" Content="削除" Margin="10,0,0,0" VerticalAlignment="Center" Click="DeleteButton_Click"/>
+    </Grid>
+</UserControl>

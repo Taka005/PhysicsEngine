@@ -9,6 +9,7 @@ using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
 using PhysicsEngine.Utils;
 using System.Reflection;
+using PhysicsEngine.Windows;
 
 namespace PhysicsEngine {
     public partial class MainWindow : Window {
@@ -540,6 +541,14 @@ namespace PhysicsEngine {
             };
 
             settingWindow.Show();
+        }
+
+        private void AssetsManage_Click(object sender, RoutedEventArgs e) {
+            AssetsManageWindow assetsManagerWindow = new AssetsManageWindow() {
+                Owner = this
+            };
+
+            assetsManagerWindow.Show();
         }
 
         private void DebugMode_Click(object sender, RoutedEventArgs e) {
