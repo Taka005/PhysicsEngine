@@ -544,7 +544,7 @@ namespace PhysicsEngine {
         }
 
         private void AssetsManage_Click(object sender, RoutedEventArgs e) {
-            AssetsManageWindow assetsManagerWindow = new AssetsManageWindow() {
+            AssetsManageWindow assetsManagerWindow = new AssetsManageWindow(this.engine) {
                 Owner = this
             };
 

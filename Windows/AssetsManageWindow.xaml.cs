@@ -3,13 +3,19 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using Microsoft.Win32;
 using PhysicsEngine.Utils;
+using PhysicsEngineCore;
+using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngine.Windows {
     /// <summary>
     /// AssetsManageWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class AssetsManageWindow : Window {
-        public AssetsManageWindow() {
+        private readonly Engine engine;
+
+        public AssetsManageWindow(Engine engine) {
+            this.engine = engine;
+
             InitializeComponent();
         }
 
@@ -19,17 +25,20 @@ namespace PhysicsEngine.Windows {
 
             if (openFileDialog.ShowDialog() == true){
                 try{
+                    Image image = this.engine.assets.Add(Path.GetFileName(openFileDialog.FileName), new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(openFileDialog.FileName);
                     bitmap.CacheOption = BitmapCacheOption.OnLoad;
                     bitmap.EndInit();
 
-                    ImageAssetBlock imageBlock = new ImageAssetBlock();
-                    imageBlock.ImageSource = bitmap;
-                    imageBlock.FileName = Path.GetFileName(openFileDialog.FileName);
-                    imageBlock.ImageWidth = bitmap.PixelWidth;
-                    imageBlock.ImageHeight = bitmap.PixelHeight;
+                    ImageAssetBlock imageBlock = new ImageAssetBlock{
+                        ImageSource = image.source,
+                        FileName = image.filename,
+                        ImageWidth = image.width,
+                        ImageHeight = image.height
+                    };
 
                     imageBlock.DeleteRequested += ImageBlock_DeleteRequested;
 
@@ -43,6 +52,7 @@ namespace PhysicsEngine.Windows {
         private void ImageBlock_DeleteRequested(object sender, RoutedEventArgs e){
             if(sender is ImageAssetBlock imageBlockToRemove) {
                 if (imageBlockToRemove != null){
+                    this.engine.assets.Remove(imageBlockToRemove.FileName);
                     ImageListPanel.Children.Remove(imageBlockToRemove);
                 }
             }

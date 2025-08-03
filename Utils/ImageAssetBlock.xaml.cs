@@ -7,6 +7,7 @@ namespace PhysicsEngine.Utils {
     /// ImageAssetBlock.xaml の相互作用ロジック
     /// </summary>
     public partial class ImageAssetBlock : UserControl {
+
         public static readonly RoutedEvent DeleteRequestedEvent = EventManager.RegisterRoutedEvent("DeleteRequested", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ImageAssetBlock));
 
         public event RoutedEventHandler DeleteRequested{
@@ -64,6 +65,7 @@ namespace PhysicsEngine.Utils {
 
         public ImageAssetBlock(){
             InitializeComponent();
+
             this.DataContext = this;
         }
 

@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Height="450" Width="400">
             <StackPanel Height="400" Width="400">
-                <ScrollViewer  VerticalScrollBarVisibility="Auto">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="ImageListPanel">
                     </StackPanel>
                 </ScrollViewer>
