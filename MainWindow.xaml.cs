@@ -335,6 +335,10 @@ namespace PhysicsEngine {
 
                     scaleSlider.Value = this.engine.render.scale;
 
+                    foreach(PhysicsEngineCore.Utils.Image image in this.engine.assets.images) {
+                        ImageSelect.Items.Add(image.filename);
+                    }
+
                     zipFs.Dispose();
                 } catch(System.IO.IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
