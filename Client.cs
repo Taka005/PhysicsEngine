@@ -340,9 +340,7 @@ namespace PhysicsEngine {
         public double calcPosX(double value) {
             if(
                 this.isGridCrossMode&&
-                (
-                    this.toolType == ToolType.Spawn
-                )
+                this.toolType == ToolType.Spawn
             ) {
                 value = this.engine.GetNearGridCrossPositionX(value);
             }
@@ -356,9 +354,7 @@ namespace PhysicsEngine {
         public double calcPosY(double value) {
             if(
                 this.isGridCrossMode&&
-                (
-                    this.toolType == ToolType.Spawn
-                )
+                this.toolType == ToolType.Spawn
             ) {
                 value = this.engine.GetNearGridCrossPositionX(value);
             }
