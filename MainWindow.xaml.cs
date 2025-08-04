@@ -260,9 +260,9 @@ namespace PhysicsEngine {
 
          private void ZipSaveFile_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog {
-                FileName = "PE_SaveData.zip",
+                FileName = "MapData.pe",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
-                Filter = "すべてのファイル(*.*)|*.*|ZIPファイル(*.zip)|*.zip",
+                Filter = "すべてのファイル(*.*)|*.*|マップファイル(*.pe)|*.pe",
                 FilterIndex = 2,
                 Title = "保存先のファイルを選択してください",
                 RestoreDirectory = true
@@ -319,7 +319,7 @@ namespace PhysicsEngine {
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
                 Title = "開くファイルを選択してください",
-                Filter = "ZIPファイル(*.zip)|*.zip|すべてのファイル(*.*)|*.*",
+                Filter = "マップファイル(*.pe)|*.pe|すべてのファイル(*.*)|*.*",
             };
 
             if(openFileDialog.ShowDialog() == true) {
