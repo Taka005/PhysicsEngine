@@ -235,7 +235,7 @@ namespace PhysicsEngine {
             }
         }
 
-        private void SaveFile_Click(object sender, RoutedEventArgs e) {
+        private void JsonSaveFile_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog {
                 FileName = "PE_SaveData.json",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
@@ -258,7 +258,7 @@ namespace PhysicsEngine {
             }
         }
 
-         private void ZipSaveFile_Click(object sender, RoutedEventArgs e) {
+         private void SaveFile_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog {
                 FileName = "MapData.pe",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
@@ -285,7 +285,7 @@ namespace PhysicsEngine {
             }
         }
 
-        private void OpenFile_Click(object sender, RoutedEventArgs e) {
+        private void JsonOpenFile_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
                 Title = "開くファイルを選択してください",
@@ -315,7 +315,7 @@ namespace PhysicsEngine {
             }
         }
 
-        private void ZipOpenFile_Click(object sender, RoutedEventArgs e) {
+        private void OpenFile_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
                 Title = "開くファイルを選択してください",
