@@ -170,34 +170,26 @@ namespace PhysicsEngine {
 
                     this.engine.render.isDisplayGrid = true;
                 }
+            }else if (e.Key == Key.T) {
+                this.engine.Step();
             }else if(e.Key == Key.D1) {
-                this.client.setTool("閲覧");
-
                 toolComboBox.SelectedIndex = 0;
             } else if(e.Key == Key.D2) {
-                this.client.setTool("円");
-
                 toolComboBox.SelectedIndex = 1;
             } else if(e.Key == Key.D3) {
-                this.client.setTool("四角");
-
                 toolComboBox.SelectedIndex = 2;
             } else if(e.Key == Key.D4) {
-                this.client.setTool("三角");
-
                 toolComboBox.SelectedIndex = 3;
             } else if(e.Key == Key.D5) {
-                this.client.setTool("線分");
-
                 toolComboBox.SelectedIndex = 4;
             } else if(e.Key == Key.D6) {
-                this.client.setTool("曲線");
-
                 toolComboBox.SelectedIndex = 5;
             } else if(e.Key == Key.D7) {
-                this.client.setTool("ブースター");
-
                 toolComboBox.SelectedIndex = 6;
+            }else if (e.Key == Key.D8){
+                toolComboBox.SelectedIndex = 7;
+            }else if( e.Key == Key.D9) {
+                toolComboBox.SelectedIndex = 8;
             }
         }
 
@@ -247,8 +239,8 @@ namespace PhysicsEngine {
 
             if(saveFileDialog.ShowDialog() == true) {
                 try {
-                    System.IO.File.WriteAllText(saveFileDialog.FileName, this.engine.Export());
-                } catch(System.IO.IOException ex) {
+                    File.WriteAllText(saveFileDialog.FileName, this.engine.Export());
+                } catch(IOException ex) {
                     MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
                     MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -258,7 +250,7 @@ namespace PhysicsEngine {
             }
         }
 
-         private void SaveFile_Click(object sender, RoutedEventArgs e) {
+        private void SaveFile_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog {
                 FileName = "MapData.pe",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
@@ -275,7 +267,7 @@ namespace PhysicsEngine {
                     zipStream.CopyTo(fileStream);
                     fileStream.Dispose();
                     zipStream.Dispose();
-                } catch(System.IO.IOException ex) {
+                } catch(IOException ex) {
                     MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
                     MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -296,7 +288,7 @@ namespace PhysicsEngine {
                 try {
                     string filePath = openFileDialog.FileName;
 
-                    string fileContent = System.IO.File.ReadAllText(filePath);
+                    string fileContent = File.ReadAllText(filePath);
 
                     this.engine.Import(fileContent);
 
@@ -305,7 +297,7 @@ namespace PhysicsEngine {
                     playBackSpeedSlider.Value = this.engine.playBackSpeed;
 
                     scaleSlider.Value = this.engine.render.scale;
-                } catch(System.IO.IOException ex) {
+                } catch(IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
                     MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -340,7 +332,7 @@ namespace PhysicsEngine {
                     }
 
                     zipFs.Dispose();
-                } catch(System.IO.IOException ex) {
+                } catch(IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
                     MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
