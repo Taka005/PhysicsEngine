@@ -15,7 +15,7 @@ namespace PhysicsEngine {
         private Point? prePoint = null;
         private Point? prePrePoint = null;
         private Entity? selectedEntity = null;
-        private IOption? selectedObjectOption = null;
+        private string? selectedObjectId = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
         public connectionType connectionType = connectionType.Minimum;
@@ -266,39 +266,12 @@ namespace PhysicsEngine {
                 if (objects.Count > 0){
                     IObject copyObject = objects[0];
 
-                    if (copyObject is Circle circle){
-                        this.selectedObjectOption = circle.ToOption();
-                    }else if (copyObject is Rope rope){
-                        this.selectedObjectOption = rope.ToOption();
-                    } else if (copyObject is Square square){
-                        this.selectedObjectOption = square.ToOption();
-                    }else if (copyObject is Triangle triangle){
-                        this.selectedObjectOption = triangle.ToOption();
-                    }
+                    this.selectedObjectId = copyObject.id;
                 }
             }else if (this.toolType == ToolType.Paste){
-                if(this.selectedObjectOption == null) return;
+                if(this.selectedObjectId == null) return;
 
-                this.selectedObjectOption.id = null;
-
-                if (this.selectedObjectOption is CircleOption circleOption){
-                    circleOption.posX = point.X;
-                    circleOption.posY = point.Y;
-
-                    this.engine.SpawnObject(circleOption);
-                } else if (this.selectedObjectOption is RopeOption ropeOption){
-                    this.engine.SpawnObject(ropeOption);
-                } else if (this.selectedObjectOption is SquareOption squareOption){
-                    squareOption.posX = point.X;
-                    squareOption.posY = point.Y;
-
-                    this.engine.SpawnObject(squareOption);
-                }else if (this.selectedObjectOption is TriangleOption triangleOption){
-                    triangleOption.posX = point.X;
-                    triangleOption.posY = point.Y;
-
-                    this.engine.SpawnObject(triangleOption);
-                }
+                this.engine.CopyObject(this.selectedObjectId,new Vector2(point.X, point.Y));
             } else if(this.toolType == ToolType.Connection) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
 
