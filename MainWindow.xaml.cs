@@ -186,10 +186,6 @@ namespace PhysicsEngine {
                 toolComboBox.SelectedIndex = 5;
             } else if(e.Key == Key.D7) {
                 toolComboBox.SelectedIndex = 6;
-            }else if (e.Key == Key.D8){
-                toolComboBox.SelectedIndex = 7;
-            }else if( e.Key == Key.D9) {
-                toolComboBox.SelectedIndex = 8;
             }
         }
 

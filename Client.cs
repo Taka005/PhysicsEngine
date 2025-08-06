@@ -260,18 +260,6 @@ namespace PhysicsEngine {
 
                     groundEditWindow.Show();
                 }
-            } else if (this.toolType == ToolType.Copy){
-                List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
- 
-                if (objects.Count > 0){
-                    IObject copyObject = objects[0];
-
-                    this.selectedObjectId = copyObject.id;
-                }
-            }else if (this.toolType == ToolType.Paste){
-                if(this.selectedObjectId == null) return;
-
-                this.engine.CopyObject(this.selectedObjectId,new Vector2(point.X, point.Y));
             } else if(this.toolType == ToolType.Connection) {
                 List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
 
@@ -325,10 +313,6 @@ namespace PhysicsEngine {
                 this.toolType = ToolType.Edit;
             } else if(toolType == "移動") {
                 this.toolType = ToolType.Move;
-            }else if(toolType == "コピー"){
-                this.toolType = ToolType.Copy;
-            }else if(toolType == "ペースト") {
-                this.toolType = ToolType.Paste;
             } else if(toolType == "接続") {
                 this.toolType = ToolType.Connection;
             } else if(toolType == "接続解除") {
@@ -389,8 +373,6 @@ namespace PhysicsEngine {
         Delete,
         Move,
         Edit,
-        Copy,
-        Paste,
         Connection,
         DisConnection
     };
