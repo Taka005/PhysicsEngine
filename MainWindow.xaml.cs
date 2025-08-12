@@ -258,11 +258,11 @@ namespace PhysicsEngine {
 
             if(saveFileDialog.ShowDialog() == true) {
                 try {
-                    Stream zipStream = this.engine.ExportMap();
-                    FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write);
-                    zipStream.CopyTo(fileStream);
-                    fileStream.Dispose();
-                    zipStream.Dispose();
+                    using(Stream zipStream = this.engine.ExportMap()) {
+                        using(FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write)) {
+                            zipStream.CopyTo(fileStream);
+                        }
+                    }
                 } catch(IOException ex) {
                     MessageBox.Show("ファイルの保存中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
@@ -312,22 +312,20 @@ namespace PhysicsEngine {
 
             if(openFileDialog.ShowDialog() == true) {
                 try {
-                    string filePath = openFileDialog.FileName;
-                    FileStream zipFs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    using(FileStream zipFs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read, FileShare.Read)) {
+                        this.engine.ImportMap(zipFs);
 
-                    this.engine.ImportMap(zipFs);
+                        gravitySlider.Value = this.engine.gravity;
+                        frictionSlider.Value = this.engine.friction;
+                        playBackSpeedSlider.Value = this.engine.playBackSpeed;
 
-                    gravitySlider.Value = this.engine.gravity;
-                    frictionSlider.Value = this.engine.friction;
-                    playBackSpeedSlider.Value = this.engine.playBackSpeed;
+                        scaleSlider.Value = this.engine.render.scale;
 
-                    scaleSlider.Value = this.engine.render.scale;
+                        foreach(PhysicsEngineCore.Utils.Image image in this.engine.assets.images) {
+                            ImageSelect.Items.Add(image.filename);
+                        }
 
-                    foreach(PhysicsEngineCore.Utils.Image image in this.engine.assets.images) {
-                        ImageSelect.Items.Add(image.filename);
                     }
-
-                    zipFs.Dispose();
                 } catch(IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
