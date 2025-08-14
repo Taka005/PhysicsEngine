@@ -13,7 +13,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ScrollViewer x:Name="ResultScrollViewer" Height="250" Width="480" Grid.Row="0" Margin="0,0,0,10" VerticalScrollBarVisibility="Auto">
-            <RichTextBox x:Name="ResultTextBlock" Focusable="False" IsReadOnly="True" Background="Transparent" BorderBrush="Transparent" FontFamily="Consolas" FontSize="14" Grid.Row="0" Margin="0,0,0,10"/>
+            <RichTextBox x:Name="ResultTextBlock" Focusable="False" IsReadOnly="True" Background="Transparent" BorderBrush="Transparent" FontFamily="Consolas" FontSize="14" Grid.Row="0" Margin="0,0,0,10">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
         </ScrollViewer>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <TextBox x:Name="CommandTextBox" Width="400" Height="30" VerticalContentAlignment="Center" KeyDown="CommandTextBox_KeyDown"/>

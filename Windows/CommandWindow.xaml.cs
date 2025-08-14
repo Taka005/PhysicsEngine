@@ -11,6 +11,7 @@ namespace PhysicsEngine.Windows{
     /// </summary>  
     public partial class CommandWindow : Window {
         private readonly Engine engine;
+        private readonly Dictionary<string, object> localVariables = [];
 
         public CommandWindow(Engine engine) {
             this.engine = engine;
@@ -35,7 +36,7 @@ namespace PhysicsEngine.Windows{
             if(string.IsNullOrEmpty(command)) return;
 
             try {
-                string? result = this.engine.command.Execute(command, []);
+                string? result = this.engine.command.Execute(command, this.localVariables);
 
                 DisplayResult(result ?? "");
             } catch(Exception ex) {
@@ -43,6 +44,7 @@ namespace PhysicsEngine.Windows{
             }
 
             CommandTextBox.Text = string.Empty;
+
             ScrollToEnd();
         }
 
@@ -50,6 +52,7 @@ namespace PhysicsEngine.Windows{
             TextRange tr = new TextRange(ResultTextBlock.Document.ContentEnd, ResultTextBlock.Document.ContentEnd);
             tr.Text = $"> {CommandTextBox.Text}\n{message}\n";
             tr.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
+
             ScrollToEnd();
         }
 
@@ -57,6 +60,7 @@ namespace PhysicsEngine.Windows{
             TextRange tr = new TextRange(ResultTextBlock.Document.ContentEnd, ResultTextBlock.Document.ContentEnd);
             tr.Text = $"> {CommandTextBox.Text}\nエラー: {errorMessage}\n";
             tr.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Red);
+
             ScrollToEnd();
         }
 
