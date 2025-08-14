@@ -607,6 +607,14 @@ namespace PhysicsEngine {
             assetsManagerWindow.Show();
         }
 
+        private void RunCommand_Click(object sender, RoutedEventArgs e) {
+            CommandWindow commandWindow = new CommandWindow(this.engine) {
+                Owner = this
+            };
+
+            commandWindow.Show();
+        }
+
         private void DebugMode_Click(object sender, RoutedEventArgs e) {
             if(sender is MenuItem devModeMenuItem) {
                 if(devModeMenuItem.IsChecked) {

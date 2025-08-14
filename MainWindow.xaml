@@ -34,6 +34,7 @@
                 <MenuItem x:Name="拡大縮小オフセットをリセット" Header="拡大縮小・オフセットをリセット" Click="ResetScaleOffset_Click"/>
                 <Separator/>
                 <MenuItem x:Name="アセットの管理" Header="アセットの管理" Click="AssetsManage_Click"/>
+                <MenuItem x:Name="コマンドの実行" Header="コマンド実行" Click="RunCommand_Click"/>
                 <MenuItem x:Name="詳細設定" Header="詳細設定" Click="Setting_Click"/>
             </MenuItem>
             <MenuItem x:Name="ヘルプメニュー" Header="ヘルプ(_H)">
