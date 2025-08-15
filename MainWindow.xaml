@@ -127,7 +127,7 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="753,485,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="169" Width="203">
+            <StackPanel Margin="753,465,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="169" Width="203">
                 <StackPanel Height="61" Orientation="Horizontal">
                     <ComboBox x:Name="toolComboBox" Width="170" Height="22" SelectedIndex="0" Padding="5,3,5,3" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="Tool_Change">
                         <ComboBoxItem Content="閲覧"/>

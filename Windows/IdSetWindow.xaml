@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhysicsEngine.Windows"
         mc:Ignorable="d"
-        Title="IDの設定" Height="90" Width="350">
+        Title="IDの設定" Height="90" Width="345" ResizeMode="NoResize">
     <Grid Margin="10">
         <StackPanel Orientation="Horizontal">
             <TextBox x:Name="IdSetTextBox" Width="250" Height="30" VerticalContentAlignment="Center" KeyDown="IdSetTextBox_KeyDown"/>

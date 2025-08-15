@@ -29,6 +29,8 @@ namespace PhysicsEngine.Windows{
         }
 
         private void SetId() {
+            if(string.IsNullOrWhiteSpace(this.IdSetTextBox.Text)) return;
+
             this.client.id = this.IdSetTextBox.Text.Trim();
 
             this.Close();
