@@ -6,7 +6,6 @@ using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Objects.Interfaces;
 using PhysicsEngineCore.Utils;
-using System.Diagnostics;
 
 namespace PhysicsEngine {
     public class Client(Window window, Engine engine) {
@@ -83,109 +82,89 @@ namespace PhysicsEngine {
         }
 
         public void MouseLeftDown(Point point) {
-            point.X = this.calcPosX(point.X);
-            point.Y = this.calcPosY(point.Y);
+            try {
+                point.X = this.calcPosX(point.X);
+                point.Y = this.calcPosY(point.Y);
 
-            if(this.toolType == ToolType.Spawn) {
-                if(this.spawnType == ObjectType.Circle) {
-                    this.AddHistory();
+                if(this.toolType == ToolType.Spawn) {
+                    if(this.spawnType == ObjectType.Circle) {
+                        this.AddHistory();
 
-                    CircleOption circleOption = new CircleOption {
-                        posX = point.X,
-                        posY = point.Y,
-                        mass = this.mass,
-                        diameter = this.size,
-                        stiffness = this.stiffness,
-                        velocityX = this.vecX,
-                        velocityY = this.vecY,
-                        color = this.color.ToString() ?? "#FFFF0000",
-                        imageName = this.imageName
-                    };
+                        CircleOption circleOption = new CircleOption {
+                            posX = point.X,
+                            posY = point.Y,
+                            mass = this.mass,
+                            diameter = this.size,
+                            stiffness = this.stiffness,
+                            velocityX = this.vecX,
+                            velocityY = this.vecY,
+                            color = this.color.ToString() ?? "#FFFF0000",
+                            imageName = this.imageName
+                        };
 
-                    this.engine.SpawnObject(circleOption);
-                } else if(this.spawnType == ObjectType.Square) {
-                    this.AddHistory();
+                        this.engine.SpawnObject(circleOption);
+                    } else if(this.spawnType == ObjectType.Square) {
+                        this.AddHistory();
 
-                    SquareOption squareOption = new SquareOption {
-                        posX = point.X,
-                        posY = point.Y,
-                        mass = this.mass,
-                        size = this.size,
-                        stiffness = this.stiffness,
-                        velocityX = this.vecX,
-                        velocityY = this.vecY,
-                        color = this.color.ToString() ?? "#FFFF0000",
-                        imageName = this.imageName
-                    };
+                        SquareOption squareOption = new SquareOption {
+                            posX = point.X,
+                            posY = point.Y,
+                            mass = this.mass,
+                            size = this.size,
+                            stiffness = this.stiffness,
+                            velocityX = this.vecX,
+                            velocityY = this.vecY,
+                            color = this.color.ToString() ?? "#FFFF0000",
+                            imageName = this.imageName
+                        };
 
-                    this.engine.SpawnObject(squareOption);
-                } else if(this.spawnType == ObjectType.Triangle) {
-                    this.AddHistory();
+                        this.engine.SpawnObject(squareOption);
+                    } else if(this.spawnType == ObjectType.Triangle) {
+                        this.AddHistory();
 
-                    TriangleOption triangleOption = new TriangleOption {
-                        posX = point.X,
-                        posY = point.Y,
-                        mass = this.mass,
-                        size = this.size,
-                        stiffness = this.stiffness,
-                        velocityX = this.vecX,
-                        velocityY = this.vecY,
-                        color = this.color.ToString() ?? "#FFFF0000",
-                        imageName = this.imageName
-                    };
+                        TriangleOption triangleOption = new TriangleOption {
+                            posX = point.X,
+                            posY = point.Y,
+                            mass = this.mass,
+                            size = this.size,
+                            stiffness = this.stiffness,
+                            velocityX = this.vecX,
+                            velocityY = this.vecY,
+                            color = this.color.ToString() ?? "#FFFF0000",
+                            imageName = this.imageName
+                        };
 
-                    this.engine.SpawnObject(triangleOption);
-                } else {
-                    if(this.prePoint == null) {
-                        this.prePoint = point;
+                        this.engine.SpawnObject(triangleOption);
                     } else {
-                        if(this.spawnType == ObjectType.Rope) {
-                            this.AddHistory();
-
-                            RopeOption ropeOption = new RopeOption {
-                                startX = this.prePoint.Value.X,
-                                startY = this.prePoint.Value.Y,
-                                endX = point.X,
-                                endY = point.Y,
-                                width = this.size,
-                                mass = this.mass,
-                                stiffness = this.stiffness,
-                                velocityX = this.vecX,
-                                velocityY = this.vecY,
-                                color = this.color.ToString() ?? "#FFFF0000",
-                                imageName = this.imageName
-                            };
-
-                            this.engine.SpawnObject(ropeOption);
-
-                            this.prePoint = null;
-                        } else if(this.spawnType == ObjectType.Line) {
-                            this.AddHistory();
-
-                            LineOption lineOption = new LineOption {
-                                startX = this.prePoint.Value.X,
-                                startY = this.prePoint.Value.Y,
-                                endX = point.X,
-                                endY = point.Y,
-                                width = this.size,
-                                color = this.color.ToString() ?? "#FFFF0000",
-                                imageName = this.imageName
-                            };
-
-                            this.engine.SpawnGround(lineOption);
-
-                            this.prePoint = null;
-                        } else if(this.spawnType == ObjectType.Curve) {
-                            if(this.prePrePoint == null) {
-                                this.prePrePoint = point;
-                            } else {
+                        if(this.prePoint == null) {
+                            this.prePoint = point;
+                        } else {
+                            if(this.spawnType == ObjectType.Rope) {
                                 this.AddHistory();
 
-                                CurveOption curveOption = new CurveOption {
+                                RopeOption ropeOption = new RopeOption {
                                     startX = this.prePoint.Value.X,
                                     startY = this.prePoint.Value.Y,
-                                    middleX = this.prePrePoint.Value.X,
-                                    middleY = this.prePrePoint.Value.Y,
+                                    endX = point.X,
+                                    endY = point.Y,
+                                    width = this.size,
+                                    mass = this.mass,
+                                    stiffness = this.stiffness,
+                                    velocityX = this.vecX,
+                                    velocityY = this.vecY,
+                                    color = this.color.ToString() ?? "#FFFF0000",
+                                    imageName = this.imageName
+                                };
+
+                                this.engine.SpawnObject(ropeOption);
+
+                                this.prePoint = null;
+                            } else if(this.spawnType == ObjectType.Line) {
+                                this.AddHistory();
+
+                                LineOption lineOption = new LineOption {
+                                    startX = this.prePoint.Value.X,
+                                    startY = this.prePoint.Value.Y,
                                     endX = point.X,
                                     endY = point.Y,
                                     width = this.size,
@@ -193,108 +172,132 @@ namespace PhysicsEngine {
                                     imageName = this.imageName
                                 };
 
-                                this.engine.SpawnGround(curveOption);
+                                this.engine.SpawnGround(lineOption);
 
                                 this.prePoint = null;
-                                this.prePrePoint = null;
+                            } else if(this.spawnType == ObjectType.Curve) {
+                                if(this.prePrePoint == null) {
+                                    this.prePrePoint = point;
+                                } else {
+                                    this.AddHistory();
+
+                                    CurveOption curveOption = new CurveOption {
+                                        startX = this.prePoint.Value.X,
+                                        startY = this.prePoint.Value.Y,
+                                        middleX = this.prePrePoint.Value.X,
+                                        middleY = this.prePrePoint.Value.Y,
+                                        endX = point.X,
+                                        endY = point.Y,
+                                        width = this.size,
+                                        color = this.color.ToString() ?? "#FFFF0000",
+                                        imageName = this.imageName
+                                    };
+
+                                    this.engine.SpawnGround(curveOption);
+
+                                    this.prePoint = null;
+                                    this.prePrePoint = null;
+                                }
+                            } else if(this.spawnType == ObjectType.Booster) {
+                                this.AddHistory();
+
+                                BoosterOption boosterOption = new BoosterOption {
+                                    startX = this.prePoint.Value.X,
+                                    startY = this.prePoint.Value.Y,
+                                    endX = point.X,
+                                    endY = point.Y,
+                                    velocityX = this.vecX,
+                                    velocityY = this.vecY,
+                                    color = this.color.ToString() ?? "#FFFF0000",
+                                    imageName = this.imageName
+                                };
+
+                                this.engine.SpawnEffect(boosterOption);
+
+                                this.prePoint = null;
                             }
-                        }else if(this.spawnType == ObjectType.Booster) {
-                            this.AddHistory();
+                        }
+                    }
+                } else if(this.toolType == ToolType.Delete) {
+                    List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
+                    List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
+                    List<IEffect> effects = this.engine.GetEffectsAt(point.X, point.Y);
 
-                            BoosterOption boosterOption = new BoosterOption {
-                                startX = this.prePoint.Value.X,
-                                startY = this.prePoint.Value.Y,
-                                endX = point.X,
-                                endY = point.Y,
-                                velocityX = this.vecX,
-                                velocityY = this.vecY,
-                                color = this.color.ToString() ?? "#FFFF0000",
-                                imageName = this.imageName
-                            };
+                    foreach(IObject obj in objects) {
+                        this.engine.DeSpawnObject(obj.id);
+                    }
 
-                            this.engine.SpawnEffect(boosterOption);
+                    foreach(IGround ground in grounds) {
+                        this.engine.DeSpawnGround(ground.id);
+                    }
 
-                            this.prePoint = null;
+                    foreach(IEffect effect in effects) {
+                        this.engine.DeSpawnEffect(effect.id);
+                    }
+                } else if(this.toolType == ToolType.Move) {
+                    List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
+                    if(entities.Count > 0) {
+                        Entity entity = entities[0];
+
+                        entity.velocity = Vector2.Zero;
+
+                        this.selectedEntity = entity;
+                    }
+                } else if(this.toolType == ToolType.Edit) {
+                    List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
+                    List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
+
+                    if(objects.Count > 0) {
+                        ObjectEditWindow eobjectEditWindow = new ObjectEditWindow(objects[0]) {
+                            Owner = this.window
+                        };
+
+                        eobjectEditWindow.Show();
+                    } else if(grounds.Count > 0) {
+                        GroundEditWindow groundEditWindow = new GroundEditWindow(grounds[0]) {
+                            Owner = this.window
+                        };
+
+                        groundEditWindow.Show();
+                    }
+                } else if(this.toolType == ToolType.Connection) {
+                    List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
+
+                    if(entities.Count > 0) {
+                        Entity entity = entities[0];
+
+                        if(this.selectedEntity == null) {
+                            this.selectedEntity = entity;
+                        } else {
+                            if(this.connectionType == connectionType.Dynamic) {
+                                double distance = Vector2.Distance(this.selectedEntity.position, entity.position);
+
+                                this.selectedEntity.connection.Add(entity, distance, this.selectedEntity.stiffness);
+                                entity.connection.Add(this.selectedEntity, distance, entity.stiffness);
+                            } else if(this.connectionType == connectionType.Minimum) {
+                                this.selectedEntity.connection.Add(entity, entity.radius + this.selectedEntity.radius, this.selectedEntity.stiffness);
+                                entity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
+                            }
+
+                            this.selectedEntity = null;
+                        }
+                    }
+                } else if(this.toolType == ToolType.DisConnection) {
+                    List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
+                    if(entities.Count > 0) {
+                        Entity entity = entities[0];
+
+                        if(this.selectedEntity == null) {
+                            this.selectedEntity = entity;
+                        } else {
+                            this.selectedEntity.connection.Remove(entity.id);
+                            entity.connection.Remove(this.selectedEntity.id);
+                            this.selectedEntity = null;
                         }
                     }
                 }
-            } else if(this.toolType == ToolType.Delete) {
-                List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
-                List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
-                List<IEffect> effects = this.engine.GetEffectsAt(point.X, point.Y);
-
-                foreach(IObject obj in objects) {
-                    this.engine.DeSpawnObject(obj.id);
-                }
-
-                foreach(IGround ground in grounds) {
-                    this.engine.DeSpawnGround(ground.id);
-                }
-
-                foreach(IEffect effect in effects) {
-                    this.engine.DeSpawnEffect(effect.id);
-                }
-            } else if(this.toolType == ToolType.Move) {
-                List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
-                if(entities.Count > 0) {
-                    Entity entity = entities[0];
-
-                    entity.velocity = Vector2.Zero;
-
-                    this.selectedEntity = entity;
-                }
-            } else if(this.toolType == ToolType.Edit) {
-                List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
-                List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
-
-                if(objects.Count > 0) {
-                    ObjectEditWindow eobjectEditWindow = new ObjectEditWindow(objects[0]) {
-                        Owner = this.window
-                    };
-
-                    eobjectEditWindow.Show();
-                }else if(grounds.Count > 0) {
-                    GroundEditWindow groundEditWindow = new GroundEditWindow(grounds[0]) {
-                        Owner = this.window
-                    };
-
-                    groundEditWindow.Show();
-                }
-            } else if(this.toolType == ToolType.Connection) {
-                List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
-
-                if(entities.Count > 0) {
-                    Entity entity = entities[0];
-
-                    if(this.selectedEntity == null) {
-                        this.selectedEntity = entity;
-                    } else {
-                        if(this.connectionType == connectionType.Dynamic) {
-                            double distance = Vector2.Distance(this.selectedEntity.position, entity.position);
-
-                            this.selectedEntity.connection.Add(entity, distance, this.selectedEntity.stiffness);
-                            entity.connection.Add(this.selectedEntity, distance, entity.stiffness);
-                        } else if(this.connectionType == connectionType.Minimum) {
-                            this.selectedEntity.connection.Add(entity, entity.radius + this.selectedEntity.radius, this.selectedEntity.stiffness);
-                            entity.connection.Add(this.selectedEntity, entity.radius + this.selectedEntity.radius, entity.stiffness);
-                        }
-
-                        this.selectedEntity = null;
-                    }
-                }
-            } else if(this.toolType == ToolType.DisConnection) {
-                List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
-                if(entities.Count > 0) {
-                    Entity entity = entities[0];
-
-                    if(this.selectedEntity == null) {
-                        this.selectedEntity = entity;
-                    } else {
-                        this.selectedEntity.connection.Remove(entity.id);
-                        entity.connection.Remove(this.selectedEntity.id);
-                        this.selectedEntity = null;
-                    }
-                }
+            } catch(Exception ex) {
+                MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
