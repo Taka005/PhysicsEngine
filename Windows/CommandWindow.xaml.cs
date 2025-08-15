@@ -21,14 +21,14 @@ namespace PhysicsEngine.Windows{
 
         private void CommandTextBox_KeyDown(object sender, KeyEventArgs e) {
             if(e.Key == Key.Enter) {
-                ExecuteCommand();
+                this.ExecuteCommand();
 
                 e.Handled = true;
             }
         }
 
         private void ExecuteButton_Click(object sender, RoutedEventArgs e) {
-            ExecuteCommand();
+            this.ExecuteCommand();
         }
 
         private void ExecuteCommand() {

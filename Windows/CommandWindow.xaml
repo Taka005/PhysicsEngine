@@ -23,7 +23,7 @@
         </ScrollViewer>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <TextBox x:Name="CommandTextBox" Width="400" Height="30" VerticalContentAlignment="Center" KeyDown="CommandTextBox_KeyDown"/>
-            <Button Content="実行" Width="80" Margin="10,0,0,0" Click="ExecuteButton_Click" Background="#FF8C8C8C" Foreground="White"/>
+            <Button Content="実行" Width="80" Margin="10,0,0,0" Click="ExecuteButton_Click" Background="#FF8C8C8C" Foreground="White" BorderBrush="{x:Null}"/>
         </StackPanel>
     </Grid>
 </Window>

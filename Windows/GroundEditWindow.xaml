@@ -47,7 +47,7 @@
                 <xctk:ColorPicker x:Name="ObjectColor" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色" SelectedColorChanged="ColorPicker_Change"/>
             </StackPanel>
             <StackPanel Height="60" Width="215" HorizontalAlignment="Center">
-                <Button Content="更新" Click="UpdateButton_Click" Height="32" Width="56" Background="#FF027AFF" Foreground="White"/>
+                <Button Content="更新" Click="UpdateButton_Click" Height="32" Width="56" Background="#FF027AFF" Foreground="White" BorderBrush="{x:Null}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

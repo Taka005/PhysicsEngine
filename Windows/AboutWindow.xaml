@@ -14,8 +14,8 @@
                 <TextBlock Text="開発者: Taka" />
                 <TextBlock Text="お問い合わせ: contact@takadev.jp" />
             </StackPanel>
-            <StackPanel Height="60" Width="215" HorizontalAlignment="Center">
-                <Button Content="閉じる" Height="32" Width="56" Click="CloseButton_Click"/>
+            <StackPanel Height="40" Width="215" HorizontalAlignment="Center">
+                <Button Content="閉じる" Background="#FF8C8C8C" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Click="CloseButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

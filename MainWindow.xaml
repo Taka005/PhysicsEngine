@@ -73,8 +73,8 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="280">
-                <StackPanel Margin="0,0,-2,0" Height="250">
+            <GroupBox Header="生成" Margin="689,152,20,0" VerticalAlignment="Top" Height="310">
+                <StackPanel Margin="0,0,-2,0" Height="290">
                     <StackPanel Height="42" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Label Content="種類" Height="27" Width="37"/>
                         <ComboBox x:Name="ObjectTypeSelect" Width="170" Height="22" VerticalAlignment="Center" SelectedIndex="0">
@@ -110,7 +110,7 @@
                             <Slider x:Name="VelYSlider" Minimum="-1000" Maximum="1000" Value="0" Height="18" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,5" ValueChanged="VecY_Change"/>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Height="60" Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Height="100" Orientation="Vertical" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,3" >
                             <Label Content="色" Height="28" Width="35"/>
                             <xctk:ColorPicker x:Name="色" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色" SelectedColorChanged="Color_Change"/>
@@ -121,10 +121,13 @@
                                 <ComboBoxItem Content="なし"/>
                             </ComboBox>
                         </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0,3,0,0">
+                            <Button x:Name="IDを設定" Content="IDを設定" Background="#FF8C8C8C" Foreground="White" BorderBrush="{x:Null}" Height="32" Width="56" Margin="10,0,10,0" Click="IdSet_Click"/>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Margin="753,445,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="169" Width="203">
+            <StackPanel Margin="753,485,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="169" Width="203">
                 <StackPanel Height="61" Orientation="Horizontal">
                     <ComboBox x:Name="toolComboBox" Width="170" Height="22" SelectedIndex="0" Padding="5,3,5,3" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="Tool_Change">
                         <ComboBoxItem Content="閲覧"/>

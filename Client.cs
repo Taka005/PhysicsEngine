@@ -14,10 +14,10 @@ namespace PhysicsEngine {
         private Point? prePoint = null;
         private Point? prePrePoint = null;
         private Entity? selectedEntity = null;
-        private string? selectedObjectId = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
         public connectionType connectionType = connectionType.Minimum;
+        public string? id = null;
         public double size = 10;
         public double mass = 1;
         public double stiffness = 0.8;
@@ -91,6 +91,7 @@ namespace PhysicsEngine {
                         this.AddHistory();
 
                         CircleOption circleOption = new CircleOption {
+                            id = this.id,
                             posX = point.X,
                             posY = point.Y,
                             mass = this.mass,
@@ -103,10 +104,12 @@ namespace PhysicsEngine {
                         };
 
                         this.engine.SpawnObject(circleOption);
+                        this.id = null;
                     } else if(this.spawnType == ObjectType.Square) {
                         this.AddHistory();
 
                         SquareOption squareOption = new SquareOption {
+                            id = this.id,
                             posX = point.X,
                             posY = point.Y,
                             mass = this.mass,
@@ -119,10 +122,12 @@ namespace PhysicsEngine {
                         };
 
                         this.engine.SpawnObject(squareOption);
+                        this.id = null;
                     } else if(this.spawnType == ObjectType.Triangle) {
                         this.AddHistory();
 
                         TriangleOption triangleOption = new TriangleOption {
+                            id = this.id,
                             posX = point.X,
                             posY = point.Y,
                             mass = this.mass,
@@ -135,6 +140,7 @@ namespace PhysicsEngine {
                         };
 
                         this.engine.SpawnObject(triangleOption);
+                        this.id = null;
                     } else {
                         if(this.prePoint == null) {
                             this.prePoint = point;
@@ -143,6 +149,7 @@ namespace PhysicsEngine {
                                 this.AddHistory();
 
                                 RopeOption ropeOption = new RopeOption {
+                                    id = this.id,
                                     startX = this.prePoint.Value.X,
                                     startY = this.prePoint.Value.Y,
                                     endX = point.X,
@@ -159,10 +166,12 @@ namespace PhysicsEngine {
                                 this.engine.SpawnObject(ropeOption);
 
                                 this.prePoint = null;
+                                this.id = null;
                             } else if(this.spawnType == ObjectType.Line) {
                                 this.AddHistory();
 
                                 LineOption lineOption = new LineOption {
+                                    id = this.id,
                                     startX = this.prePoint.Value.X,
                                     startY = this.prePoint.Value.Y,
                                     endX = point.X,
@@ -175,6 +184,7 @@ namespace PhysicsEngine {
                                 this.engine.SpawnGround(lineOption);
 
                                 this.prePoint = null;
+                                this.id = null;
                             } else if(this.spawnType == ObjectType.Curve) {
                                 if(this.prePrePoint == null) {
                                     this.prePrePoint = point;
@@ -182,6 +192,7 @@ namespace PhysicsEngine {
                                     this.AddHistory();
 
                                     CurveOption curveOption = new CurveOption {
+                                        id = this.id,
                                         startX = this.prePoint.Value.X,
                                         startY = this.prePoint.Value.Y,
                                         middleX = this.prePrePoint.Value.X,
@@ -197,11 +208,13 @@ namespace PhysicsEngine {
 
                                     this.prePoint = null;
                                     this.prePrePoint = null;
+                                    this.id = null;
                                 }
                             } else if(this.spawnType == ObjectType.Booster) {
                                 this.AddHistory();
 
                                 BoosterOption boosterOption = new BoosterOption {
+                                    id = this.id,
                                     startX = this.prePoint.Value.X,
                                     startY = this.prePoint.Value.Y,
                                     endX = point.X,
@@ -214,6 +227,7 @@ namespace PhysicsEngine {
 
                                 this.engine.SpawnEffect(boosterOption);
 
+                                this.id = null;
                                 this.prePoint = null;
                             }
                         }

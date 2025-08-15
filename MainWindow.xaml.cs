@@ -663,5 +663,13 @@ namespace PhysicsEngine {
                 }
             }
         }
+
+        private void IdSet_Click(object sender, RoutedEventArgs e) {
+            IdSetWindow idSetWindow = new IdSetWindow(this.client) {
+                Owner = this
+            };
+
+            idSetWindow.ShowDialog();
+        }
     }
 }
