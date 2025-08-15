@@ -15,6 +15,7 @@ namespace PhysicsEngine{
 
             this.TrackingLimitSlider.Value = this.engine.trackingLimit;
             this.TrackingIntervalSlider.Value = this.engine.trackingInterval;
+            this.ScriptExecuteIntervalSlider.Value = this.engine.scriptExecuteInterval;
             this.MovementLimitSlider.Value = this.engine.movementLimit;
             this.PpsSlider.Value = this.engine.pps;
             this.MoveSpeedSlider.Value = this.client.moveSpeed;
@@ -22,6 +23,7 @@ namespace PhysicsEngine{
 
             this.TrackingLimitSlider.ValueChanged += TrackingLimit_Change;
             this.TrackingIntervalSlider.ValueChanged += TrackingInterval_Change;
+            this.ScriptExecuteIntervalSlider.ValueChanged += ScriptExecuteInterval_Change;
             this.MovementLimitSlider.ValueChanged += MovementLimit_Change;
             this.PpsSlider.ValueChanged += Pps_Change;
             this.MoveSpeedSlider.ValueChanged += MoveSpeed_Change;
@@ -37,6 +39,12 @@ namespace PhysicsEngine{
         private void TrackingInterval_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
             if(sender is Slider slider) {
                 this.engine.SetTrackingInterval((int)slider.Value);
+            }
+        }
+
+        private void ScriptExecuteInterval_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            if(sender is Slider slider) {
+                this.engine.SetScriptExecuteInterval((int)slider.Value);
             }
         }
 
