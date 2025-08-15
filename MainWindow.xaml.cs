@@ -324,8 +324,31 @@ namespace PhysicsEngine {
                         foreach(PhysicsEngineCore.Utils.Image image in this.engine.assets.images) {
                             ImageSelect.Items.Add(image.filename);
                         }
-
                     }
+                } catch(IOException ex) {
+                    MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                } catch(System.Security.SecurityException ex) {
+                    MessageBox.Show("ファイルへのアクセス許可がありません:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                } catch(Exception ex) {
+                    MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void UpdateScript_Click(object sender, RoutedEventArgs e) {
+            OpenFileDialog openFileDialog = new OpenFileDialog {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
+                Title = "開くファイルを選択してください",
+                Filter = "テキストファイル(*.txt)|*.txt|すべてのファイル(*.*)|*.*",
+            };
+
+            if(openFileDialog.ShowDialog() == true) {
+                try {
+                    string filePath = openFileDialog.FileName;
+
+                    string fileContent = File.ReadAllText(filePath);
+
+                    this.engine.updateScript = fileContent;
                 } catch(IOException ex) {
                     MessageBox.Show("ファイルの読み込み中にエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 } catch(System.Security.SecurityException ex) {
