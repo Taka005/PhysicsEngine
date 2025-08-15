@@ -335,7 +335,7 @@ namespace PhysicsEngine {
             }
         }
 
-        private void UpdateScript_Click(object sender, RoutedEventArgs e) {
+        private void SetUpdateScript_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads",
                 Title = "開くファイルを選択してください",
@@ -357,6 +357,10 @@ namespace PhysicsEngine {
                     MessageBox.Show("予期せぬエラーが発生しました:\n" + ex.Message, "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void DeleteUpdateScript_Click(object sender, RoutedEventArgs e) {
+            this.engine.updateScript = "";
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e) {

@@ -38,7 +38,8 @@
             </MenuItem>
             <MenuItem x:Name="コマンド" Header="コマンド(_C)">
                 <MenuItem x:Name="実行" Header="実行" Click="RunCommand_Click"/>
-                <MenuItem x:Name="アップデートスクリプトの設定" Header="アップデートスクリプトの設定" Click="UpdateScript_Click"/>
+                <MenuItem x:Name="アップデートスクリプトの設定" Header="アップデートスクリプトの設定" Click="SetUpdateScript_Click"/>
+                <MenuItem x:Name="アップデートスクリプトの削除" Header="アップデートスクリプトの削除" Click="DeleteUpdateScript_Click"/>
             </MenuItem>
             <MenuItem x:Name="ヘルプメニュー" Header="ヘルプ(_H)">
                 <MenuItem x:Name="ABOUT" Header="ABOUT" Click="About_Click"/>
