@@ -22,6 +22,7 @@
     <None Remove="Images\CommandRunIcon.png" />
     <None Remove="Images\CoreIcon.png" />
     <None Remove="Images\DeleteIcon.png" />
+    <None Remove="Images\EraserIcon.png" />
     <None Remove="Images\ExitIcon.png" />
     <None Remove="Images\JsonSaveIcon.png" />
     <None Remove="Images\ManageAssetsIcon.png" />
@@ -50,6 +51,7 @@
     <Resource Include="Images\CommandRunIcon.png" />
     <Resource Include="Images\CoreIcon.png" />
     <Resource Include="Images\DeleteIcon.png" />
+    <Resource Include="Images\EraserIcon.png" />
     <Resource Include="Images\ExitIcon.png" />
     <Resource Include="Images\JsonSaveIcon.png" />
     <Resource Include="Images\ManageAssetsIcon.png" />

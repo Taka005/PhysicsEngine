@@ -39,7 +39,7 @@
                 <Separator/>
                 <MenuItem x:Name="終了" Header="終了" Click="Exit_Click">
                     <MenuItem.Icon>
-                        <Image Source="pack://application:,,,/Images/ExitIcon.png" Width="18" Height="18" />
+                        <Image Source="pack://application:,,,/Images/ExitIcon.png" Width="18" Height="17" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -60,7 +60,7 @@
                 </MenuItem>
                 <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除" Click="TrackingDelete_Click">
                     <MenuItem.Icon>
-                        <Image Source="pack://application:,,,/Images/DeleteIcon.png" Width="18" Height="18" />
+                        <Image Source="pack://application:,,,/Images/EraserIcon.png" Width="18" Height="18" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem x:Name="拡大縮小オフセットをリセット" Header="拡大縮小・オフセットをリセット" Click="ResetScaleOffset_Click">
