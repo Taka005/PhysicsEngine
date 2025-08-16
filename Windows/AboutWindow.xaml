@@ -9,7 +9,7 @@
     <Grid Margin="10">
         <StackPanel>
             <StackPanel Height="100" HorizontalAlignment="Center">
-                <TextBlock Text="アプリ名: PhysicsEngine" FontSize="16" FontWeight="Bold" />
+                <TextBlock HorizontalAlignment="Center" Text="PhysicsEngine" FontSize="16" FontWeight="Bold" />
                 <TextBlock x:Name="VersionTextBlock" Margin="0,10,0,0" />
                 <TextBlock Text="開発者: Taka" />
                 <TextBlock Text="お問い合わせ: contact@takadev.jp" />
