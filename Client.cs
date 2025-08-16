@@ -374,7 +374,7 @@ namespace PhysicsEngine {
                 this.isGridCrossMode&&
                 this.toolType == ToolType.Spawn
             ) {
-                value = this.engine.GetNearGridCrossPositionX(value);
+                value = this.engine.GetNearGridCrossPositionY(value);
             }
 
             value -= this.engine.render.offsetY;
