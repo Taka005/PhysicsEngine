@@ -14,15 +14,53 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\AboutIcon.png" />
+    <None Remove="Images\AppIcon.png" />
+    <None Remove="Images\CodeIcon.png" />
+    <None Remove="Images\CommandRunIcon.png" />
+    <None Remove="Images\CoreIcon.png" />
+    <None Remove="Images\DeleteIcon.png" />
+    <None Remove="Images\ExitIcon.png" />
+    <None Remove="Images\JsonSaveIcon.png" />
+    <None Remove="Images\ManageAssetsIcon.png" />
+    <None Remove="Images\NewIcon.png" />
+    <None Remove="Images\OpenIcon.png" />
+    <None Remove="Images\ResetIcon.png" />
+    <None Remove="Images\SaveIcon.png" />
+    <None Remove="Images\SettingIcon.png" />
+    <None Remove="Images\SiteIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\AppIcon.png" />
+    <Resource Include="Images\CodeIcon.png" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PhysicsEngineCore">
-      <HintPath>..\..\..\source\repos\Taka005\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
+      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
     </Reference>
   </ItemGroup>
-
+  <ItemGroup>
+    <Resource Include="Images\AboutIcon.png" />
+    <Resource Include="Images\CommandRunIcon.png" />
+    <Resource Include="Images\CoreIcon.png" />
+    <Resource Include="Images\DeleteIcon.png" />
+    <Resource Include="Images\ExitIcon.png" />
+    <Resource Include="Images\JsonSaveIcon.png" />
+    <Resource Include="Images\ManageAssetsIcon.png" />
+    <Resource Include="Images\NewIcon.png" />
+    <Resource Include="Images\OpenIcon.png" />
+    <Resource Include="Images\ResetIcon.png" />
+    <Resource Include="Images\SaveIcon.png" />
+    <Resource Include="Images\ScriptSetIcon.png" />
+    <Resource Include="Images\SettingIcon.png" />
+    <Resource Include="Images\SiteIcon.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Update="LICENSE.txt">
       <Pack>True</Pack>

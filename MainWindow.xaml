@@ -10,14 +10,38 @@
     <DockPanel>
         <Menu x:Name="メニューバー" DockPanel.Dock="Top" Background="#FFF3F3F3" BorderThickness="0,0,0,1" BorderBrush="#FFE8E8E8">
             <MenuItem x:Name="ファイルメニュー" Header="ファイル(_F)">
-                <MenuItem x:Name="新規" Header="新規" Click="NewFile_Click"/>
-                <MenuItem x:Name="保存" Header="保存" Click="SaveFile_Click"/>
-                <MenuItem x:Name="開く" Header="開く" Click="OpenFile_Click"/>
+                <MenuItem x:Name="新規" Header="新規" Click="NewFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/NewIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="保存" Header="保存" Click="SaveFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/SaveIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="開く" Header="開く" Click="OpenFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/OpenIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="JSONで保存" Header="JSONで保存" Click="JsonSaveFile_Click"/>
-                <MenuItem x:Name="JSONで開く" Header="JSONで開く" Click="JsonOpenFile_Click"/>
+                <MenuItem x:Name="JSONで保存" Header="JSONで保存" Click="JsonSaveFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/JsonSaveIcon.png" Width="18" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="JSONで開く" Header="JSONで開く" Click="JsonOpenFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/OpenIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="終了" Header="終了" Click="Exit_Click"/>
+                <MenuItem x:Name="終了" Header="終了" Click="Exit_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/ExitIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="設定" Header="設定(_S)">
                 <MenuItem x:Name="DisplayVector" Header="ベクトルの表示" IsCheckable="True" IsChecked="False" Click="DisplayVector_Click"/>
@@ -29,24 +53,75 @@
                 <MenuItem x:Name="動的トラッキングモード" Header="動的トラッキングモード" IsCheckable="True" IsChecked="False" Click="DynamicTrackingMode_Click"/>
                 <MenuItem x:Name="デバッグモード" Header="デバッグモード" IsCheckable="True" IsChecked="False" Click="DebugMode_Click"/>
                 <Separator/>
-                <MenuItem x:Name="物体を削除" Header="物体を削除" Click="Reset_Click"/>
-                <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除" Click="TrackingDelete_Click"/>
-                <MenuItem x:Name="拡大縮小オフセットをリセット" Header="拡大縮小・オフセットをリセット" Click="ResetScaleOffset_Click"/>
+                <MenuItem x:Name="物体を削除" Header="物体を削除" Click="Reset_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/DeleteIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="トラッキングを削除" Header="トラッキングを削除" Click="TrackingDelete_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/DeleteIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="拡大縮小オフセットをリセット" Header="拡大縮小・オフセットをリセット" Click="ResetScaleOffset_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/ResetIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="アセットの管理" Header="アセットの管理" Click="AssetsManage_Click"/>
-                <MenuItem x:Name="詳細設定" Header="詳細設定" Click="Setting_Click"/>
+                <MenuItem x:Name="アセットの管理" Header="アセットの管理" Click="AssetsManage_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/ManageAssetsIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="詳細設定" Header="詳細設定" Click="Setting_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/SettingIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="コマンド" Header="コマンド(_C)">
-                <MenuItem x:Name="実行" Header="実行" Click="RunCommand_Click"/>
-                <MenuItem x:Name="アップデートスクリプトの設定" Header="アップデートスクリプトの設定" Click="SetUpdateScript_Click"/>
-                <MenuItem x:Name="アップデートスクリプトの削除" Header="アップデートスクリプトの削除" Click="DeleteUpdateScript_Click"/>
+                <MenuItem x:Name="実行" Header="実行" Click="RunCommand_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/CommandRunIcon.png" Width="17" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="アップデートスクリプトの設定" Header="アップデートスクリプトの設定" Click="SetUpdateScript_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/ScriptSetIcon.png" Width="17" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="アップデートスクリプトの削除" Header="アップデートスクリプトの削除" Click="DeleteUpdateScript_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/DeleteIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="ヘルプメニュー" Header="ヘルプ(_H)">
-                <MenuItem x:Name="ABOUT" Header="ABOUT" Click="About_Click"/>
-                <MenuItem x:Name="公式サイト" Header="公式サイト" Click="Site_Click"/>
+                <MenuItem x:Name="ABOUT" Header="ABOUT" Click="About_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/AboutIcon.png" Width="17" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="公式サイト" Header="公式サイト" Click="Site_Click">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/SiteIcon.png" Width="17" Height="18" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem x:Name="ソースとバイナリ" Header="ソースとバイナリ">
-                    <MenuItem x:Name="アプリ" Header="アプリ" Click="AppSource_Click"/>
-                    <MenuItem x:Name="コアモジュール" Header="コアモジュール" Click="CoreSource_Click"/>
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Images/CodeIcon.png" Width="18" Height="18" />
+                    </MenuItem.Icon>
+                    <MenuItem x:Name="アプリ" Header="アプリ" Click="AppSource_Click">
+                        <MenuItem.Icon>
+                            <Image Source="pack://application:,,,/Images/AppIcon.png" Width="18" Height="18" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="コアモジュール" Header="コアモジュール" Click="CoreSource_Click">
+                        <MenuItem.Icon>
+                            <Image Source="pack://application:,,,/Images/CoreIcon.png" Width="17" Height="17" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -152,5 +227,6 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <Image Source="/ic_fluent_save_24_filled.png" Stretch="Fill" Width="100"/>
     </DockPanel>
 </Window>
