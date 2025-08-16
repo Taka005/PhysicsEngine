@@ -137,7 +137,9 @@ namespace PhysicsEngine {
         }
         
         private void Window_KeyDown(object sender, KeyEventArgs e) {
-            if(e.Key == Key.Space) {
+            bool isShiftPressed = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
+
+            if (e.Key == Key.Space) {
                 if(this.engine.isStarted) {
                     ChangeButton.Background = ParseColor.StringToBrush("#FF00AA00");
                     ChangeButton.Content = "開始";
@@ -171,20 +173,26 @@ namespace PhysicsEngine {
                     this.engine.render.isDisplayGrid = true;
                 }
             }else if (e.Key == Key.T) {
+                if (this.engine.isStarted){
+                    MessageBox.Show("システムが動いている間は操作できません", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    return;
+                }
+
                 this.engine.Step();
-            }else if(e.Key == Key.D1) {
+            }else if(isShiftPressed && e.Key == Key.D1) {
                 toolComboBox.SelectedIndex = 0;
-            } else if(e.Key == Key.D2) {
+            } else if(isShiftPressed && e.Key == Key.D2) {
                 toolComboBox.SelectedIndex = 1;
-            } else if(e.Key == Key.D3) {
+            } else if(isShiftPressed && e.Key == Key.D3) {
                 toolComboBox.SelectedIndex = 2;
-            } else if(e.Key == Key.D4) {
+            } else if(isShiftPressed && e.Key == Key.D4) {
                 toolComboBox.SelectedIndex = 3;
-            } else if(e.Key == Key.D5) {
+            } else if(isShiftPressed && e.Key == Key.D5) {
                 toolComboBox.SelectedIndex = 4;
-            } else if(e.Key == Key.D6) {
+            } else if(isShiftPressed && e.Key == Key.D6) {
                 toolComboBox.SelectedIndex = 5;
-            } else if(e.Key == Key.D7) {
+            } else if(isShiftPressed && e.Key == Key.D7) {
                 toolComboBox.SelectedIndex = 6;
             }
         }
