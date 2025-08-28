@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/Taka005/PhysicsEngine/</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	<ApplicationIcon>Images\AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\AppIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\AppIcon.png" />
     <Resource Include="Images\CodeIcon.png" />
   </ItemGroup>
@@ -43,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PhysicsEngineCore">
-      <HintPath>..\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
+      <HintPath>..\..\..\source\repos\Taka005\PhysicsEngineCore\bin\Debug\net8.0-windows\PhysicsEngineCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
