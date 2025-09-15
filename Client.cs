@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using PhysicsEngineCore;
+using PhysicsEngineCore.Objects;
+using PhysicsEngineCore.Objects.Interfaces;
+using PhysicsEngineCore.Options;
+using PhysicsEngineCore.Utils;
+using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using PhysicsEngineCore;
-using PhysicsEngineCore.Objects;
-using PhysicsEngineCore.Options;
-using PhysicsEngineCore.Objects.Interfaces;
-using PhysicsEngineCore.Utils;
 
 namespace PhysicsEngine {
     public class Client(Window window, Engine engine) {
@@ -14,6 +15,7 @@ namespace PhysicsEngine {
         private Point? prePoint = null;
         private Point? prePrePoint = null;
         private Entity? selectedEntity = null;
+        private (IGround ground, GroundEdgeType type)? selectedGround = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
         public connectionType connectionType = connectionType.Minimum;
@@ -67,8 +69,24 @@ namespace PhysicsEngine {
 
                     this.selectedEntity.velocity = Vector2.Zero;
 
-                    this.selectedEntity.position.X = point.X;
-                    this.selectedEntity.position.Y = point.Y;
+                    this.selectedEntity.position = new Vector2(point.X, point.Y);
+                }else if (e.LeftButton == MouseButtonState.Pressed && this.selectedGround != null){
+                    if (this.selectedGround.Value.ground is Line line){
+                        if(this.selectedGround.Value.type == GroundEdgeType.Start){
+                            line.start = new Vector2(point.X, point.Y);
+                        }else if(this.selectedGround.Value.type == GroundEdgeType.End){
+                            line.end = new Vector2(point.X, point.Y);
+                        }
+                    } else if (this.selectedGround.Value.ground is Curve curve){
+                        if (this.selectedGround.Value.type == GroundEdgeType.Start){
+                            curve.start = new Vector2(point.X, point.Y);
+                        }
+                        else if (this.selectedGround.Value.type == GroundEdgeType.Middle){
+                            curve.middle = new Vector2(point.X, point.Y);
+                        }else if (this.selectedGround.Value.type == GroundEdgeType.End){
+                            curve.end = new Vector2(point.X, point.Y);
+                        }
+                    }
                 }
             }
         }
@@ -77,6 +95,10 @@ namespace PhysicsEngine {
             if(this.toolType == ToolType.Move) {
                 if(this.selectedEntity != null) {
                     this.selectedEntity = null;
+                }
+
+                if(this.selectedGround != null) {
+                    this.selectedGround = null;
                 }
             }
         }
@@ -250,12 +272,17 @@ namespace PhysicsEngine {
                     }
                 } else if(this.toolType == ToolType.Move) {
                     List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
-                    if(entities.Count > 0) {
+                    List<(IGround, GroundEdgeType)> grounds = this.engine.GetGroundsEdgeAt(point.X, point.Y);
+                    if (entities.Count > 0) {
                         Entity entity = entities[0];
 
                         entity.velocity = Vector2.Zero;
 
                         this.selectedEntity = entity;
+                    }else if(grounds.Count > 0) {
+                        (IGround, GroundEdgeType) ground = grounds[0];
+                        
+                        this.selectedGround = ground;
                     }
                 } else if(this.toolType == ToolType.Edit) {
                     List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
@@ -319,8 +346,9 @@ namespace PhysicsEngine {
             this.prePoint = null;
             this.prePrePoint = null;
             this.selectedEntity = null;
+            this.selectedGround = null;
 
-            if(toolType == "閲覧") {
+            if (toolType == "閲覧") {
                 this.toolType = ToolType.View;
             } else if(toolType == "生成") {
                 this.toolType = ToolType.Spawn;
