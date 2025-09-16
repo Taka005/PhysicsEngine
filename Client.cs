@@ -45,11 +45,9 @@ namespace PhysicsEngine {
         public void SetImageName(string imageName) {
             if(imageName == "なし"){
                 this.imageName = null;
-
-                return;
+            }else{
+                this.imageName = imageName;
             }
-
-            this.imageName = imageName;
         }
 
         public void MouseMove(MouseEventArgs e, Point point) {
@@ -287,7 +285,7 @@ namespace PhysicsEngine {
                     List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
 
                     if(objects.Count > 0) {
-                        ObjectEditWindow eobjectEditWindow = new ObjectEditWindow(objects[0]) {
+                        ObjectEditWindow eobjectEditWindow = new ObjectEditWindow(this.engine,objects[0]) {
                             Owner = this.window
                         };
 
