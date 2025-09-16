@@ -15,6 +15,7 @@ namespace PhysicsEngine {
         private Point? prePrePoint = null;
         private Entity? selectedEntity = null;
         private (IGround ground, GroundEdgeType type)? selectedGround = null;
+        private (IEffect effect, EffectEdgeType type)? selectedEffect = null;
         public ToolType toolType = ToolType.View;
         public ObjectType spawnType = ObjectType.Circle;
         public connectionType connectionType = connectionType.Minimum;
@@ -83,6 +84,14 @@ namespace PhysicsEngine {
                             curve.end = new Vector2(point.X, point.Y);
                         }
                     }
+                }else if (e.LeftButton == MouseButtonState.Pressed && this.selectedEffect != null){
+                    if (this.selectedEffect.Value.effect is Booster booster){
+                        if(this.selectedEffect.Value.type == EffectEdgeType.Start){
+                            booster.start = new Vector2(point.X, point.Y);
+                        }else if(this.selectedEffect.Value.type == EffectEdgeType.End){
+                            booster.end = new Vector2(point.X, point.Y);
+                        }
+                    }
                 }
             }
         }
@@ -95,6 +104,10 @@ namespace PhysicsEngine {
 
                 if(this.selectedGround != null) {
                     this.selectedGround = null;
+                }
+
+                if(this.selectedEffect != null) {
+                    this.selectedEffect = null;
                 }
             }
         }
@@ -269,6 +282,8 @@ namespace PhysicsEngine {
                 } else if(this.toolType == ToolType.Move) {
                     List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
                     List<(IGround, GroundEdgeType)> grounds = this.engine.GetGroundsEdgeAt(point.X, point.Y);
+                    List<(IEffect, EffectEdgeType)> effects = this.engine.GetEffectsEdgeAt(point.X, point.Y);
+
                     if (entities.Count > 0) {
                         Entity entity = entities[0];
 
@@ -279,8 +294,12 @@ namespace PhysicsEngine {
                         (IGround ground, GroundEdgeType type) ground = grounds[0];
                         
                         this.selectedGround = ground;
+                    }else if(effects.Count > 0) {
+                        (IEffect effect, EffectEdgeType type) effect = effects[0];
+
+                        this.selectedEffect = effect;
                     }
-                } else if(this.toolType == ToolType.Edit) {
+                }else if(this.toolType == ToolType.Edit) {
                     List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
                     List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
                     List<IEffect> effects = this.engine.GetEffectsAt(point.X, point.Y);
@@ -350,6 +369,7 @@ namespace PhysicsEngine {
             this.prePrePoint = null;
             this.selectedEntity = null;
             this.selectedGround = null;
+            this.selectedEffect = null;
 
             if (toolType == "閲覧") {
                 this.toolType = ToolType.View;
