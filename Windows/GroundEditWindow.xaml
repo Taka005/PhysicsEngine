@@ -44,7 +44,7 @@
             </StackPanel>
             <StackPanel Height="60" Orientation="Vertical" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Content="地面の色" Height="28" Width="55"/>
+                    <Label Content="色" Height="28" Width="36"/>
                     <xctk:ColorPicker x:Name="GroundColor" Width="156" Height="28" ShowStandardColors="False" ColorMode="ColorCanvas" ShowTabHeaders="False" SelectedColor="Red" AdvancedTabHeader="ユーザー設定" StandardTabHeader="標準" AvailableColorsHeader="使用可能な色" ShowRecentColors="False" RecentColorsHeader="最近使った色" StandardColorsHeader="標準色" SelectedColorChanged="ColorPicker_Change"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

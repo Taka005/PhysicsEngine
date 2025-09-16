@@ -283,8 +283,9 @@ namespace PhysicsEngine {
                 } else if(this.toolType == ToolType.Edit) {
                     List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
                     List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
+                    List<IEffect> effects = this.engine.GetEffectsAt(point.X, point.Y);
 
-                    if(objects.Count > 0) {
+                    if (objects.Count > 0) {
                         ObjectEditWindow eobjectEditWindow = new ObjectEditWindow(this.engine,objects[0]) {
                             Owner = this.window
                         };
@@ -296,6 +297,12 @@ namespace PhysicsEngine {
                         };
 
                         groundEditWindow.Show();
+                    }else if(effects.Count > 0) {
+                        EffectEditWindow effectEditWindow = new EffectEditWindow(this.engine,effects[0]) {
+                            Owner = this.window
+                        };
+
+                        effectEditWindow.Show();
                     }
                 } else if(this.toolType == ToolType.Connection) {
                     List<Entity> entities = this.engine.GetEntitiesAt(point.X, point.Y);
