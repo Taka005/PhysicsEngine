@@ -1,21 +1,28 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿using PhysicsEngineCore;
 using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Objects.Interfaces;
 using PhysicsEngineCore.Utils;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
 
 namespace PhysicsEngine {
     public partial class GroundEditWindow : Window {
+        private readonly Engine engine;
         private readonly IGround ground;
 
-        public GroundEditWindow(IGround ground) {
+        public GroundEditWindow(Engine engine, IGround ground) {
+            this.engine = engine;
             this.ground = ground;
 
             InitializeComponent();
 
-            if(ground is Line line) {       
+            foreach (PhysicsEngineCore.Utils.Image image in this.engine.assets.images){
+                this.ImageSelect.Items.Add(image.filename);
+            }
+
+            if (ground is Line line) {       
                 this.StartXSlider.Value = line.start.X;
                 this.StartYSlider.Value = line.start.Y;
                 this.EndXSlider.Value = line.end.X;
@@ -38,7 +45,8 @@ namespace PhysicsEngine {
 
             this.GroundId.Text = this.ground.id;
             this.WidthSlider.Value = this.ground.width;
-            this.ObjectColor.SelectedColor = ParseColor.StringToColor(this.ground.color);
+            this.GroundColor.SelectedColor = ParseColor.StringToColor(this.ground.color);
+            this.ImageSelect.SelectedItem = this.ground.image?.filename ?? "なし";
 
             this.StartXSlider.ValueChanged += StartXSlider_Change;
             this.StartYSlider.ValueChanged += StartYSlider_Change;
@@ -47,7 +55,8 @@ namespace PhysicsEngine {
             this.EndXSlider.ValueChanged += EndXSlider_Change;
             this.EndYSlider.ValueChanged += EndYSlider_Change;
             this.WidthSlider.ValueChanged += WidthSlider_Change;
-            this.ObjectColor.SelectedColorChanged += ColorPicker_Change;
+            this.GroundColor.SelectedColorChanged += ColorPicker_Change;
+            this.ImageSelect.SelectionChanged += Image_Change;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
@@ -74,7 +83,7 @@ namespace PhysicsEngine {
 
             this.GroundId.Text = this.ground.id;
             this.WidthSlider.Value = this.ground.width;
-            this.ObjectColor.SelectedColor = ParseColor.StringToColor(this.ground.color);
+            this.GroundColor.SelectedColor = ParseColor.StringToColor(this.ground.color);
 
         }
 
@@ -143,6 +152,24 @@ namespace PhysicsEngine {
         private void ColorPicker_Change(object sender, RoutedPropertyChangedEventArgs<Color?> e) {
             if(sender is ColorPicker picker) {
                 this.ground.color = picker.SelectedColor.ToString() ?? "#F00000";
+            }
+        }
+
+        private void Image_Change(object sender, SelectionChangedEventArgs e){
+            if (sender is ComboBox combobox){
+                string? selectedContent = combobox.SelectedItem as string;
+
+                if (selectedContent == "なし"){
+                    this.ground.image = null;
+                }else{
+                    PhysicsEngineCore.Utils.Image? image = this.engine.assets.Get(selectedContent ?? "");
+
+                    if (image == null){
+                        this.ground.image = null;
+                    }else{
+                        this.ground.image = image;
+                    }
+                }
             }
         }
     }

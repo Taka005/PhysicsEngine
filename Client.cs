@@ -291,7 +291,7 @@ namespace PhysicsEngine {
 
                         eobjectEditWindow.Show();
                     } else if(grounds.Count > 0) {
-                        GroundEditWindow groundEditWindow = new GroundEditWindow(grounds[0]) {
+                        GroundEditWindow groundEditWindow = new GroundEditWindow(this.engine,grounds[0]) {
                             Owner = this.window
                         };
 
