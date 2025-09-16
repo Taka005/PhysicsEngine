@@ -80,8 +80,7 @@ namespace PhysicsEngine {
                     } else if (this.selectedGround.Value.ground is Curve curve){
                         if (this.selectedGround.Value.type == GroundEdgeType.Start){
                             curve.start = new Vector2(point.X, point.Y);
-                        }
-                        else if (this.selectedGround.Value.type == GroundEdgeType.Middle){
+                        }else if (this.selectedGround.Value.type == GroundEdgeType.Middle){
                             curve.middle = new Vector2(point.X, point.Y);
                         }else if (this.selectedGround.Value.type == GroundEdgeType.End){
                             curve.end = new Vector2(point.X, point.Y);
@@ -280,7 +279,7 @@ namespace PhysicsEngine {
 
                         this.selectedEntity = entity;
                     }else if(grounds.Count > 0) {
-                        (IGround, GroundEdgeType) ground = grounds[0];
+                        (IGround ground, GroundEdgeType type) ground = grounds[0];
                         
                         this.selectedGround = ground;
                     }
