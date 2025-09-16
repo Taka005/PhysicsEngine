@@ -3,7 +3,6 @@ using PhysicsEngineCore.Objects;
 using PhysicsEngineCore.Objects.Interfaces;
 using PhysicsEngineCore.Options;
 using PhysicsEngineCore.Utils;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
