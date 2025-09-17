@@ -17,6 +17,10 @@ namespace PhysicsEngine.Windows{
             this.engine = engine;
 
             InitializeComponent();
+
+            if(this.engine.scriptErrorMessage != string.Empty){
+                DisplayUpdateError($"{this.engine.scriptErrorMessage}");
+            }
         }
 
         private void CommandTextBox_KeyDown(object sender, KeyEventArgs e) {
@@ -59,6 +63,14 @@ namespace PhysicsEngine.Windows{
         private void DisplayError(string errorMessage) {
             TextRange tr = new TextRange(ResultTextBlock.Document.ContentEnd, ResultTextBlock.Document.ContentEnd);
             tr.Text = $"> {CommandTextBox.Text}\nエラー: {errorMessage}\n";
+            tr.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Red);
+
+            ScrollToEnd();
+        }
+
+        private void DisplayUpdateError(string errorMessage){
+            TextRange tr = new TextRange(ResultTextBlock.Document.ContentEnd, ResultTextBlock.Document.ContentEnd);
+            tr.Text = $"アップデートエラー: {errorMessage}\n";
             tr.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Red);
 
             ScrollToEnd();
