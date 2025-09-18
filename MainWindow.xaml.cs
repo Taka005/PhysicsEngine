@@ -194,8 +194,10 @@ namespace PhysicsEngine {
                 toolComboBox.SelectedIndex = 5;
             } else if(isShiftPressed && e.Key == Key.D7) {
                 toolComboBox.SelectedIndex = 6;
+            } else if(isShiftPressed && e.Key == Key.D8) {
+                toolComboBox.SelectedIndex = 7;
             }
-        }
+}
 
         private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
             if(sender is Canvas canvas) {
