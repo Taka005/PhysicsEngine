@@ -521,6 +521,18 @@ namespace PhysicsEngine {
                 ComboBoxItem selectedContent = (ComboBoxItem)combobox.SelectedItem;
 
                 this.client.setTool(selectedContent.Content.ToString() ?? "閲覧");
+
+                if(selectedContent.Content.ToString() == "充填"){
+                    ObjectTypeRope.IsEnabled = false;
+                    ObjectTypeLine.IsEnabled = false;
+                    ObjectTypeCurve.IsEnabled = false;
+                    ObjectTypeBooster.IsEnabled = false;
+                }else{
+                    ObjectTypeRope.IsEnabled = true;
+                    ObjectTypeLine.IsEnabled = true;
+                    ObjectTypeCurve.IsEnabled = true;
+                    ObjectTypeBooster.IsEnabled = true;
+                }
             }
         }
 

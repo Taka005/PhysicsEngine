@@ -263,6 +263,84 @@ namespace PhysicsEngine {
                             }
                         }
                     }
+                }else if (this.toolType == ToolType.Fill){
+                    if (this.prePoint == null){
+                        this.prePoint = point;
+                    }else{
+                        double countX = Math.Abs(Math.Floor((point.X - this.prePoint.Value.X) / this.size));
+                        double countY = Math.Abs(Math.Floor((point.Y - this.prePoint.Value.Y) / this.size));
+
+                        if (this.spawnType == ObjectType.Circle){
+                            this.AddHistory();
+
+                            for (int i = 0; i <= countX; i++){
+                                for (int j = 0; j <= countY; j++){
+                                    CircleOption circleOption = new CircleOption{
+                                        posX = this.prePoint.Value.X + i*this.size + i,
+                                        posY = this.prePoint.Value.Y + j*this.size + j,
+                                        mass = this.mass,
+                                        diameter = this.size,
+                                        stiffness = this.stiffness,
+                                        velocityX = this.vecX,
+                                        velocityY = this.vecY,
+                                        color = this.color.ToString() ?? "#FFFF0000",
+                                        imageName = this.imageName
+                                    };
+
+                                    this.engine.SpawnObject(circleOption);
+                                }
+                            }
+
+                            this.prePoint = null;
+                            this.id = null;
+                        }else if (this.spawnType == ObjectType.Square){
+                            this.AddHistory();
+
+                            for (int i = 0; i <= countX; i++){
+                                for (int j = 0; j <= countY; j++){
+                                    SquareOption squareOption = new SquareOption{
+                                        posX = this.prePoint.Value.X + i * this.size + i,
+                                        posY = this.prePoint.Value.Y + j * this.size + j,
+                                        mass = this.mass,
+                                        size = this.size,
+                                        stiffness = this.stiffness,
+                                        velocityX = this.vecX,
+                                        velocityY = this.vecY,
+                                        color = this.color.ToString() ?? "#FFFF0000",
+                                        imageName = this.imageName
+                                    };
+
+                                    this.engine.SpawnObject(squareOption);
+                                }
+                            }
+
+                            this.prePoint = null;
+                            this.id = null;
+                        }else if (this.spawnType == ObjectType.Triangle){
+                            this.AddHistory();
+
+                            for (int i = 0; i <= countX; i++){
+                                for (int j = 0; j <= countY; j++){
+                                    TriangleOption triangleOption = new TriangleOption{
+                                        posX = this.prePoint.Value.X + i * this.size + i,
+                                        posY = this.prePoint.Value.Y + j * this.size + j,
+                                        mass = this.mass,
+                                        size = this.size,
+                                        stiffness = this.stiffness,
+                                        velocityX = this.vecX,
+                                        velocityY = this.vecY,
+                                        color = this.color.ToString() ?? "#FFFF0000",
+                                        imageName = this.imageName
+                                    };
+
+                                    this.engine.SpawnObject(triangleOption);
+                                }
+                            }
+
+                            this.prePoint = null;
+                            this.id = null;
+                        }
+                    }
                 } else if(this.toolType == ToolType.Delete) {
                     List<IObject> objects = this.engine.GetObjectsAt(point.X, point.Y);
                     List<IGround> grounds = this.engine.GetGroundsAt(point.X, point.Y);
@@ -375,6 +453,8 @@ namespace PhysicsEngine {
                 this.toolType = ToolType.View;
             } else if(toolType == "生成") {
                 this.toolType = ToolType.Spawn;
+            }else if (toolType == "充填"){
+                this.toolType = ToolType.Fill;
             } else if(toolType == "削除") {
                 this.toolType = ToolType.Delete;
             } else if(toolType == "編集") {
@@ -438,6 +518,7 @@ namespace PhysicsEngine {
     public enum ToolType {
         View,
         Spawn,
+        Fill,
         Delete,
         Move,
         Edit,

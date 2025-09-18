@@ -157,10 +157,10 @@
                             <ComboBoxItem Content="円"/>
                             <ComboBoxItem Content="四角"/>
                             <ComboBoxItem Content="三角"/>
-                            <ComboBoxItem Content="ロープ"/>
-                            <ComboBoxItem Content="直線"/>
-                            <ComboBoxItem Content="曲線"/>
-                            <ComboBoxItem Content="ブースター"/>
+                            <ComboBoxItem Content="ロープ" x:Name="ObjectTypeRope"/>
+                            <ComboBoxItem Content="直線" x:Name="ObjectTypeLine"/>
+                            <ComboBoxItem Content="曲線" x:Name="ObjectTypeCurve"/>
+                            <ComboBoxItem Content="ブースター" x:Name="ObjectTypeBooster"/>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Height="145" Orientation="Horizontal" Width="283">
@@ -208,6 +208,7 @@
                     <ComboBox x:Name="toolComboBox" Width="170" Height="22" SelectedIndex="0" Padding="5,3,5,3" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="Tool_Change">
                         <ComboBoxItem Content="閲覧"/>
                         <ComboBoxItem Content="生成"/>
+                        <ComboBoxItem Content="充填"/>
                         <ComboBoxItem Content="移動"/>
                         <ComboBoxItem Content="編集"/>
                         <ComboBoxItem Content="削除"/>
