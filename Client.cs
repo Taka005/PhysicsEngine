@@ -273,6 +273,8 @@ namespace PhysicsEngine {
                         if (this.spawnType == ObjectType.Circle){
                             this.AddHistory();
 
+                            List<IOption> options = [];
+
                             for (int i = 0; i <= countX; i++){
                                 for (int j = 0; j <= countY; j++){
                                     CircleOption circleOption = new CircleOption{
@@ -287,14 +289,18 @@ namespace PhysicsEngine {
                                         imageName = this.imageName
                                     };
 
-                                    this.engine.SpawnObject(circleOption);
+                                    options.Add(circleOption);
                                 }
                             }
+
+                            this.engine.SpawnObjects(options);
 
                             this.prePoint = null;
                             this.id = null;
                         }else if (this.spawnType == ObjectType.Square){
                             this.AddHistory();
+
+                            List<IOption> options = [];
 
                             for (int i = 0; i <= countX; i++){
                                 for (int j = 0; j <= countY; j++){
@@ -310,14 +316,18 @@ namespace PhysicsEngine {
                                         imageName = this.imageName
                                     };
 
-                                    this.engine.SpawnObject(squareOption);
+                                    options.Add(squareOption);
                                 }
                             }
+
+                            this.engine.SpawnObjects(options);
 
                             this.prePoint = null;
                             this.id = null;
                         }else if (this.spawnType == ObjectType.Triangle){
                             this.AddHistory();
+
+                            List<IOption> options = [];
 
                             for (int i = 0; i <= countX; i++){
                                 for (int j = 0; j <= countY; j++){
@@ -333,9 +343,11 @@ namespace PhysicsEngine {
                                         imageName = this.imageName
                                     };
 
-                                    this.engine.SpawnObject(triangleOption);
+                                    options.Add(triangleOption);
                                 }
                             }
+
+                            this.engine.SpawnObjects(options);
 
                             this.prePoint = null;
                             this.id = null;
