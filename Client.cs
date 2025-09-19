@@ -267,8 +267,13 @@ namespace PhysicsEngine {
                     if (this.prePoint == null){
                         this.prePoint = point;
                     }else{
-                        double countX = Math.Abs(Math.Floor((point.X - this.prePoint.Value.X) / this.size));
-                        double countY = Math.Abs(Math.Floor((point.Y - this.prePoint.Value.Y) / this.size));
+                        double startX = Math.Min(this.prePoint.Value.X, point.X);
+                        double startY = Math.Min(this.prePoint.Value.Y, point.Y);
+                        double endX = Math.Max(this.prePoint.Value.X, point.X);
+                        double endY = Math.Max(this.prePoint.Value.Y, point.Y);
+
+                        double countX = Math.Floor(Math.Abs(endX - startX) / this.size);
+                        double countY = Math.Floor(Math.Abs(endY - startY) / this.size);
 
                         if (this.spawnType == ObjectType.Circle){
                             this.AddHistory();
@@ -278,8 +283,8 @@ namespace PhysicsEngine {
                             for (int i = 0; i <= countX; i++){
                                 for (int j = 0; j <= countY; j++){
                                     CircleOption circleOption = new CircleOption{
-                                        posX = this.prePoint.Value.X + i*this.size + i,
-                                        posY = this.prePoint.Value.Y + j*this.size + j,
+                                        posX = startX + i*this.size,
+                                        posY = startY + j*this.size,
                                         mass = this.mass,
                                         diameter = this.size,
                                         stiffness = this.stiffness,
@@ -305,8 +310,8 @@ namespace PhysicsEngine {
                             for (int i = 0; i <= countX; i++){
                                 for (int j = 0; j <= countY; j++){
                                     SquareOption squareOption = new SquareOption{
-                                        posX = this.prePoint.Value.X + i * this.size + i,
-                                        posY = this.prePoint.Value.Y + j * this.size + j,
+                                        posX = startX + i * this.size,
+                                        posY = startY + j * this.size,
                                         mass = this.mass,
                                         size = this.size,
                                         stiffness = this.stiffness,
@@ -332,8 +337,8 @@ namespace PhysicsEngine {
                             for (int i = 0; i <= countX; i++){
                                 for (int j = 0; j <= countY; j++){
                                     TriangleOption triangleOption = new TriangleOption{
-                                        posX = this.prePoint.Value.X + i * this.size + i,
-                                        posY = this.prePoint.Value.Y + j * this.size + j,
+                                        posX = startX + i * this.size,
+                                        posY = startY + j * this.size,
                                         mass = this.mass,
                                         size = this.size,
                                         stiffness = this.stiffness,
